@@ -4,195 +4,182 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sibility — an initiative for nonviolence</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <style>
-    /* Landing-specific grids (single 800px breakpoint) */
-    .hero-grid {
-      max-width: 1240px; margin: 0 auto; padding: 72px 48px 104px;
-      display: grid; grid-template-columns: 1.5fr 1fr; gap: 72px; align-items: stretch;
-    }
-    .hero-copy { display: flex; flex-direction: column; justify-content: center; }
-    .dict-card { border: 1.5px solid var(--ink); color: var(--ink); display: flex; flex-direction: column; }
-
-    .commit-grid { border: 1.5px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr 1fr; }
-    .commit-cell { padding: 40px; }
-    .commit-cell + .commit-cell { border-left: 1.5px solid var(--ink); }
-
-    .centers-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 24px; }
-    .centre-card {
-      background: var(--panel); padding: clamp(28px, 5vw, 44px) clamp(22px, 4vw, 40px);
-      display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden;
-      min-height: clamp(300px, 55vw, 420px);
-    }
-    .centre-ghost { position: absolute; bottom: -50px; font-size: 150px; font-weight: 800; letter-spacing: -0.05em; color: var(--ghost-card); line-height: 1; pointer-events: none; }
-    .centre-card > *:not(.centre-ghost) { position: relative; }
-    .centre-cta { display: flex; gap: 16px; align-items: center; margin-top: auto; padding-top: 12px; flex-wrap: wrap; }
-
-    .vision-band {
-      background: var(--ink); color: var(--paper); padding: 64px 56px; margin-bottom: 24px;
-      display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center;
-    }
-    .inbrief {
-      background: var(--panel); padding: clamp(28px, 5vw, 48px) clamp(24px, 4.5vw, 44px);
-      display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; flex-wrap: wrap;
-      margin-bottom: 80px;
-    }
-    .inbrief-links { display: flex; gap: 20px; }
-    .inbrief-links a { font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-
-    @media (max-width: 799.98px) {
-      .hero-grid { padding: 44px 20px 64px; grid-template-columns: 1fr; gap: 40px; }
-      .commit-grid { grid-template-columns: 1fr; }
-      .commit-cell { padding: 28px 24px; }
-      .commit-cell + .commit-cell { border-left: none; border-top: 1.5px solid var(--ink); }
-      .centers-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 16px; }
-      .vision-band { grid-template-columns: 1fr; gap: 28px; padding: 40px 28px; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/color.css" />
 </head>
-<body data-page="">
+<body>
 
-  <header id="site-header"></header>
+  <!-- BG SWITCHER -->
+  <div class="bg-switch">
+    <span class="lbl">BG</span>
+    <div class="bg-swatch" data-field="#e0e4ea" title="Grey-blue" style="background:#e0e4ea;"></div>
+    <div class="bg-swatch" data-field="#efece8" title="Beige" style="background:#efece8;"></div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <a href="#top" class="logo"><img src="assets/logo-full-black.svg" alt="Sibility" /></a>
+    <div class="nav-right">
+      <nav class="nav-links nav-desktop">
+        <a class="nav-link" href="flow.html">Flow</a>
+        <a class="nav-link" href="delta.html">Delta</a>
+        <a class="nav-link" href="source.html">Source</a>
+        <a class="nav-link" href="current.html">Current</a>
+      </nav>
+      <a class="nav-support nav-desktop" href="support.html">Support us</a>
+      <div class="nav-burger-wrap"><div class="burger" aria-label="Menu" role="button" tabindex="0">☰</div></div>
+    </div>
+    <div class="mobile-panel">
+      <a href="flow.html">Flow</a>
+      <a href="delta.html">Delta</a>
+      <a href="source.html">Source</a>
+      <a href="current.html">Current</a>
+      <a class="mobile-support" href="support.html">Support us</a>
+    </div>
+  </header>
 
   <!-- ============ HERO ============ -->
-  <section id="top">
+  <section id="top" class="hero">
     <div class="hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow" style="margin-bottom: 32px;">An independent initiative for nonviolence</div>
-        <h1 style="font-size: clamp(44px, 5.5vw, 72px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; margin: 0 0 28px;">Nonviolence is a capacity. We fund it, teach it, study it.</h1>
-        <p class="lead" style="max-width: 560px; margin: 0 0 44px;">Sibility supports independent initiatives, runs classes and research — through four centers: support, involvement, research and education.</p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#centers" class="btn btn--fill btn--lg">Learn more</a>
-        </div>
+        <div class="hero-eyebrow">An independent initiative for nonviolence</div>
+        <h1 class="hero-h1">Nonviolence is a <span class="kw">capacity.</span> We fund it, teach it, study it.</h1>
+        <p class="hero-sub">Sibility supports independent initiatives, runs classes and research — through four centers: support, involvement, research and education.</p>
+        <div><a href="#centers" class="btn btn--fill btn--lg">Learn more</a></div>
       </div>
 
-      <aside class="dict-card">
-        <div style="border-bottom: 1.5px solid var(--ink); padding: 14px 20px;">
-          <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);">The word</span>
+      <aside class="word-card">
+        <div class="word-strip"><span class="word-tag">The word</span></div>
+        <div class="word-body">
+          <div>
+            <div class="word-term">sibility</div>
+            <div class="word-ipa">/sɪˈbɪl.ɪ.ti/ · noun</div>
+          </div>
+          <p class="word-def">The capacity of a person — or a community — to live, act and resolve conflict without violence.</p>
         </div>
-        <div style="padding: 40px 36px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-          <div style="font-size: 56px; font-weight: 800; letter-spacing: -0.045em; margin-bottom: 10px; color: #000000;">sibility</div>
-          <div style="font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 20px;">/sɪˈbɪl.ɪ.ti/ · noun</div>
-          <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">The capacity of a person — or a community — to live, act and resolve conflict without violence.</p>
-        </div>
-        <div style="border-top: 1.5px solid var(--ink); padding: 14px 36px; font-family: var(--mono); font-size: 12px; line-height: 1.5; color: var(--muted);">Not yet in the dictionary — that is why we are here.</div>
+        <div class="word-foot">Not yet in the dictionary — that is why we are here.</div>
       </aside>
     </div>
   </section>
 
   <!-- ============ HOW WE WORK ============ -->
-  <section id="initiative" class="section">
-    <div class="eyebrow" style="margin-bottom: 20px;">How we work</div>
-    <h2 class="h2" style="margin: 0 0 56px; max-width: 720px;">Three commitments hold everything we do.</h2>
+  <section class="section">
+    <div class="section-eyebrow">How we work</div>
+    <h2 class="section-h2 hww-h2">Three commitments hold everything we do.</h2>
     <div class="commit-grid">
       <div class="commit-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px;"></div>
-        <h3 style="font-size: 24px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 16px;">Resilience</h3>
-        <p style="font-size: 15px; line-height: 1.65; color: var(--body); margin: 0;">We build for the long term — steady support that initiatives can plan around.</p>
+        <div class="commit-square"></div>
+        <h3>Resilience</h3>
+        <p>We build for the long term — steady support that initiatives can plan around.</p>
       </div>
       <div class="commit-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px; transform: rotate(22deg);"></div>
-        <h3 style="font-size: 24px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 16px;">Flexibility</h3>
-        <p style="font-size: 15px; line-height: 1.65; color: var(--body); margin: 0;">We never require anyone to do what we consider the only right way — grantees keep their freedom, including the freedom to choose other grantors.</p>
+        <div class="commit-square" style="transform: rotate(22deg);"></div>
+        <h3>Flexibility</h3>
+        <p>We never require anyone to do what we consider the only right way — grantees keep their freedom, including the freedom to choose other grantors.</p>
       </div>
       <div class="commit-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px; transform: rotate(45deg);"></div>
-        <h3 style="font-size: 24px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 16px;">Professionalism</h3>
-        <p style="font-size: 15px; line-height: 1.65; color: var(--body); margin: 0;">Clear conditions, clear process, decisions explained. We work as professionals with professionals.</p>
+        <div class="commit-square" style="transform: rotate(45deg);"></div>
+        <h3>Professionalism</h3>
+        <p>Clear conditions, clear process, decisions explained. We work as professionals with professionals.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ CENTERS ============ -->
+  <!-- ============ FOUR CENTERS ============ -->
   <section id="centers" class="section">
-    <div class="eyebrow" style="margin-bottom: 20px;">Four centers</div>
-    <h2 class="h2" style="margin: 0 0 48px; max-width: 720px;">One initiative, four ways in.</h2>
-
-    <div class="centers-grid">
+    <div class="section-eyebrow">What we do</div>
+    <h2 class="section-h2 wwd-h2">One initiative, four ways in.</h2>
+    <div class="centers">
 
       <!-- FLOW -->
-      <div id="flow" class="centre-card">
-        <div class="centre-ghost" style="right: -20px;">flow</div>
-        <div class="eyebrow">Support Center</div>
-        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Flow</h3>
-        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Grants for independent nonviolence initiatives — funding for the work itself, or a tuition grant to study at Sibility Source.</p>
-        <p style="font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0;">For small, non-governmental projects that are not sub-projects of a larger fund: initiatives that make their own decisions, and are registered — incorporated, with a name, a website and social media.</p>
-        <div class="centre-cta">
-          <a href="apply-flow.html" class="btn btn--fill btn--md">Apply for a grant</a>
-          <a href="flow.html#cases" class="btn btn--outline btn--md">Cases</a>
+      <div class="centre">
+        <div class="centre-icon"><svg viewBox="687 430 577 447" fill="currentColor" aria-hidden="true"><path d="M1236.99,578.31c-10.98-25.88-27.58-49.96-49.82-72.19-22.23-22.23-46.3-38.83-72.19-49.82-25.89-10.97-52.14-16.53-78.74-16.68-20.74-.1-41.04,3.05-60.93,9.44-19.88-6.39-40.19-9.54-60.93-9.44-26.6.15-52.85,5.71-78.74,16.68-25.89,10.98-49.96,27.59-72.19,49.82-22.24,22.24-38.84,46.31-49.82,72.19-10.98,25.9-16.54,52.15-16.68,78.74-.14,26.6,5.07,52.49,15.62,77.68,10.55,25.2,26.11,48.06,46.65,68.6s43.84,36.53,69.03,47.07c25.19,10.56,51.16,15.84,77.89,15.83,23.37,0,46.43-4.19,69.16-12.58,22.73,8.39,45.78,12.59,69.16,12.58,26.74,0,52.7-5.27,77.89-15.83,25.19-10.55,48.19-26.24,69.03-47.07,20.54-20.54,36.1-43.4,46.65-68.6,10.55-25.19,15.76-51.08,15.62-77.68-.14-26.59-5.7-52.84-16.68-78.74ZM975.31,801.59c-16.39-8.99-32.18-21.07-47.36-36.25-25.05-25.05-41.73-51.57-50.03-79.58-8.3-28-8.8-55.37-1.48-82.11,7.32-26.74,21.67-50.8,43.06-72.19,16.85-16.85,35.46-29.25,55.81-37.22,20.35,7.97,38.95,20.37,55.81,37.22,21.39,21.39,35.75,45.46,43.06,72.19,7.32,26.74,6.83,54.11-1.48,82.11-8.3,28.01-24.98,54.53-50.03,79.58-15.18,15.18-30.97,27.25-47.36,36.25ZM861.19,816.64c-26.88-7.17-51.01-21.46-72.41-42.85s-35.19-45.03-42.22-71.77c-7.04-26.74-6.4-54.1,1.9-82.11,8.31-28,24.84-54.39,49.61-79.16s51.58-41.72,79.58-50.03c10.64-3.15,21.18-5.18,31.62-6.1-6.65,5.31-13.09,11.07-19.32,17.29-20.83,20.83-36.52,43.84-47.07,69.03-10.55,25.2-15.83,51.16-15.83,77.89,0,26.74,5.49,53.06,16.47,78.95,10.98,25.9,27.59,49.96,49.82,72.19,7.52,7.52,15.25,14.37,23.18,20.6-18.7,2.23-37.14.93-55.32-3.93ZM1204.06,702.01c-7.03,26.74-21.11,50.66-42.22,71.77-21.39,21.39-45.52,35.68-72.41,42.85-18.18,4.86-36.62,6.16-55.32,3.93,7.93-6.23,15.66-13.09,23.18-20.6,22.23-22.23,38.84-46.29,49.82-72.19,10.98-25.89,16.47-52.2,16.47-78.95,0-26.73-5.28-52.69-15.83-77.89-10.55-25.18-26.24-48.19-47.07-69.03-6.22-6.22-12.67-11.98-19.32-17.29,10.44.92,20.97,2.95,31.62,6.1,28,8.31,54.53,24.98,79.58,50.03,24.77,24.77,41.3,51.16,49.61,79.16,8.3,28.01,8.94,55.38,1.9,82.11Z"></path></svg></div>
+        <div>
+          <h3>Sibility Flow</h3>
+          <p>Grants for independent nonviolence initiatives — funding for the work itself, or a tuition grant to study at Sibility Source.</p>
+          <div class="centre-cta">
+            <a href="apply-flow.html" class="btn btn--fill">Apply for a grant</a>
+            <a href="flow.html" class="btn btn--ghost">Cases</a>
+          </div>
         </div>
       </div>
 
       <!-- CURRENT -->
-      <div id="current" class="centre-card">
-        <div class="centre-ghost" style="right: -34px;">current</div>
-        <div class="eyebrow">Involvement Center</div>
-        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Current</h3>
-        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Ways to take part. A map of the actors who can enter the field — and an instrument library of the actions available to each of them.</p>
-        <div class="centre-cta">
-          <a href="current.html#library" class="btn btn--outline btn--md">Instrument library</a>
+      <div class="centre">
+        <div class="centre-icon"><svg viewBox="562 352 730 696" fill="currentColor" aria-hidden="true"><path d="M1262,498.51c-13.34-31.02-31.79-56.6-55.35-76.75-23.58-20.16-50.23-35.2-80-45.12-29.77-9.91-61.09-14.88-93.96-14.88-44.65,0-85.9,8.84-123.72,26.51-37.84,17.67-68.23,44.8-91.17,81.4-22.95,36.59-34.42,83.1-34.42,139.54v360.5c-18.01-3-34.93-7.89-50.45-15.2-26.37-12.4-47.3-31.94-62.79-58.61-15.51-26.66-23.26-61.4-23.26-104.18v-411.17h-74.42v410.24c0,56.44,11.47,102.95,34.42,139.54,22.94,36.6,53.33,63.72,91.17,81.4,37.82,17.67,79.07,26.51,123.72,26.51,32.86,0,64.19-4.97,93.96-14.88,29.77-9.92,56.42-24.96,80-45.12,23.56-20.14,42.01-45.73,55.35-76.75,13.33-31,20-67.91,20-110.7v-360.68c18.16,2.97,35.23,7.91,50.91,15.38,26.04,12.4,46.82,31.94,62.33,58.61,15.49,26.66,23.26,61.4,23.26,104.18v411.17h74.42v-410.24c0-42.79-6.67-79.69-20-110.7ZM973.41,895.9c-15.51,26.67-36.28,46.21-62.33,58.61-16.36,7.79-34.22,12.85-53.27,15.74v-361.97c0-42.79,7.74-77.53,23.26-104.18,15.49-26.67,36.42-46.21,62.79-58.61,16.2-7.63,33.91-12.62,52.81-15.56v361.79c0,42.79-7.76,77.53-23.26,104.18Z"></path></svg></div>
+        <div>
+          <h3>Sibility Current</h3>
+          <p>Ways to take part. A map of the actors who can enter the field — and an instrument library of the actions available to each of them.</p>
+          <div class="centre-cta">
+            <a href="current.html" class="btn btn--ghost">Instrument library</a>
+          </div>
         </div>
       </div>
 
       <!-- DELTA -->
-      <div id="delta" class="centre-card">
-        <div class="centre-ghost" style="right: -24px;">delta</div>
-        <div class="eyebrow">Research Center</div>
-        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Delta</h3>
-        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Research in nonviolence: what shapes it, which factors sustain it. Guided by a scientific council.</p>
-        <div class="centre-cta">
-          <a href="apply-delta.html" class="btn btn--fill btn--md">Apply with a proposal</a>
-          <a href="delta.html#cases" class="btn btn--outline btn--md">Cases</a>
+      <div class="centre">
+        <div class="centre-icon"><svg viewBox="548 432 824 566" fill="none" stroke="currentColor" stroke-width="60" stroke-linejoin="round" aria-hidden="true"><path d="M960,486 L1306,930 L614,930 Z"></path></svg></div>
+        <div>
+          <h3>Sibility Delta</h3>
+          <p>Research in nonviolence: what shapes it, which factors sustain it. Guided by a scientific council.</p>
+          <div class="centre-cta">
+            <a href="apply-delta.html" class="btn btn--fill">Apply with a proposal</a>
+            <a href="delta.html" class="btn btn--ghost">Cases</a>
+          </div>
         </div>
       </div>
 
       <!-- SOURCE -->
-      <div id="source" class="centre-card">
-        <div class="centre-ghost" style="right: -28px;">source</div>
-        <div class="eyebrow">Education Center</div>
-        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Source</h3>
-        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Classes on nonviolence — for those who come as a parent or a neighbour, and for those who come as a professional.</p>
-        <div class="centre-cta">
-          <a href="source.html#classes" class="btn btn--fill btn--md">Classes &amp; enrollment</a>
+      <div class="centre">
+        <div class="centre-icon"><svg viewBox="562 328 776 716" fill="currentColor" aria-hidden="true"><path d="M569.92,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path><path d="M796.64,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path></svg></div>
+        <div>
+          <h3>Sibility Source</h3>
+          <p>Classes on nonviolence — for those who come as a parent or a neighbour, and for those who come as a professional.</p>
+          <div class="centre-cta">
+            <a href="source.html" class="btn btn--fill">Classes &amp; enrollment</a>
+          </div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ============ CRISIS BAND ============ -->
-  <section class="section">
-    <div style="background: var(--panel); padding: 36px 40px; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
-      <p style="font-size: 16px; line-height: 1.5; margin: 0; max-width: 640px;"><strong>Experiencing violence right now?</strong> Sibility is not an emergency service. Hotlines and shelters can help immediately.</p>
-      <a href="hotlines.html" class="btn btn--fill btn--md" style="white-space: nowrap;">Where to get help</a>
+  <!-- ============ VISION BAND ============ -->
+  <section class="vision-wrap">
+    <div class="vision">
+      <img class="vision-img" src="assets/hero-swirl.avif" alt="" />
+      <div class="vision-overlay"></div>
+      <div class="vision-body">
+        <h2>We believe nonviolence can be learned, supported and studied — like any human capacity.</h2>
+        <p>Sibility exists to grow that capacity — initiative by initiative, class by class, study by study. If you see the world the same way, there is a place for you here.</p>
+        <a href="support.html" class="vision-cta">Join us</a>
+      </div>
     </div>
   </section>
 
-  <!-- ============ VISION + IN BRIEF ============ -->
-  <div class="site-footer" style="padding-bottom: 0;">
-    <div class="vision-band">
-      <h2 style="font-size: clamp(30px, 3.6vw, 46px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin: 0;">We believe nonviolence can be learned, supported and studied — like any human capacity.</h2>
-      <div>
-        <p style="font-size: 16px; line-height: 1.65; color: var(--reverse-body); margin: 0 0 32px;">Sibility exists to grow that capacity — initiative by initiative, class by class, study by study. If you see the world the same way, there is a place for you here.</p>
-        <a href="support.html" class="btn btn--reverse btn--lg">Join us</a>
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-top">
+        <div class="footer-brief">
+          <div class="eyebrow-muted">In brief</div>
+          <p>Sibility is an independent initiative that strengthens the human capacity for nonviolence — through grants, involvement, research and education.</p>
+        </div>
+        <div class="footer-social">
+          <a href="support.html">Instagram</a>
+          <a href="support.html">Telegram</a>
+          <a href="support.html">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="#top" class="logo"><img src="assets/logo-full-black.svg" alt="Sibility" /></a>
+        <div class="footer-copy">© 2026 Sibility Initiative</div>
       </div>
     </div>
+  </footer>
 
-    <div class="inbrief">
-      <div style="max-width: 560px;">
-        <div class="eyebrow" style="margin-bottom: 16px;">In brief</div>
-        <p style="font-size: 15px; line-height: 1.6; color: var(--body); margin: 0;">Sibility is an independent initiative that strengthens the human capacity for nonviolence — through grants, involvement, research and education.</p>
-      </div>
-      <div class="inbrief-links">
-        <a href="#">Instagram</a>
-        <a href="#">Telegram</a>
-        <a href="#">YouTube</a>
-      </div>
-    </div>
-  </div>
-
-  <footer id="site-footer"></footer>
-
-  <script src="js/chrome.js"></script>
+  <script src="js/color.js"></script>
 </body>
 </html>
