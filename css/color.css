@@ -40,13 +40,13 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: var(--ink); }
-a:hover { color: var(--accent); }
 ::selection { background: var(--accent); color: #fff; }
 
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 
 /* ---------- Buttons ---------- */
 .btn {
+  position: relative;
   display: inline-block;
   font-family: var(--sans);
   font-size: 12px;
@@ -55,14 +55,27 @@ a:hover { color: var(--accent); }
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.18s ease, color 0.18s ease;
 }
+/* hover language: an orange bar sweeps in along the bottom edge
+   (left -> right) instead of a bright orange fill */
+.btn::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s ease;
+}
+.btn:hover::after { transform: scaleX(1); }
+
 .btn--fill { color: var(--reverse); background: var(--ink); padding: 13px 24px; }
-.btn--fill:hover { background: var(--accent); color: var(--reverse); }
+.btn--fill:hover { background: #221310; }              /* barely-there lift; the bar carries the accent */
 .btn--ghost { color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 11.5px 22px; }
-.btn--ghost:hover { background: var(--ink); color: var(--reverse); }
+.btn--ghost:hover { background: rgba(24,9,8,0.045); }
 .btn--lg { padding: 16px 32px; font-size: 13px; }
-.btn--fill.btn--lg:hover { background: var(--accent); }
 
 .eyebrow {
   font-family: var(--sans);
@@ -92,14 +105,27 @@ a:hover { color: var(--accent); }
   color: var(--ink); text-decoration: none;
   letter-spacing: 0.12em; text-transform: uppercase;
 }
-.nav-link:hover { color: var(--accent); }
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.nav-link:hover::after { transform: scaleX(1); }
 .nav-support {
   font-family: var(--sans); font-size: 12px; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--reverse); background: var(--ink); text-decoration: none;
-  padding: 11px 22px; transition: background 0.15s ease;
+  padding: 11px 22px; transition: background 0.18s ease;
+  position: relative;
 }
-.nav-support:hover { background: var(--accent); color: var(--reverse); }
+.nav-support::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.24s ease;
+}
+.nav-support:hover { background: #221310; }
+.nav-support:hover::after { transform: scaleX(1); }
 
 /* inert menu items (colour homepage only — no navigation yet) */
 .is-static { pointer-events: none; cursor: default; }
@@ -211,8 +237,13 @@ a:hover { color: var(--accent); }
 .footer-brief .eyebrow-muted { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
 .footer-brief p { font-size: 15px; line-height: 1.6; color: var(--body-text); margin: 0; }
 .footer-social { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
-.footer-social a { font-size: 15px; color: var(--ink); text-decoration: none; }
-.footer-social a:hover { color: var(--accent); }
+.footer-social a { position: relative; font-size: 15px; color: var(--ink); text-decoration: none; }
+.footer-social a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.footer-social a:hover::after { transform: scaleX(1); }
 .footer-bottom { margin-top: 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
 .footer-bottom .logo img { height: 22px; width: auto; display: block; }
 .footer-copy { font-family: var(--serif); font-size: 13px; color: #8a807c; }
