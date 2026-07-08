@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta charset="utf-8" />
+  <title>Apply with a proposal — Sibility Delta</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #FBFBFA; }
+    body { -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #111110; background: #FBFBFA; min-height: 100vh;" data-screen-label="Apply — Delta">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: #FBFBFA; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(20px, 5vw, 48px); height: 76px;">
+    <a href="Sibility%20Landing%20v2.dc.html" style="font-size: 26px; font-weight: 800; letter-spacing: -0.045em; color: #111110; text-decoration: none; line-height: 1;">sibility</a>
+    <div style="display: flex; align-items: center; gap: 36px;">
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display: flex; gap: 36px; align-items: center;">
+      <a href="Flow.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="text-decoration: underline; text-underline-offset: 5px;">Flow</a>
+      <a href="Delta.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1.5px solid #111110; padding-bottom: 4px;">Delta</a>
+      <a href="Source.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="text-decoration: underline; text-underline-offset: 5px;">Source</a>
+      <a href="Current.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="text-decoration: underline; text-underline-offset: 5px;">Current</a>
+    </nav>
+    <a href="Support.dc.html" style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #FBFBFA; background: #111110; text-decoration: none; padding: 12px 22px;" style-hover="background: #333331;">Support us</a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ toggleNav }}" style="{{ burgerStyle }}">{{ burger }}</div>
+      </sc-if>
+    </div>
+    <div style="{{ panelStyle }}">
+        <a href="Flow.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0;">Flow</a>
+        <a href="Delta.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0; background: #EDEDEA;">Delta</a>
+        <a href="Source.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0;">Source</a>
+        <a href="Current.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0;">Current</a>
+        <a href="Support.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #FBFBFA; background: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px);">Support us</a>
+    </div>
+  </header>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: clamp(36px, 6vw, 64px) clamp(20px, 5vw, 48px) clamp(56px, 9vw, 96px); box-sizing: border-box;">
+    <div style="max-width: 680px;">
+      <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68; margin-bottom: 24px;">Research Center — Application</div>
+      <h1 style="font-size: clamp(36px, 4.5vw, 56px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 20px;">Apply with a research proposal</h1>
+      <p style="font-size: 16px; line-height: 1.6; color: #444442; margin: 0 0 48px;">For researchers studying nonviolence — what shapes it and which factors sustain it. The scientific council reviews every proposal and replies with reasoning.</p>
+
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-direction: column; gap: 28px;">
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <label style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Your name</label>
+              <input type="text" style="font-family: inherit; font-size: 15px; color: #111110; padding: 14px 16px; border: 1.5px solid #111110; background: transparent; outline: none; width: 100%; box-sizing: border-box;" style-focus="background: #FFFFFF;" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <label style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Email</label>
+              <input type="email" style="font-family: inherit; font-size: 15px; color: #111110; padding: 14px 16px; border: 1.5px solid #111110; background: transparent; outline: none; width: 100%; box-sizing: border-box;" style-focus="background: #FFFFFF;" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <label style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Location — city, country</label>
+              <input type="text" style="font-family: inherit; font-size: 15px; color: #111110; padding: 14px 16px; border: 1.5px solid #111110; background: transparent; outline: none; width: 100%; box-sizing: border-box;" style-focus="background: #FFFFFF;" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <label style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Affiliation — or independent</label>
+              <input type="text" style="font-family: inherit; font-size: 15px; color: #111110; padding: 14px 16px; border: 1.5px solid #111110; background: transparent; outline: none; width: 100%; box-sizing: border-box;" style-focus="background: #FFFFFF;" />
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Link to CV or publications</label>
+            <input type="text" placeholder="https://" style="font-family: inherit; font-size: 15px; color: #111110; padding: 14px 16px; border: 1.5px solid #111110; background: transparent; outline: none; width: 100%; box-sizing: border-box;" style-focus="background: #FFFFFF;" />
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Research topic</label>
+            <input type="text" style="font-family: inherit; font-size: 15px; color: #111110; padding: 14px 16px; border: 1.5px solid #111110; background: transparent; outline: none; width: 100%; box-sizing: border-box;" style-focus="background: #FFFFFF;" />
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Proposal summary — question, method, timeline</label>
+            <textarea rows="7" style="font-family: inherit; font-size: 15px; line-height: 1.6; color: #111110; padding: 14px 16px; border: 1.5px solid #111110; background: transparent; outline: none; width: 100%; box-sizing: border-box; resize: vertical;" style-focus="background: #FFFFFF;"></textarea>
+          </div>
+
+          <div>
+            <div onClick="{{ submit }}" style="display: inline-block; font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #FBFBFA; background: #111110; padding: 16px 36px; cursor: pointer; user-select: none;" style-hover="background: #333331;">Send proposal</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="border: 1.5px solid #111110; padding: clamp(28px, 5vw, 48px) clamp(24px, 4.5vw, 44px);">
+          <div style="width: 12px; height: 12px; background: #111110; margin-bottom: 24px; transform: rotate(45deg);"></div>
+          <h2 style="font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 14px;">Proposal sent.</h2>
+          <p style="font-size: 15px; line-height: 1.65; color: #444442; margin: 0;">Thank you. The scientific council reviews every proposal — we reply to each one with reasoning.</p>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px) 48px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+    <a href="Sibility%20Landing%20v2.dc.html" style="font-size: 22px; font-weight: 800; letter-spacing: -0.045em; line-height: 1; color: #111110; text-decoration: none;">sibility</a>
+    <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; color: #6b6b68;">© 2026 Sibility Initiative</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { submitted: false, w: typeof window !== 'undefined' ? window.innerWidth : 1200, navOpen: false };
+  componentDidMount() {
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  renderVals() {
+    const m = this.state.w < 800;
+    return {
+      isDesktop: !m,
+      isMobile: m,
+      mobileNavOpen: m && this.state.navOpen,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      closeNav: () => this.setState({ navOpen: false }),
+      burger: this.state.navOpen ? '\u2715' : '\u2630',
+      burgerStyle: { fontSize: 24, lineHeight: 1, cursor: 'pointer', userSelect: 'none', padding: '6px 2px', transition: 'transform 0.3s ease', transform: this.state.navOpen ? 'rotate(90deg)' : 'none' },
+      panelStyle: (() => { const o = m && this.state.navOpen; return { position: 'absolute', top: '100%', left: 0, right: 0, background: '#FBFBFA', display: 'flex', flexDirection: 'column', zIndex: 60, overflow: 'hidden', maxHeight: o ? 400 : 0, opacity: o ? 1 : 0, transform: o ? 'translateY(0)' : 'translateY(-10px)', transition: 'max-height 0.35s ease, opacity 0.25s ease, transform 0.35s ease', pointerEvents: o ? 'auto' : 'none', borderBottom: o ? '1.5px solid #111110' : '1.5px solid rgba(17, 17, 16, 0)' }; })(),
+      notSubmitted: !this.state.submitted,
+      submitted: this.state.submitted,
+      submit: () => this.setState({ submitted: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

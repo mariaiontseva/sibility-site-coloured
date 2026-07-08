@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta charset="utf-8" />
+  <title>Support us — Sibility</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #FBFBFA; }
+    body { -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #111110; background: #FBFBFA; min-height: 100vh;" data-screen-label="Support">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: #FBFBFA; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(20px, 5vw, 48px); height: 76px;">
+    <a href="Sibility%20Landing%20v2.dc.html" style="font-size: 26px; font-weight: 800; letter-spacing: -0.045em; color: #111110; text-decoration: none; line-height: 1;">sibility</a>
+    <div style="display: flex; align-items: center; gap: 36px;">
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display: flex; gap: 36px; align-items: center;">
+          <a href="Flow.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="text-decoration: underline; text-underline-offset: 5px;">Flow</a>
+          <a href="Delta.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="text-decoration: underline; text-underline-offset: 5px;">Delta</a>
+          <a href="Source.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="text-decoration: underline; text-underline-offset: 5px;">Source</a>
+          <a href="Current.dc.html" style="font-size: 12px; font-weight: 500; color: #111110; text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;" style-hover="text-decoration: underline; text-underline-offset: 5px;">Current</a>
+        </nav>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ toggleNav }}" style="{{ burgerStyle }}">{{ burger }}</div>
+      </sc-if>
+    </div>
+    <div style="{{ panelStyle }}">
+      <a href="Flow.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0;">Flow</a>
+      <a href="Delta.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0;">Delta</a>
+      <a href="Source.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0;">Source</a>
+      <a href="Current.dc.html" style="font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #111110; text-decoration: none; padding: 18px clamp(20px, 5vw, 48px); border-top: 1px solid #E4E4E0;">Current</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 7vw, 72px) clamp(20px, 5vw, 48px) clamp(28px, 5vw, 40px); box-sizing: border-box; position: relative; overflow: hidden;">
+    <div style="position: absolute; right: -40px; bottom: -60px; font-size: clamp(90px, 20vw, 190px); font-weight: 800; letter-spacing: -0.05em; color: #EFEFEC; line-height: 1;">support</div>
+    <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68; margin-bottom: 28px; position: relative;">Become part of Sibility</div>
+    <h1 style="font-size: clamp(40px, 5.5vw, 64px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.0; margin: 0 0 24px; position: relative;">Support us</h1>
+    <p style="font-size: 17px; line-height: 1.6; color: #444442; max-width: 620px; margin: 0; position: relative;">Every contribution goes into grants, classes and research. Due diligence on how funds are used is our work, not yours. Choose an amount, then a way to give.</p>
+  </section>
+
+  <!-- DONATION FORM -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px) clamp(56px, 9vw, 96px); box-sizing: border-box;">
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+      <div style="{{ formGrid }}">
+
+        <!-- LEFT: amount -->
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Frequency</div>
+            <div style="display: inline-flex; border: 1.5px solid #111110; width: fit-content;">
+              <div onClick="{{ pickOnce }}" style="{{ onceStyle }}">One-time</div>
+              <div onClick="{{ pickMonthly }}" style="{{ monthlyStyle }}">Monthly</div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Amount, {{ currencySymbol }}</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px;">
+              <sc-for list="{{ presets }}" as="p" hint-placeholder-count="4">
+                <div onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</div>
+              </sc-for>
+            </div>
+            <div style="display: flex; align-items: center; border: 1.5px solid #111110; background: {{ customBg }};">
+              <span style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 18px; color: #6b6b68; padding: 0 4px 0 16px;">{{ currencySymbol }}</span>
+              <input type="number" min="1" value="{{ amount }}" onInput="{{ onCustom }}" placeholder="Other amount" style="font-family: inherit; font-size: 18px; font-weight: 700; color: #111110; padding: 16px 16px 16px 6px; border: none; background: transparent; outline: none; width: 100%; box-sizing: border-box;" />
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Currency</div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <sc-for list="{{ currencyChips }}" as="c" hint-placeholder-count="3">
+                <div onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</div>
+              </sc-for>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: method + summary -->
+        <div style="border: 1.5px solid #111110; padding: clamp(28px, 4vw, 40px); display: flex; flex-direction: column; gap: 28px; align-self: start;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px;">
+            <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">You give</div>
+            <div style="font-size: clamp(30px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1;">{{ summaryAmount }}</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b68;">Pay with</div>
+            <sc-for list="{{ methods }}" as="mth" hint-placeholder-count="4">
+              <div onClick="{{ mth.pick }}" style="{{ mth.style }}">
+                <span>{{ mth.label }}</span>
+                <span style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 15px;">{{ mth.mark }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div onClick="{{ submit }}" style="{{ giveBtnStyle }}">{{ giveLabel }}</div>
+          <p style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; line-height: 1.5; color: #6b6b68; margin: 0;">Secure and confidential. You can cancel a monthly gift at any time.</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 680px; border: 1.5px solid #111110; padding: clamp(32px, 5vw, 56px);">
+        <div style="width: 12px; height: 12px; background: #111110; margin-bottom: 24px;"></div>
+        <h2 style="font-size: clamp(26px, 3.5vw, 34px); font-weight: 800; letter-spacing: -0.025em; margin: 0 0 14px;">Thank you for standing with us.</h2>
+        <p style="font-size: 16px; line-height: 1.65; color: #444442; margin: 0 0 28px;">You chose to give <strong>{{ summaryAmount }}</strong> via <strong>{{ methodName }}</strong>. This is a prototype — no payment was taken. Your support means you are now part of Sibility.</p>
+        <div onClick="{{ reset }}" style="display: inline-block; font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #111110; border: 1.5px solid #111110; padding: 14px 28px; cursor: pointer; user-select: none;" style-hover="background: #111110; color: #FBFBFA;">Give again</div>
+      </div>
+    </sc-if>
+  </section>
+
+  <footer style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px) 48px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+    <a href="Sibility%20Landing%20v2.dc.html" style="font-size: 22px; font-weight: 800; letter-spacing: -0.045em; line-height: 1; color: #111110; text-decoration: none;">sibility</a>
+    <div style="font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; color: #6b6b68;">© 2026 Sibility Initiative</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    freq: 'once', currency: 'EUR', amount: 50, custom: false, method: 'card',
+    done: false, w: typeof window !== 'undefined' ? window.innerWidth : 1200, navOpen: false
+  };
+  componentDidMount() {
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+
+  static SYMB = { EUR: '\u20ac', USD: '$', GBP: '\u00a3' };
+  static PRESETS = { once: [25, 50, 100, 250], monthly: [10, 20, 40, 80] };
+  static METHODS = [
+    { key: 'card', label: 'Card', name: 'card' },
+    { key: 'bank', label: 'Bank transfer / SEPA', name: 'bank transfer' },
+    { key: 'paypal', label: 'PayPal', name: 'PayPal' },
+    { key: 'crypto', label: 'Crypto', name: 'crypto' }
+  ];
+
+  fmt(n) {
+    const s = Component.SYMB[this.state.currency];
+    const v = (Number(n) || 0).toLocaleString('en-US');
+    return s + v + (this.state.freq === 'monthly' ? ' / mo' : '');
+  }
+
+  renderVals() {
+    const m = this.state.w < 800;
+    const mono = "ui-monospace, 'SF Mono', Menlo, Consolas, monospace";
+    const sym = Component.SYMB[this.state.currency];
+    const presets = Component.PRESETS[this.state.freq];
+
+    const seg = (on) => ({
+      fontFamily: mono, fontSize: 12, letterSpacing: '0.06em', padding: '11px 22px',
+      cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
+      background: on ? '#111110' : 'transparent', color: on ? '#FBFBFA' : '#444442'
+    });
+    const presetStyle = (on) => ({
+      fontSize: 17, fontWeight: 700, textAlign: 'center', padding: '16px 8px',
+      cursor: 'pointer', userSelect: 'none',
+      border: '1.5px solid #111110',
+      background: on ? '#111110' : 'transparent', color: on ? '#FBFBFA' : '#111110'
+    });
+    const curChip = (on) => ({
+      fontFamily: mono, fontSize: 12, letterSpacing: '0.06em', padding: '8px 16px',
+      cursor: 'pointer', userSelect: 'none',
+      border: '1px solid ' + (on ? '#111110' : '#C9C9C4'),
+      background: on ? '#111110' : 'transparent', color: on ? '#FBFBFA' : '#444442'
+    });
+    const methodRow = (on) => ({
+      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+      padding: '15px 18px', cursor: 'pointer', userSelect: 'none',
+      border: '1.5px solid ' + (on ? '#111110' : '#C9C9C4'),
+      background: on ? '#111110' : 'transparent', color: on ? '#FBFBFA' : '#111110',
+      fontSize: 15, fontWeight: 600
+    });
+
+    const amountValid = Number(this.state.amount) > 0;
+    const methodName = (Component.METHODS.find(x => x.key === this.state.method) || {}).name;
+
+    return {
+      isDesktop: !m, isMobile: m,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      burger: this.state.navOpen ? '\u2715' : '\u2630',
+      burgerStyle: { fontSize: 24, lineHeight: 1, cursor: 'pointer', userSelect: 'none', padding: '6px 2px', transition: 'transform 0.3s ease', transform: this.state.navOpen ? 'rotate(90deg)' : 'none' },
+      panelStyle: (() => { const o = m && this.state.navOpen; return { position: 'absolute', top: '100%', left: 0, right: 0, background: '#FBFBFA', display: 'flex', flexDirection: 'column', zIndex: 60, overflow: 'hidden', maxHeight: o ? 400 : 0, opacity: o ? 1 : 0, transform: o ? 'translateY(0)' : 'translateY(-10px)', transition: 'max-height 0.35s ease, opacity 0.25s ease, transform 0.35s ease', pointerEvents: o ? 'auto' : 'none', borderBottom: o ? '1.5px solid #111110' : '1.5px solid rgba(17, 17, 16, 0)' }; })(),
+
+      notDone: !this.state.done,
+      done: this.state.done,
+      formGrid: { display: 'grid', gridTemplateColumns: m ? '1fr' : '1.2fr 0.9fr', gap: m ? '36px' : '56px', alignItems: 'start' },
+
+      currencySymbol: sym,
+      amount: this.state.amount,
+      customBg: this.state.custom ? '#FFFFFF' : 'transparent',
+
+      onceStyle: seg(this.state.freq === 'once'),
+      monthlyStyle: seg(this.state.freq === 'monthly'),
+      pickOnce: () => this.setState({ freq: 'once', custom: false, amount: Component.PRESETS.once[1] }),
+      pickMonthly: () => this.setState({ freq: 'monthly', custom: false, amount: Component.PRESETS.monthly[1] }),
+
+      presets: presets.map(v => ({
+        label: sym + v,
+        style: presetStyle(!this.state.custom && Number(this.state.amount) === v),
+        pick: () => this.setState({ amount: v, custom: false })
+      })),
+      onCustom: (e) => this.setState({ amount: e.target.value, custom: true }),
+
+      currencyChips: Object.keys(Component.SYMB).map(k => ({
+        label: k,
+        style: curChip(this.state.currency === k),
+        pick: () => this.setState({ currency: k })
+      })),
+
+      methods: Component.METHODS.map(x => ({
+        label: x.label,
+        mark: this.state.method === x.key ? '\u2713' : '',
+        style: methodRow(this.state.method === x.key),
+        pick: () => this.setState({ method: x.key })
+      })),
+
+      summaryAmount: this.fmt(this.state.amount),
+      methodName,
+      giveLabel: amountValid ? 'Give ' + this.fmt(this.state.amount) : 'Enter an amount',
+      giveBtnStyle: {
+        textAlign: 'center', fontSize: 13, fontWeight: 500, letterSpacing: '0.1em',
+        textTransform: 'uppercase', padding: '18px 24px', userSelect: 'none',
+        background: amountValid ? '#111110' : '#C9C9C4',
+        color: amountValid ? '#FBFBFA' : '#8f8f8b',
+        cursor: amountValid ? 'pointer' : 'not-allowed'
+      },
+      submit: () => { if (Number(this.state.amount) > 0) this.setState({ done: true }); },
+      reset: () => this.setState({ done: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

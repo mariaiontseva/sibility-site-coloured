@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sibility — an initiative for nonviolence</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Landing-specific grids (single 800px breakpoint) */
+    .hero-grid {
+      max-width: 1240px; margin: 0 auto; padding: 72px 48px 104px;
+      display: grid; grid-template-columns: 1.5fr 1fr; gap: 72px; align-items: stretch;
+    }
+    .hero-copy { display: flex; flex-direction: column; justify-content: center; }
+    .dict-card { border: 1.5px solid var(--ink); color: var(--ink); display: flex; flex-direction: column; }
+
+    .commit-grid { border: 1.5px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .commit-cell { padding: 40px; }
+    .commit-cell + .commit-cell { border-left: 1.5px solid var(--ink); }
+
+    .centers-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 24px; }
+    .centre-card {
+      background: var(--panel); padding: clamp(28px, 5vw, 44px) clamp(22px, 4vw, 40px);
+      display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden;
+      min-height: clamp(300px, 55vw, 420px);
+    }
+    .centre-ghost { position: absolute; bottom: -50px; font-size: 150px; font-weight: 800; letter-spacing: -0.05em; color: var(--ghost-card); line-height: 1; pointer-events: none; }
+    .centre-card > *:not(.centre-ghost) { position: relative; }
+    .centre-cta { display: flex; gap: 16px; align-items: center; margin-top: auto; padding-top: 12px; flex-wrap: wrap; }
+
+    .vision-band {
+      background: var(--ink); color: var(--paper); padding: 64px 56px; margin-bottom: 24px;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center;
+    }
+    .inbrief {
+      background: var(--panel); padding: clamp(28px, 5vw, 48px) clamp(24px, 4.5vw, 44px);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+    .inbrief-links { display: flex; gap: 20px; }
+    .inbrief-links a { font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+
+    @media (max-width: 799.98px) {
+      .hero-grid { padding: 44px 20px 64px; grid-template-columns: 1fr; gap: 40px; }
+      .commit-grid { grid-template-columns: 1fr; }
+      .commit-cell { padding: 28px 24px; }
+      .commit-cell + .commit-cell { border-left: none; border-top: 1.5px solid var(--ink); }
+      .centers-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 16px; }
+      .vision-band { grid-template-columns: 1fr; gap: 28px; padding: 40px 28px; }
+    }
+  </style>
+</head>
+<body data-page="">
+
+  <header id="site-header"></header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow" style="margin-bottom: 32px;">An independent initiative for nonviolence</div>
+        <h1 style="font-size: clamp(44px, 5.5vw, 72px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; margin: 0 0 28px;">Nonviolence is a capacity. We fund it, teach it, study it.</h1>
+        <p class="lead" style="max-width: 560px; margin: 0 0 44px;">Sibility supports independent initiatives, runs classes and research — through four centers: support, involvement, research and education.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#centers" class="btn btn--fill btn--lg">Learn more</a>
+        </div>
+      </div>
+
+      <aside class="dict-card">
+        <div style="border-bottom: 1.5px solid var(--ink); padding: 14px 20px;">
+          <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);">The word</span>
+        </div>
+        <div style="padding: 40px 36px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 56px; font-weight: 800; letter-spacing: -0.045em; margin-bottom: 10px; color: #000000;">sibility</div>
+          <div style="font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 20px;">/sɪˈbɪl.ɪ.ti/ · noun</div>
+          <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">The capacity of a person — or a community — to live, act and resolve conflict without violence.</p>
+        </div>
+        <div style="border-top: 1.5px solid var(--ink); padding: 14px 36px; font-family: var(--mono); font-size: 12px; line-height: 1.5; color: var(--muted);">Not yet in the dictionary — that is why we are here.</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE WORK ============ -->
+  <section id="initiative" class="section">
+    <div class="eyebrow" style="margin-bottom: 20px;">How we work</div>
+    <h2 class="h2" style="margin: 0 0 56px; max-width: 720px;">Three commitments hold everything we do.</h2>
+    <div class="commit-grid">
+      <div class="commit-cell">
+        <div class="ink-square" style="margin: 2px 0 26px 2px;"></div>
+        <h3 style="font-size: 24px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 16px;">Resilience</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: var(--body); margin: 0;">We build for the long term — steady support that initiatives can plan around.</p>
+      </div>
+      <div class="commit-cell">
+        <div class="ink-square" style="margin: 2px 0 26px 2px; transform: rotate(22deg);"></div>
+        <h3 style="font-size: 24px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 16px;">Flexibility</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: var(--body); margin: 0;">We never require anyone to do what we consider the only right way — grantees keep their freedom, including the freedom to choose other grantors.</p>
+      </div>
+      <div class="commit-cell">
+        <div class="ink-square" style="margin: 2px 0 26px 2px; transform: rotate(45deg);"></div>
+        <h3 style="font-size: 24px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 16px;">Professionalism</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: var(--body); margin: 0;">Clear conditions, clear process, decisions explained. We work as professionals with professionals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CENTERS ============ -->
+  <section id="centers" class="section">
+    <div class="eyebrow" style="margin-bottom: 20px;">Four centers</div>
+    <h2 class="h2" style="margin: 0 0 48px; max-width: 720px;">One initiative, four ways in.</h2>
+
+    <div class="centers-grid">
+
+      <!-- FLOW -->
+      <div id="flow" class="centre-card">
+        <div class="centre-ghost" style="right: -20px;">flow</div>
+        <div class="eyebrow">Support Center</div>
+        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Flow</h3>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Grants for independent nonviolence initiatives — funding for the work itself, or a tuition grant to study at Sibility Source.</p>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0;">For small, non-governmental projects that are not sub-projects of a larger fund: initiatives that make their own decisions, and are registered — incorporated, with a name, a website and social media.</p>
+        <div class="centre-cta">
+          <a href="apply-flow.html" class="btn btn--fill btn--md">Apply for a grant</a>
+          <a href="flow.html#cases" class="btn btn--outline btn--md">Cases</a>
+        </div>
+      </div>
+
+      <!-- CURRENT -->
+      <div id="current" class="centre-card">
+        <div class="centre-ghost" style="right: -34px;">current</div>
+        <div class="eyebrow">Involvement Center</div>
+        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Current</h3>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Ways to take part. A map of the actors who can enter the field — and an instrument library of the actions available to each of them.</p>
+        <div class="centre-cta">
+          <a href="current.html#library" class="btn btn--outline btn--md">Instrument library</a>
+        </div>
+      </div>
+
+      <!-- DELTA -->
+      <div id="delta" class="centre-card">
+        <div class="centre-ghost" style="right: -24px;">delta</div>
+        <div class="eyebrow">Research Center</div>
+        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Delta</h3>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Research in nonviolence: what shapes it, which factors sustain it. Guided by a scientific council.</p>
+        <div class="centre-cta">
+          <a href="apply-delta.html" class="btn btn--fill btn--md">Apply with a proposal</a>
+          <a href="delta.html#cases" class="btn btn--outline btn--md">Cases</a>
+        </div>
+      </div>
+
+      <!-- SOURCE -->
+      <div id="source" class="centre-card">
+        <div class="centre-ghost" style="right: -28px;">source</div>
+        <div class="eyebrow">Education Center</div>
+        <h3 style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0;">Sibility Source</h3>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--body); margin: 0;">Classes on nonviolence — for those who come as a parent or a neighbour, and for those who come as a professional.</p>
+        <div class="centre-cta">
+          <a href="source.html#classes" class="btn btn--fill btn--md">Classes &amp; enrollment</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CRISIS BAND ============ -->
+  <section class="section">
+    <div style="background: var(--panel); padding: 36px 40px; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
+      <p style="font-size: 16px; line-height: 1.5; margin: 0; max-width: 640px;"><strong>Experiencing violence right now?</strong> Sibility is not an emergency service. Hotlines and shelters can help immediately.</p>
+      <a href="hotlines.html" class="btn btn--fill btn--md" style="white-space: nowrap;">Where to get help</a>
+    </div>
+  </section>
+
+  <!-- ============ VISION + IN BRIEF ============ -->
+  <div class="site-footer" style="padding-bottom: 0;">
+    <div class="vision-band">
+      <h2 style="font-size: clamp(30px, 3.6vw, 46px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin: 0;">We believe nonviolence can be learned, supported and studied — like any human capacity.</h2>
+      <div>
+        <p style="font-size: 16px; line-height: 1.65; color: var(--reverse-body); margin: 0 0 32px;">Sibility exists to grow that capacity — initiative by initiative, class by class, study by study. If you see the world the same way, there is a place for you here.</p>
+        <a href="support.html" class="btn btn--reverse btn--lg">Join us</a>
+      </div>
+    </div>
+
+    <div class="inbrief">
+      <div style="max-width: 560px;">
+        <div class="eyebrow" style="margin-bottom: 16px;">In brief</div>
+        <p style="font-size: 15px; line-height: 1.6; color: var(--body); margin: 0;">Sibility is an independent initiative that strengthens the human capacity for nonviolence — through grants, involvement, research and education.</p>
+      </div>
+      <div class="inbrief-links">
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/chrome.js"></script>
+</body>
+</html>
