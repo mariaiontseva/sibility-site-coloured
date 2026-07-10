@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta charset="utf-8">
+  <title>Sibility — an initiative for nonviolence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #efece8; }
+    body { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    a { color: #180908; }
+    a:hover { color: #DB8236; }
+    ::selection { background: #DB8236; color: #fff; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Barlow', sans-serif; color: #180908; background: {{ field }}; min-height: 100vh;" data-screen-label="Editorial Landing">
+
+  <!-- BG SWITCHER -->
+  <div style="position: fixed; right: 18px; bottom: 18px; z-index: 200; display: flex; gap: 8px; align-items: center; background: rgba(255,255,255,0.72); border: 1px solid #180908; padding: 7px 9px;">
+    <span style="font-family: 'Albert Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #180908; margin-right: 2px;">BG</span>
+    <div onClick="{{ setBeige }}" title="Warm white" style="{{ swBeige }}"></div>
+    <div onClick="{{ setBlue }}" title="Grey-blue" style="{{ swBlue }}"></div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header id="top" style="position: sticky; top: 0; z-index: 100; background: {{ headerBg }}; -webkit-backdrop-filter: saturate(140%) blur(16px); backdrop-filter: saturate(140%) blur(16px); border-bottom: 1px solid {{ headerBorder }}; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: {{ headerPad }}; transition: padding 0.4s cubic-bezier(0.4,0,0.2,1), background 0.4s ease, border-color 0.4s ease;">
+    <a href="#top" style="display: flex; align-items: baseline; gap: 4px; text-decoration: none; color: #180908;">
+      <img src="assets/logo-full-black.svg" alt="Sibility" style="height: {{ logoH }}; width: auto; display: block; transition: height 0.4s cubic-bezier(0.4,0,0.2,1);">
+      <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 600; align-self: flex-start; margin-top: 2px;">&reg;</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display: flex; gap: clamp(20px, 3vw, 40px); align-items: center;">
+        <a href="Flow.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Flow</a>
+        <a href="Delta.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Delta</a>
+        <a href="Source.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Source</a>
+        <a href="Current.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Current</a>
+      </nav>
+      <a href="Support.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #efece8; background: #180908; text-decoration: none; padding: 11px 22px;" style-hover="background: #DB8236;">Support us</a>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ toggleNav }}" style="{{ burgerStyle }}">{{ burger }}</div>
+    </sc-if>
+    <div style="{{ panelStyle }}">
+      <a href="Flow.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(30px, 9vw, 46px); font-weight: 700; letter-spacing: -0.01em; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Flow</a>
+      <a href="Delta.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(30px, 9vw, 46px); font-weight: 700; letter-spacing: -0.01em; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Delta</a>
+      <a href="Source.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(30px, 9vw, 46px); font-weight: 700; letter-spacing: -0.01em; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Source</a>
+      <a href="Current.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(30px, 9vw, 46px); font-weight: 700; letter-spacing: -0.01em; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Current</a>
+      <a href="Support.dc.html" style="margin-top: 18px; font-family: 'Albert Sans', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #efece8; background: #180908; text-decoration: none; padding: 16px 32px;" style-hover="background: #DB8236;">Support us</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section style="padding: clamp(60px, 9vw, 150px) clamp(20px, 5vw, 56px) clamp(56px, 7vw, 100px); box-sizing: border-box;">
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: stretch;">
+
+      <!-- TAGLINE -->
+      <div style="flex: 3 1 480px; order: 0;">
+        <div style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: #DB8236; margin-bottom: 18px;">(An independent initiative)</div>
+        <h1 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(40px, 5.6vw, 78px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.02; margin: 0;">Nonviolence is a capacity. We fund it, teach it, and study it.</h1>
+        <p style="font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: #4a3f3d; margin: 38px 0 0; max-width: 640px;">Sibility supports independent initiatives, runs classes and conducts research — through four centers dedicated to support, involvement, research and education. We work for the long term: steady, flexible, professional.</p>
+        <a href="#centers" style="display: inline-block; margin-top: 30px; font-family: 'Albert Sans', sans-serif; font-size: 15px; font-weight: 600; color: #180908; text-decoration: none; border-bottom: 1.5px solid #180908; padding-bottom: 3px;" style-hover="color: #DB8236;">Learn more &rarr;</a>
+      </div>
+
+      <!-- WORD -->
+      <div style="flex: 1 1 240px; max-width: 340px; order: 1; display: flex; align-items: center;">
+        <div style="border: 1px solid #180908; padding: 30px 28px 32px; width: 100%; box-sizing: border-box;">
+          <div style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #DB8236; margin-bottom: 14px;">The word</div>
+          <div style="font-family: 'Albert Sans', sans-serif; font-size: clamp(34px, 3.6vw, 52px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; margin: 0;">sibility</div>
+          <div style="font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 500; color: #8a807c; margin: 10px 0 18px;">/sɪˈbɪl.ɪ.ti/ · noun</div>
+          <div style="height: 1px; background: #cfc8bf; margin-bottom: 18px;"></div>
+          <p style="font-size: clamp(15px, 1.4vw, 17px); line-height: 1.55; color: #4a3f3d; margin: 0;">The capacity of a person — or a community — to live, act and resolve conflict without violence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE WORK ============ -->
+  <section style="background: {{ howBg }}; padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 56px); box-sizing: border-box; margin-top: clamp(20px, 3vw, 40px);">
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start;">
+      <div style="flex: 1 1 240px; max-width: 340px; padding-top: 6px;">
+        <div style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #DB8236; margin-bottom: 14px;">How we work</div>
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(26px, 2.7vw, 36px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 0;">Three commitments hold everything we do.</h2>
+      </div>
+      <div style="flex: 3 1 480px;">
+        <div style="display: flex; gap: 28px; padding: 24px 0;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; color: #DB8236; padding-top: 4px; min-width: 24px;">01</span>
+          <div style="flex: 1;">
+            <h3 style="font-family: 'Albert Sans', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 8px;">Resilience</h3>
+            <p style="font-size: 16px; line-height: 1.55; color: #4a3f3d; margin: 0; max-width: 460px;">We build for the long term — steady support that initiatives can plan around.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 28px; padding: 24px 0; border-top: 1px solid #cfc8bf;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; color: #DB8236; padding-top: 4px; min-width: 24px;">02</span>
+          <div style="flex: 1;">
+            <h3 style="font-family: 'Albert Sans', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 8px;">Flexibility</h3>
+            <p style="font-size: 16px; line-height: 1.55; color: #4a3f3d; margin: 0; max-width: 460px;">Grantees keep their freedom — including the freedom to choose other grantors.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 28px; padding: 24px 0; border-top: 1px solid #cfc8bf;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; color: #DB8236; padding-top: 4px; min-width: 24px;">03</span>
+          <div style="flex: 1;">
+            <h3 style="font-family: 'Albert Sans', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 8px;">Professionalism</h3>
+            <p style="font-size: 16px; line-height: 1.55; color: #4a3f3d; margin: 0; max-width: 460px;">Clear conditions, clear process, decisions explained. Professionals with professionals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOUR CENTERS ============ -->
+  <section id="centers" style="padding: clamp(24px, 3vw, 40px) clamp(20px, 5vw, 56px) clamp(20px, 3vw, 40px); box-sizing: border-box;">
+    <div style="position: relative; overflow: hidden; background: #180908; color: #efece8; padding: clamp(40px, 5vw, 68px) clamp(28px, 4vw, 56px); margin-bottom: clamp(56px, 7vw, 96px); display: flex; flex-wrap: wrap; gap: clamp(28px, 4vw, 64px); align-items: center; justify-content: space-between;">
+      <img src="assets/hero-swirl.avif" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.5; mix-blend-mode: screen; pointer-events: none;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, #180908 0%, rgba(24,9,8,0.9) 40%, rgba(24,9,8,0.25) 100%); pointer-events: none;"></div>
+      <div style="position: relative;">
+        <div style="font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #DB8236; margin-bottom: 18px;">What we do</div>
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(30px, 3.8vw, 54px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0; max-width: 640px;">One initiative, four ways in.</h2>
+      </div>
+      <div style="position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 2vw, 34px); flex: 0 0 auto;">
+        <svg viewBox="687 430 577 447" style="height: clamp(38px, 3.4vw, 52px); width: auto; display: block; color: #efece8;" fill="currentColor"><path d="M1236.99,578.31c-10.98-25.88-27.58-49.96-49.82-72.19-22.23-22.23-46.3-38.83-72.19-49.82-25.89-10.97-52.14-16.53-78.74-16.68-20.74-.1-41.04,3.05-60.93,9.44-19.88-6.39-40.19-9.54-60.93-9.44-26.6.15-52.85,5.71-78.74,16.68-25.89,10.98-49.96,27.59-72.19,49.82-22.24,22.24-38.84,46.31-49.82,72.19-10.98,25.9-16.54,52.15-16.68,78.74-.14,26.6,5.07,52.49,15.62,77.68,10.55,25.2,26.11,48.06,46.65,68.6s43.84,36.53,69.03,47.07c25.19,10.56,51.16,15.84,77.89,15.83,23.37,0,46.43-4.19,69.16-12.58,22.73,8.39,45.78,12.59,69.16,12.58,26.74,0,52.7-5.27,77.89-15.83,25.19-10.55,48.19-26.24,69.03-47.07,20.54-20.54,36.1-43.4,46.65-68.6,10.55-25.19,15.76-51.08,15.62-77.68-.14-26.59-5.7-52.84-16.68-78.74ZM975.31,801.59c-16.39-8.99-32.18-21.07-47.36-36.25-25.05-25.05-41.73-51.57-50.03-79.58-8.3-28-8.8-55.37-1.48-82.11,7.32-26.74,21.67-50.8,43.06-72.19,16.85-16.85,35.46-29.25,55.81-37.22,20.35,7.97,38.95,20.37,55.81,37.22,21.39,21.39,35.75,45.46,43.06,72.19,7.32,26.74,6.83,54.11-1.48,82.11-8.3,28.01-24.98,54.53-50.03,79.58-15.18,15.18-30.97,27.25-47.36,36.25ZM861.19,816.64c-26.88-7.17-51.01-21.46-72.41-42.85s-35.19-45.03-42.22-71.77c-7.04-26.74-6.4-54.1,1.9-82.11,8.31-28,24.84-54.39,49.61-79.16s51.58-41.72,79.58-50.03c10.64-3.15,21.18-5.18,31.62-6.1-6.65,5.31-13.09,11.07-19.32,17.29-20.83,20.83-36.52,43.84-47.07,69.03-10.55,25.2-15.83,51.16-15.83,77.89,0,26.74,5.49,53.06,16.47,78.95,10.98,25.9,27.59,49.96,49.82,72.19,7.52,7.52,15.25,14.37,23.18,20.6-18.7,2.23-37.14.93-55.32-3.93ZM1204.06,702.01c-7.03,26.74-21.11,50.66-42.22,71.77-21.39,21.39-45.52,35.68-72.41,42.85-18.18,4.86-36.62,6.16-55.32,3.93,7.93-6.23,15.66-13.09,23.18-20.6,22.23-22.23,38.84-46.29,49.82-72.19,10.98-25.89,16.47-52.2,16.47-78.95,0-26.73-5.28-52.69-15.83-77.89-10.55-25.18-26.24-48.19-47.07-69.03-6.22-6.22-12.67-11.98-19.32-17.29,10.44.92,20.97,2.95,31.62,6.1,28,8.31,54.81,25.26,79.58,50.03s41.3,51.16,49.61,79.16c8.3,28.01,8.94,55.37,1.9,82.11Z"></path></svg>
+        <svg viewBox="562 328 776 716" style="height: clamp(38px, 3.4vw, 52px); width: auto; display: block; color: #efece8;" fill="currentColor"><path d="M569.92,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path><path d="M796.64,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path></svg>
+        <svg viewBox="548 432 824 566" style="height: clamp(38px, 3.4vw, 52px); width: auto; display: block; color: #efece8;" fill="none" stroke="currentColor" stroke-width="60" stroke-linejoin="round"><path d="M960,486 L1306,930 L614,930 Z"></path></svg>
+        <svg viewBox="562 352 730 696" style="height: clamp(38px, 3.4vw, 52px); width: auto; display: block; color: #efece8;" fill="currentColor"><path d="M1262,498.51c-13.34-31.02-31.79-56.6-55.35-76.75-23.58-20.16-50.23-35.2-80-45.12-29.77-9.91-61.09-14.88-93.96-14.88-44.65,0-85.9,8.84-123.72,26.51-37.84,17.67-68.23,44.8-91.17,81.4-22.95,36.59-34.42,83.1-34.42,139.54v360.5c-18.01-3-34.93-7.89-50.45-15.2-26.37-12.4-47.3-31.94-62.79-58.61-15.51-26.66-23.26-61.4-23.26-104.18v-411.17h-74.42v410.24c0,56.44,11.47,102.95,34.42,139.54,22.94,36.6,53.33,63.72,91.17,81.4,37.82,17.67,79.07,26.51,123.72,26.51,32.86,0,64.19-4.97,93.96-14.88,29.77-9.92,56.42-24.96,80-45.12,23.56-20.14,42.01-45.73,55.35-76.75,13.33-31,20-67.91,20-110.7v-360.68c18.16,2.97,35.23,7.91,50.91,15.38,26.04,12.4,46.82,31.94,62.33,58.61,15.49,26.66,23.26,61.4,23.26,104.18v411.17h74.42v-410.24c0-42.79-6.67-79.69-20-110.7ZM973.41,895.9c-15.51,26.67-36.28,46.21-62.33,58.61-16.36,7.79-34.22,12.85-53.27,15.74v-361.97c0-42.79,7.74-77.53,23.26-104.18,15.49-26.67,36.42-46.21,62.79-58.61,16.2-7.63,33.91-12.62,52.81-15.56v361.79c0,42.79-7.76,77.53-23.26,104.18Z"></path></svg>
+      </div>
+    </div>
+
+    <!-- FLOW -->
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: 0 0 clamp(72px, 9.75vw, 135px);">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; color: #DB8236;">01</span>
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a807c;">Support</span>
+        </div>
+        <svg viewBox="687 430 577 447" style="height: 52px; width: auto; display: block; color: #180908;" fill="currentColor"><path d="M1236.99,578.31c-10.98-25.88-27.58-49.96-49.82-72.19-22.23-22.23-46.3-38.83-72.19-49.82-25.89-10.97-52.14-16.53-78.74-16.68-20.74-.1-41.04,3.05-60.93,9.44-19.88-6.39-40.19-9.54-60.93-9.44-26.6.15-52.85,5.71-78.74,16.68-25.89,10.98-49.96,27.59-72.19,49.82-22.24,22.24-38.84,46.31-49.82,72.19-10.98,25.9-16.54,52.15-16.68,78.74-.14,26.6,5.07,52.49,15.62,77.68,10.55,25.2,26.11,48.06,46.65,68.6s43.84,36.53,69.03,47.07c25.19,10.56,51.16,15.84,77.89,15.83,23.37,0,46.43-4.19,69.16-12.58,22.73,8.39,45.78,12.59,69.16,12.58,26.74,0,52.7-5.27,77.89-15.83,25.19-10.55,48.19-26.24,69.03-47.07,20.54-20.54,36.1-43.4,46.65-68.6,10.55-25.19,15.76-51.08,15.62-77.68-.14-26.59-5.7-52.84-16.68-78.74ZM975.31,801.59c-16.39-8.99-32.18-21.07-47.36-36.25-25.05-25.05-41.73-51.57-50.03-79.58-8.3-28-8.8-55.37-1.48-82.11,7.32-26.74,21.67-50.8,43.06-72.19,16.85-16.85,35.46-29.25,55.81-37.22,20.35,7.97,38.95,20.37,55.81,37.22,21.39,21.39,35.75,45.46,43.06,72.19,7.32,26.74,6.83,54.11-1.48,82.11-8.3,28.01-24.98,54.53-50.03,79.58-15.18,15.18-30.97,27.25-47.36,36.25ZM861.19,816.64c-26.88-7.17-51.01-21.46-72.41-42.85s-35.19-45.03-42.22-71.77c-7.04-26.74-6.4-54.1,1.9-82.11,8.31-28,24.84-54.39,49.61-79.16s51.58-41.72,79.58-50.03c10.64-3.15,21.18-5.18,31.62-6.1-6.65,5.31-13.09,11.07-19.32,17.29-20.83,20.83-36.52,43.84-47.07,69.03-10.55,25.2-15.83,51.16-15.83,77.89,0,26.74,5.49,53.06,16.47,78.95,10.98,25.9,27.59,49.96,49.82,72.19,7.52,7.52,15.25,14.37,23.18,20.6-18.7,2.23-37.14.93-55.32-3.93ZM1204.06,702.01c-7.03,26.74-21.11,50.66-42.22,71.77-21.39,21.39-45.52,35.68-72.41,42.85-18.18,4.86-36.62,6.16-55.32,3.93,7.93-6.23,15.66-13.09,23.18-20.6,22.23-22.23,38.84-46.29,49.82-72.19,10.98-25.89,16.47-52.2,16.47-78.95,0-26.73-5.28-52.69-15.83-77.89-10.55-25.18-26.24-48.19-47.07-69.03-6.22-6.22-12.67-11.98-19.32-17.29,10.44.92,20.97,2.95,31.62,6.1,28,8.31,54.81,25.26,79.58,50.03s41.3,51.16,49.61,79.16c8.3,28.01,8.94,55.37,1.9,82.11Z"></path></svg>
+      </div>
+      <div style="flex: 3 1 480px;">
+        <h3 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(38px, 4.2vw, 58px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0 0 22px;">Sibility Flow</h3>
+        <p style="font-size: clamp(18px, 1.75vw, 22px); line-height: 1.6; color: #4a3f3d; margin: 0 0 34px; max-width: 640px;">Grants for independent nonviolence initiatives — funding for the work itself, or a tuition grant to study at Sibility Source. We back projects that reduce violence in families, schools and communities, and we commit for the long term rather than a single cycle, so teams can plan real work. Applications are open on a rolling basis.</p>
+        <div style="display: flex; gap: 26px; align-items: center; flex-wrap: wrap;">
+          <a href="Flow.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 15px; font-weight: 600; color: #180908; text-decoration: none; border-bottom: 1.5px solid #180908; padding-bottom: 3px;" style-hover="color: #DB8236;">Learn more &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCE -->
+    <div style="border-top: 1px solid #cfc8bf; display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(72px, 9.75vw, 135px) 0;">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; color: #DB8236;">02</span>
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a807c;">Education</span>
+        </div>
+        <svg viewBox="562 328 776 716" style="height: 52px; width: auto; display: block; color: #180908;" fill="currentColor"><path d="M569.92,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path><path d="M796.64,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path></svg>
+      </div>
+      <div style="flex: 3 1 480px;">
+        <h3 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(38px, 4.2vw, 58px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0 0 22px;">Sibility Source</h3>
+        <p style="font-size: clamp(18px, 1.75vw, 22px); line-height: 1.6; color: #4a3f3d; margin: 0 0 34px; max-width: 640px;">Classes on nonviolence — for those who come as a parent or a neighbour, and for those who come as a professional. Courses run from short introductions to in-depth programmes, taught by practitioners and researchers who work in the field every day. A number of places are covered by Sibility Flow tuition grants.</p>
+        <div style="display: flex; gap: 26px; align-items: center; flex-wrap: wrap;">
+          <a href="Source.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 15px; font-weight: 600; color: #180908; text-decoration: none; border-bottom: 1.5px solid #180908; padding-bottom: 3px;" style-hover="color: #DB8236;">Learn more &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DELTA -->
+    <div style="border-top: 1px solid #cfc8bf; display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(72px, 9.75vw, 135px) 0;">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; color: #DB8236;">03</span>
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a807c;">Research</span>
+        </div>
+        <svg viewBox="548 432 824 566" style="height: 52px; width: auto; display: block; color: #180908;" fill="none" stroke="currentColor" stroke-width="60" stroke-linejoin="round"><path d="M960,486 L1306,930 L614,930 Z"></path></svg>
+      </div>
+      <div style="flex: 3 1 480px;">
+        <h3 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(38px, 4.2vw, 58px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0 0 22px;">Sibility Delta</h3>
+        <p style="font-size: clamp(18px, 1.75vw, 22px); line-height: 1.6; color: #4a3f3d; margin: 0 0 34px; max-width: 640px;">Research in nonviolence: what shapes it, and which factors help it hold. Guided by a scientific council, we fund studies, publish findings openly, and turn evidence into tools that practitioners can actually use. Proposals from independent researchers are welcome.</p>
+        <div style="display: flex; gap: 26px; align-items: center; flex-wrap: wrap;">
+          <a href="Delta.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 15px; font-weight: 600; color: #180908; text-decoration: none; border-bottom: 1.5px solid #180908; padding-bottom: 3px;" style-hover="color: #DB8236;">Learn more &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRENT -->
+    <div style="border-top: 1px solid #cfc8bf; display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(72px, 9.75vw, 135px) 0;">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; color: #DB8236;">04</span>
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a807c;">Involvement</span>
+        </div>
+        <svg viewBox="562 352 730 696" style="height: 52px; width: auto; display: block; color: #180908;" fill="currentColor"><path d="M1262,498.51c-13.34-31.02-31.79-56.6-55.35-76.75-23.58-20.16-50.23-35.2-80-45.12-29.77-9.91-61.09-14.88-93.96-14.88-44.65,0-85.9,8.84-123.72,26.51-37.84,17.67-68.23,44.8-91.17,81.4-22.95,36.59-34.42,83.1-34.42,139.54v360.5c-18.01-3-34.93-7.89-50.45-15.2-26.37-12.4-47.3-31.94-62.79-58.61-15.51-26.66-23.26-61.4-23.26-104.18v-411.17h-74.42v410.24c0,56.44,11.47,102.95,34.42,139.54,22.94,36.6,53.33,63.72,91.17,81.4,37.82,17.67,79.07,26.51,123.72,26.51,32.86,0,64.19-4.97,93.96-14.88,29.77-9.92,56.42-24.96,80-45.12,23.56-20.14,42.01-45.73,55.35-76.75,13.33-31,20-67.91,20-110.7v-360.68c18.16,2.97,35.23,7.91,50.91,15.38,26.04,12.4,46.82,31.94,62.33,58.61,15.49,26.66,23.26,61.4,23.26,104.18v411.17h74.42v-410.24c0-42.79-6.67-79.69-20-110.7ZM973.41,895.9c-15.51,26.67-36.28,46.21-62.33,58.61-16.36,7.79-34.22,12.85-53.27,15.74v-361.97c0-42.79,7.74-77.53,23.26-104.18,15.49-26.67,36.42-46.21,62.79-58.61,16.2-7.63,33.91-12.62,52.81-15.56v361.79c0,42.79-7.76,77.53-23.26,104.18Z"></path></svg>
+      </div>
+      <div style="flex: 3 1 480px;">
+        <h3 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(38px, 4.2vw, 58px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0 0 22px;">Sibility Current</h3>
+        <p style="font-size: clamp(18px, 1.75vw, 22px); line-height: 1.6; color: #4a3f3d; margin: 0 0 34px; max-width: 640px;">Ways to take part. A map of the actors who can enter the field — and an instrument library of the concrete actions available to each of them. Whether you arrive as an individual, an organisation or an institution, there is a first step you can take today. Explore the library to find yours.</p>
+        <div style="display: flex; gap: 26px; align-items: center; flex-wrap: wrap;">
+          <a href="Current.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 15px; font-weight: 600; color: #180908; text-decoration: none; border-bottom: 1.5px solid #180908; padding-bottom: 3px;" style-hover="color: #DB8236;">Learn more &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CRISIS BAND ============ -->
+  <sc-if value="{{ showCrisisBand }}" hint-placeholder-val="{{ true }}">
+    <section style="padding: clamp(36px, 5vw, 64px) clamp(20px, 5vw, 56px); box-sizing: border-box;">
+      <div style="display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 60px); justify-content: space-between; align-items: center;">
+        <p style="font-size: clamp(15px, 1.4vw, 17px); line-height: 1.5; margin: 0; max-width: 660px;"><strong style="font-family: 'Albert Sans', sans-serif; font-weight: 700;">Experiencing violence right now?</strong> Sibility is not an emergency service. Hotlines and shelters can help immediately.</p>
+        <a href="Hotlines.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 13px; font-weight: 600; color: #180908; text-decoration: none; border-bottom: 1.5px solid #180908; padding-bottom: 3px; white-space: nowrap;" style-hover="color: #DB8236;">Where to get help &rarr;</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ VISION BAND ============ -->
+  <section style="padding: 0 clamp(20px, 5vw, 56px) clamp(48px, 6vw, 80px); box-sizing: border-box;">
+    <div style="background: #180908; color: #efece8;">
+      <div style="padding: clamp(44px, 5vw, 76px) clamp(28px, 5vw, 68px); max-width: 820px; display: flex; flex-direction: column; gap: clamp(18px, 2.4vw, 28px);">
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(26px, 3.2vw, 46px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.06; margin: 0;">Nonviolence can be <span style="color: #DB8236;">learned, supported and studied</span> — like any human capacity.</h2>
+        <p style="font-size: clamp(15px, 1.4vw, 17px); line-height: 1.6; color: #d8cec9; margin: 0; max-width: 480px;">If you see the world the same way, there is a place for you here.</p>
+        <a href="Support.dc.html" style="font-family: 'Albert Sans', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.04em; color: #180908; background: #DB8236; text-decoration: none; padding: 16px 34px; display: inline-block; width: fit-content;" style-hover="background: #efece8;">Join us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="padding: 0 clamp(20px, 5vw, 56px) 48px; box-sizing: border-box;">
+    <div style="border-top: 1px solid #180908; padding-top: 40px; display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start;">
+      <div style="flex: 3 1 420px; max-width: 480px;">
+        <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a807c; margin-bottom: 14px;">In brief</div>
+        <p style="font-size: 15px; line-height: 1.6; color: #4a3f3d; margin: 0;">Sibility is an independent initiative that strengthens the human capacity for nonviolence — through grants, involvement, research and education.</p>
+      </div>
+      <div style="flex: 1 1 220px; display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+        <a href="Support.dc.html" style="font-size: 15px; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Instagram</a>
+        <a href="Support.dc.html" style="font-size: 15px; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">Telegram</a>
+        <a href="Support.dc.html" style="font-size: 15px; color: #180908; text-decoration: none;" style-hover="color: #DB8236;">YouTube</a>
+      </div>
+    </div>
+    <div style="margin-top: 44px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <a href="#top" style="display: flex; align-items: center; text-decoration: none; color: #180908;">
+        <img src="assets/logo-full-black.svg" alt="Sibility" style="height: 20px; width: auto; display: block;">
+      </a>
+      <div style="font-family: 'Barlow', sans-serif; font-size: 13px; color: #8a807c;">© 2026 Sibility Initiative</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 1600 },
+  &quot;showCrisisBand&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot; }
+}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, navOpen: false, field: '#efece8', scrolled: false };
+  componentDidMount() {
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._r);
+    this._s = () => {
+      let y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      if (!y && this._scroller) y = this._scroller.scrollTop || 0;
+      const on = y > 12;
+      if (on !== this.state.scrolled) this.setState({ scrolled: on });
+    };
+    window.addEventListener('scroll', this._s, true);
+    this._s();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._r);
+    window.removeEventListener('scroll', this._s, true);
+  }
+  renderVals() {
+    const m = this.state.w < 820;
+    const field = this.state.field;
+    const scrolled = this.state.scrolled;
+    const rgb = field === '#e0e4ea' ? '224,228,234' : '239,236,232';
+    const sw = (c, on) => ({ width: 24, height: 24, cursor: 'pointer', background: c, border: on ? '2.5px solid #180908' : '1px solid #b3ada6', boxSizing: 'border-box' });
+    return {
+      field,
+      howBg: field,
+      headerBg: `rgba(${rgb},${scrolled ? 0.8 : 0.6})`,
+      headerBorder: scrolled ? 'rgba(24,9,8,0.1)' : 'rgba(24,9,8,0)',
+      headerPad: scrolled ? 'clamp(11px, 1.4vw, 15px) clamp(20px, 5vw, 56px)' : 'clamp(22px, 3vw, 34px) clamp(20px, 5vw, 56px)',
+      logoH: scrolled ? '18px' : '22px',
+      setBeige: () => this.setState({ field: '#efece8' }),
+      setBlue: () => this.setState({ field: '#e0e4ea' }),
+      swBeige: sw('#efece8', field === '#efece8'),
+      swBlue: sw('#e0e4ea', field === '#e0e4ea'),
+      isDesktop: !m,
+      isMobile: m,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      burger: this.state.navOpen ? '\u2715' : '\u2630',
+      burgerStyle: { position: 'relative', zIndex: 110, fontSize: 26, lineHeight: 1, cursor: 'pointer', userSelect: 'none', padding: '4px 2px', color: '#180908', transition: 'transform 0.3s ease', transform: this.state.navOpen ? 'rotate(90deg)' : 'none' },
+      panelStyle: (() => { const o = m && this.state.navOpen; return { position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', minHeight: '100vh', background: field, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: '18px', padding: '0 clamp(28px, 8vw, 56px)', boxSizing: 'border-box', zIndex: 90, opacity: o ? 1 : 0, transform: o ? 'translateY(0)' : 'translateY(-8px)', transition: 'opacity 0.32s ease, transform 0.4s cubic-bezier(0.4,0,0.2,1)', pointerEvents: o ? 'auto' : 'none' }; })(),
+      showCrisisBand: this.props.showCrisisBand ?? false
+    };
+  }
+}
+</script>
+</body>
+</html>
