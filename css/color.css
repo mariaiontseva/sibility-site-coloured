@@ -152,7 +152,7 @@ a.is-static { cursor: default; }
 .hero-grid { display: flex; flex-wrap: wrap; gap: var(--col-gap); align-items: stretch; }
 .hero-tagline { flex: 3 1 480px; order: 0; }
 .hero-eyebrow { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 18px; }
-.hero-h1 { font-family: var(--sans); font-size: clamp(40px, 5.6vw, 78px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.02; margin: 0; }
+.hero-h1 { font-family: var(--sans); font-size: clamp(36px, 4.6vw, 60px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.05; margin: 0; }
 .hero-p { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: var(--body-text); margin: 38px 0 0; max-width: 640px; }
 .hero .link-arrow { margin-top: 30px; }
 
