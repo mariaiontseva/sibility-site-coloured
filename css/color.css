@@ -26,7 +26,7 @@
 
   --gutter: clamp(20px, 5vw, 56px);
   --col-gap: clamp(28px, 5vw, 80px);
-  --maxw: 1120px;
+  --maxw: 1024px;
   /* horizontal padding that keeps content within a centered --maxw
      column on wide screens, and a plain gutter on narrow ones */
   --pad-inline: max(var(--gutter), calc((100% - var(--maxw)) / 2));
