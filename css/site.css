@@ -162,7 +162,9 @@ p { margin: 0; }
   background: var(--ink); transform: scaleX(0); transform-origin: left center;
   transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
 }
-.hd-link:hover { color: var(--accent); }
+/* nav text stays ink in every state — only the underline sweeps.
+   (explicit ink:hover overrides the global a:hover accent rule) */
+.hd-link:hover { color: var(--ink); }
 .hd-link:not([data-drop]):hover::after,
 .hd-link.hd-active:not([data-drop])::after { transform: scaleX(1); }
 .hd-smiley { height: 1.25em; width: auto; vertical-align: -0.28em; display: inline-block; }
