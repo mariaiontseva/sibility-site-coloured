@@ -3,26 +3,116 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About us — Sibility</title>
+  <title>Sibility — About us</title>
+  <meta name="description" content="A small organisation with one stubborn belief: that nonviolence is a skill the world can be taught." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/color.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .team-mark { position: absolute; top: 50%; right: -26%; transform: translateY(-50%); width: min(82%, 1080px); pointer-events: none; }
+    .team-mark svg { width: 100%; height: auto; display: block; opacity: 0.16; }
+    .why-wrap { border-top: 3px solid var(--accent); padding-top: clamp(28px, 3.5vw, 44px); max-width: 980px; margin: 0 auto; }
+    .why-lead { font-size: clamp(20px, 2vw, 26px); line-height: 1.5; color: var(--ink); margin: 0 0 20px; font-weight: 500; max-width: 760px; }
+    .why-p { font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #6b5f5b; margin: 0; max-width: 760px; }
+    .why-p strong { font-weight: 600; color: var(--ink); }
+
+    .src-banner { position: relative; overflow: hidden; background: var(--ink); color: var(--on-ink); padding: clamp(34px, 4vw, 52px) clamp(28px, 4vw, 56px); }
+    .src-banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.5; mix-blend-mode: screen; pointer-events: none; }
+    .src-banner .grad { position: absolute; inset: 0; background: linear-gradient(90deg, #180908 0%, rgba(24,9,8,0.9) 55%, rgba(24,9,8,0.35) 100%); pointer-events: none; }
+    .src-banner-copy { position: relative; max-width: 860px; }
+    .src-banner-h { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; margin: 0; }
+    .src-banner-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: clamp(24px, 2.6vw, 34px); font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); background: var(--accent); padding: 15px 30px; transition: background 0.22s ease; }
+    .src-banner-btn:hover { background: #cb7629; color: var(--ink); }
+    .src-banner-btn .arw { display: inline-block; transition: transform 0.26s cubic-bezier(0.4,0,0.2,1); }
+    .src-banner-btn:hover .arw { transform: translateX(6px); }
+
+    .team-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; border-top: 1px solid var(--hairline); padding-top: clamp(28px, 3.5vw, 44px); margin-bottom: clamp(36px, 4.5vw, 56px); }
+    .team-head h2 { font-size: clamp(30px, 4vw, 56px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: clamp(24px, 3vw, 44px); }
+    .tm-photo { position: relative; overflow: hidden; aspect-ratio: 3 / 4; }
+    .tm-initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-weight: 800; font-size: clamp(56px, 8vw, 96px); letter-spacing: -0.04em; color: rgba(239,236,232,0.14); }
+    .tm-bar { position: absolute; left: 0; bottom: 0; width: 44px; height: 4px; background: var(--accent); }
+    .tm-name { font-size: clamp(18px, 1.7vw, 21px); font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px; }
+    .tm-role { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .tm-bio { font-size: 15px; line-height: 1.55; color: #6b5f5b; margin: 0; }
+  </style>
 </head>
 <body data-page="team">
 
   <header id="site-header"></header>
 
   <!-- HERO -->
-  <section class="page-hero" style="padding-bottom: clamp(28px, 5vw, 48px);">
-    <div class="hero-ghost" style="right: -40px; bottom: -60px; font-size: clamp(90px, 20vw, 190px);">team</div>
-    <div class="eyebrow" style="margin-bottom: 28px;">About us</div>
-    <h1 class="h1" style="margin: 0 0 24px;">The people behind Sibility</h1>
-    <p class="lead" style="max-width: 620px; margin: 0;">Who we are, why we started, and the team carrying the work. This page is being prepared.</p>
+  <section class="page-hero">
+    <div class="team-mark">
+      <svg viewBox="430 380 1490 640" fill="url(#gradTeam)"><defs><linearGradient id="gradTeam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d9bd"></stop><stop offset="1" stop-color="#DB8236"></stop></linearGradient></defs><path d="M567.3,752.64v-2.33l110.26-33.3,288.23,99.06,438.78-131.04c100.9-27.81,95.22-79.97,95.22-79.97l70.45-21.12s8.45,129.3-125.82,158.11l-478.63,138.68-398.49-128.09Z"></path><path d="M1368.37,643.48v2.33l-110.26,33.3-288.23-99.06-438.78,131.04c-100.9,27.81-95.22,79.97-95.22,79.97l-70.45,21.12s-8.45-129.3,125.82-158.11l478.63-138.68,398.49,128.09Z"></path></svg>
+    </div>
+    <div class="page-hero-inner">
+      <div class="section-eyebrow">Sibility</div>
+      <h1>About us</h1>
+      <p class="lead" style="max-width: 580px;">We are a small organisation with one stubborn belief: that nonviolence is a skill the world can be taught. We fund the people already doing that work, teach it openly, study what actually helps, and make it easy for anyone to take one real step.</p>
+    </div>
+  </section>
+
+  <!-- WHY WE EXIST -->
+  <section style="padding: 0 var(--gutter) clamp(56px, 7vw, 96px);">
+    <div class="why-wrap">
+      <div class="section-eyebrow" style="font-size: 12px;">Why we exist</div>
+      <p class="why-lead">Most harm doesn&rsquo;t start as violence — it starts small, and by the time it has a name it is already hard to undo. Sibility works upstream of that moment.</p>
+      <p class="why-p">Four ways in, one purpose: <strong>Flow</strong> funds the field, <strong>Source</strong> teaches the skill, <strong>Delta</strong> studies the evidence, and <strong>Current</strong> turns it into something you can do this week.</p>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <section style="padding: 0 var(--gutter) clamp(56px, 7vw, 100px);">
+    <div class="src-banner">
+      <img src="assets/hero-swirl.avif" alt="" />
+      <div class="grad"></div>
+      <div class="src-banner-copy">
+        <h2 class="src-banner-h">Small non-violence NGO? You probably deserve a grant.</h2>
+        <a href="flow.html" class="src-banner-btn">Learn more <span class="arw">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" style="padding: 0 var(--gutter) clamp(48px, 6vw, 80px);">
+    <div class="team-head">
+      <div>
+        <div class="section-eyebrow" style="color: var(--muted);">The team</div>
+        <h2>The people behind Sibility</h2>
+      </div>
+    </div>
+    <div class="team-grid" id="team-grid"></div>
+  </section>
+
+  <!-- SHARED TAIL -->
+  <section style="padding: 0 var(--gutter);">
+    <div id="donate-block"></div>
+    <div id="newsletter-block"></div>
   </section>
 
   <footer id="site-footer"></footer>
 
   <script src="js/chrome.js"></script>
+  <script src="js/donate.js"></script>
+  <script src="js/newsletter.js"></script>
+  <script>
+    (function () {
+      var TEAM = [
+        { name: "Lenore Ashby", role: "Founder & Director", initials: "LA", bg: "#180908", bio: "Started Sibility after fifteen years in community mediation. Sets the direction and still reads every grant." },
+        { name: "Marcus Vela", role: "Grants · Flow", initials: "MV", bg: "#241210", bio: "Runs the grantmaking. Believes small organisations know their own work better than any funder does." },
+        { name: "Nadia Okonkwo", role: "Learning · Source", initials: "NO", bg: "#1f0f0d", bio: "Builds the courses. Trained facilitators across three continents before she ever wrote a curriculum." },
+        { name: "Theo Rasmussen", role: "Research · Delta", initials: "TR", bg: "#180908", bio: "Leads the evidence work. Keeps everyone honest about the difference between a nice idea and a result." },
+        { name: "Priya Menon", role: "Campaigns · Current", initials: "PM", bg: "#241210", bio: "Turns intent into action. Designs the small first steps that make change feel possible for ordinary people." },
+        { name: "Sam Delacroix", role: "Operations & Partners", initials: "SD", bg: "#1f0f0d", bio: "Holds the whole thing together — the budgets, the partners, and the calendar nobody else wants to touch." }
+      ];
+      function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+      document.getElementById('team-grid').innerHTML = TEAM.map(function (m) {
+        return '<div><div class="tm-photo" style="background:' + m.bg + ';"><div class="tm-initials">' + esc(m.initials) + '</div><div class="tm-bar"></div></div>' +
+          '<div style="padding-top:16px;"><h3 class="tm-name">' + esc(m.name) + '</h3><div class="tm-role">' + esc(m.role) + '</div><p class="tm-bio">' + esc(m.bio) + '</p></div></div>';
+      }).join('');
+    })();
+  </script>
 </body>
 </html>

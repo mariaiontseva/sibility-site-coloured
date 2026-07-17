@@ -4,64 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hotlines — Sibility</title>
+  <meta name="description" content="Free, confidential phone lines. Filter by country and city — many lines are nationwide and answer in several languages." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/color.css" />
+  <link rel="stylesheet" href="css/site.css" />
 </head>
-<body data-page="">
+<body data-page="hotlines">
 
   <header id="site-header"></header>
 
   <!-- HERO -->
-  <section class="page-hero" style="padding-bottom: clamp(28px, 5vw, 48px);">
-    <div class="hero-ghost" style="right: -40px; bottom: -60px; font-size: clamp(100px, 22vw, 200px);">hotlines</div>
-    <div class="eyebrow" style="margin-bottom: 28px;">Get help now</div>
-    <h1 class="h1" style="margin: 0 0 24px;">Hotlines</h1>
-    <p class="lead" style="max-width: 620px; margin: 0;">Free, confidential phone lines. Filter by country and city — many lines are nationwide and answer in several languages.</p>
+  <section class="dir-hero">
+    <div class="dir-ghost">hotlines</div>
+    <div class="dir-hero-inner">
+      <div class="eyebrow" style="margin-bottom: 28px;">Get help now</div>
+      <h1>Hotlines</h1>
+      <p>Free, confidential phone lines. Filter by country and city — many lines are nationwide and answer in several languages.</p>
+    </div>
   </section>
 
   <!-- EMERGENCY STRIP -->
-  <section class="detail-section" style="padding-bottom: 32px;">
-    <div class="emergency-strip">
-      <span class="lead-strong">In immediate danger?</span>
-      <span class="lead-sub">Call your local emergency number first — 112 across Europe.</span>
+  <section class="dir-emergency-wrap">
+    <div class="dir-emergency">
+      <span class="lead">In immediate danger?</span>
+      <span class="rest">Call your local emergency number first — 112 across Europe.</span>
     </div>
   </section>
 
   <!-- DIRECTORY -->
-  <section class="detail-section">
-    <div class="dir-wrap">
-      <div class="filters" id="dir-filters"></div>
-      <div class="count-row" id="dir-count"></div>
-      <div class="inst-list" id="dir-list"></div>
-      <p class="dir-note">sample directory — numbers are placeholders until the verified list is published</p>
-    </div>
+  <section class="dir-wrap">
+    <div id="directory"></div>
+  </section>
+
+  <!-- SHARED TAIL -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter);">
+    <div id="donate-block"></div>
+    <div id="newsletter-block"></div>
   </section>
 
   <footer id="site-footer"></footer>
 
-  <script>
-    window.SIB_DIRECTORY = {
-      noun: 'hotlines',
-      metaKeys: ['country', 'city', 'hours', 'langs'],
-      data: [
-        { country: 'Germany', city: 'nationwide', name: 'Support line for women affected by violence', desc: 'Anonymous counselling for women in any violent situation — and for relatives and professionals who want to help.', phone: '+49 800 000 0000', hours: '24/7', langs: 'DE · EN · FR · RU' },
-        { country: 'Germany', city: 'nationwide', name: 'Crisis line for men under domestic violence', desc: 'Confidential counselling for men experiencing violence at home.', phone: '+49 800 000 0001', hours: 'Mon–Fri 9:00–18:00', langs: 'DE · EN' },
-        { country: 'Germany', city: 'Berlin', name: 'Berlin city crisis service', desc: 'Immediate psychological help and referral to shelters in Berlin.', phone: '+49 30 000 0000', hours: '24/7', langs: 'DE · EN' },
-        { country: 'Germany', city: 'Munich', name: 'Munich family counselling line', desc: 'Support for families in escalating conflict — before and after violence.', phone: '+49 89 000 0000', hours: 'Mon–Sat 10:00–20:00', langs: 'DE' },
-        { country: 'France', city: 'nationwide', name: 'National domestic violence line', desc: 'Listening, information and referral for anyone affected by domestic violence.', phone: '+33 800 000 000', hours: '24/7', langs: 'FR · EN' },
-        { country: 'France', city: 'Paris', name: 'Paris psychological emergency line', desc: 'Crisis counselling and orientation to local services in the Paris region.', phone: '+33 1 00 00 00 00', hours: 'daily 9:00–21:00', langs: 'FR' },
-        { country: 'United Kingdom', city: 'nationwide', name: 'National abuse helpline', desc: 'Confidential support for anyone experiencing abuse, and for those worried about someone.', phone: '+44 800 000 0000', hours: '24/7', langs: 'EN' },
-        { country: 'United Kingdom', city: 'London', name: 'London refuge referral line', desc: 'Direct referral to safe accommodation across Greater London.', phone: '+44 20 0000 0000', hours: '24/7', langs: 'EN' },
-        { country: 'Poland', city: 'nationwide', name: 'Helpline for victims of domestic violence', desc: 'Support, safety planning and legal information for adults and children.', phone: '+48 800 000 000', hours: '24/7', langs: 'PL · EN · UA' },
-        { country: 'Poland', city: 'Warsaw', name: 'Warsaw youth crisis line', desc: 'For teenagers facing violence at home or at school.', phone: '+48 22 000 00 00', hours: 'daily 12:00–22:00', langs: 'PL · UA' },
-        { country: 'Georgia', city: 'Tbilisi', name: 'Tbilisi women’s support hotline', desc: 'Counselling and shelter referral for women and children.', phone: '+995 32 000 000', hours: 'Mon–Fri 10:00–19:00', langs: 'KA · EN · RU' },
-        { country: 'Armenia', city: 'Yerevan', name: 'Yerevan family crisis line', desc: 'Psychological first aid and orientation to local services.', phone: '+374 10 000 000', hours: 'daily 9:00–21:00', langs: 'HY · RU' }
-      ]
-    };
-  </script>
   <script src="js/chrome.js"></script>
   <script src="js/directory.js"></script>
+  <script src="js/donate.js"></script>
+  <script src="js/newsletter.js"></script>
 </body>
 </html>

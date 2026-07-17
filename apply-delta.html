@@ -4,66 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Apply with a research proposal — Sibility Delta</title>
+  <meta name="description" content="Tell us about your research. Funding for rigorous research into how violence is prevented." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/color.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>.apply-standalone .apply-card { max-width: 720px; box-shadow: none; border: 1.5px solid var(--ink); animation: none; }</style>
 </head>
 <body data-page="delta">
 
   <header id="site-header"></header>
 
-  <section class="form-section">
-    <div class="form-wrap">
-      <div class="eyebrow" style="margin-bottom: 24px;">Research Center — Application</div>
-      <h1 class="form-h1">Apply with a research proposal</h1>
-      <p class="form-intro">For researchers studying nonviolence — what shapes it and which factors sustain it. The scientific council reviews every proposal and replies with reasoning.</p>
+  <section style="padding: clamp(64px, 9vw, 130px) var(--gutter) clamp(24px, 4vw, 40px);">
+    <div style="max-width: 760px;">
+      <div class="section-eyebrow">Sibility Delta</div>
+      <h1 style="font-family: var(--sans); font-size: clamp(40px, 5.6vw, 78px); font-weight: 700; letter-spacing: -0.03em; line-height: 0.99; margin: 0;">Apply with a research proposal</h1>
+      <p style="font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: var(--body); margin: 26px 0 0; max-width: 560px;">Tell us about your research. There is no requirement to sit inside a large institution — what matters is that the question genuinely advances nonviolence.</p>
+    </div>
+  </section>
 
-      <div class="form-col" id="apply-form">
-
-        <div class="form-grid">
-          <div class="field">
-            <label class="field-label">Your name</label>
-            <input class="input" type="text" />
-          </div>
-          <div class="field">
-            <label class="field-label">Email</label>
-            <input class="input" type="email" />
-          </div>
-          <div class="field">
-            <label class="field-label">Location — city, country</label>
-            <input class="input" type="text" />
-          </div>
-          <div class="field">
-            <label class="field-label">Affiliation — or independent</label>
-            <input class="input" type="text" />
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="field-label">Link to CV or publications</label>
-          <input class="input" type="text" placeholder="https://" />
-        </div>
-
-        <div class="field">
-          <label class="field-label">Research topic</label>
-          <input class="input" type="text" />
-        </div>
-
-        <div class="field">
-          <label class="field-label">Proposal summary — question, method, timeline</label>
-          <textarea class="textarea" rows="7"></textarea>
-        </div>
-
+  <section class="apply-standalone" style="padding: 0 var(--gutter) clamp(64px, 9vw, 110px);">
+    <div class="apply-card">
+      <div class="apply-head">
         <div>
-          <button class="send-btn" id="send-btn" type="button">Send proposal</button>
+          <div class="eyebrow" style="margin-bottom: 10px;">Apply for a research grant</div>
+          <h2 class="apply-title">Tell us about your research.</h2>
         </div>
       </div>
-
-      <div class="success-panel" id="apply-success" style="display: none;">
-        <div class="ink-square" style="margin-bottom: 24px; transform: rotate(45deg);"></div>
-        <h2>Proposal sent.</h2>
-        <p>Thank you. The scientific council reviews every proposal — we reply to each one with reasoning.</p>
+      <form class="apply-form" novalidate>
+        <div class="apply-row">
+          <div class="apply-col"><label class="fld-label">Your name</label><input type="text" class="fld" data-required placeholder="First and last name" /></div>
+          <div class="apply-col"><label class="fld-label">Email</label><input type="email" class="fld" data-required placeholder="you@email.org" /></div>
+        </div>
+        <div><label class="fld-label">Affiliation (or independent)</label><input type="text" class="fld" placeholder="University, lab, or independent" /></div>
+        <div><label class="fld-label">Research topic</label><input type="text" class="fld" placeholder="The question you want to study" /></div>
+        <div><label class="fld-label">Link to CV or proposal (optional)</label><input type="text" class="fld" placeholder="https://" /></div>
+        <div class="apply-actions">
+          <span class="apply-err" style="display:none;"></span>
+          <span class="apply-hint">We reply within two weeks.</span>
+          <button type="submit" class="apply-submit">Submit application <span class="arw">&rarr;</span></button>
+        </div>
+      </form>
+      <div class="apply-done" style="display:none;">
+        <svg viewBox="0 0 512 512" fill="none" stroke="#DB8236" stroke-width="30" style="height: 56px; width: auto; margin-bottom: 22px;"><circle cx="256" cy="256" r="222"></circle><circle cx="190" cy="208" r="19" fill="#DB8236" stroke="none"></circle><circle cx="322" cy="208" r="19" fill="#DB8236" stroke="none"></circle><path d="M150 298 Q256 384 362 298" stroke-linecap="round"></path></svg>
+        <h3>Thank you — we&rsquo;ll be in touch.</h3>
+        <p>We read every application and reply within two weeks, with reasons either way.</p>
+        <a href="delta.html" class="btn-solid">Back to Delta</a>
       </div>
     </div>
   </section>

@@ -3,11 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sibility Source — Education Center</title>
+  <title>Sibility Source — Weird courses</title>
+  <meta name="description" content="Classes on nonviolence — for parents and neighbours, and for professionals. Practical, taught by people who do this work every day." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/color.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .page-hero-mark.src { right: -3%; width: min(36%, 380px); }
+    .fund-grid { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 72px); align-items: stretch; }
+    .fund-img { flex: 1 1 300px; max-width: 440px; position: relative; overflow: hidden; background: var(--ink); min-height: clamp(360px, 44vw, 640px); }
+    .fund-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(0.85) brightness(1.02); }
+    .fund-img .tint { position: absolute; inset: 0; background: var(--field); mix-blend-mode: color; opacity: 0.22; pointer-events: none; }
+    .fund-body { flex: 2 1 480px; }
+    .fund-body p { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.6; color: var(--body); margin: 0 0 22px; max-width: 680px; }
+    .fund-body p:last-child { margin-bottom: 0; }
+
+    .src-banner { position: relative; overflow: hidden; background: var(--ink); color: var(--on-ink); padding: clamp(34px, 4vw, 52px) clamp(28px, 4vw, 56px); }
+    .src-banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.5; mix-blend-mode: screen; pointer-events: none; }
+    .src-banner .grad { position: absolute; inset: 0; background: linear-gradient(90deg, #180908 0%, rgba(24,9,8,0.9) 55%, rgba(24,9,8,0.35) 100%); pointer-events: none; }
+    .src-banner-copy { position: relative; max-width: 860px; }
+    .src-banner-h { font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; margin: 0; }
+    .src-banner-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: clamp(24px, 2.6vw, 34px); font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); background: var(--accent); padding: 15px 30px; transition: background 0.22s ease; }
+    .src-banner-btn:hover { background: #cb7629; color: var(--ink); }
+    .src-banner-btn .arw { display: inline-block; transition: transform 0.26s cubic-bezier(0.4,0,0.2,1); }
+    .src-banner-btn:hover .arw { transform: translateX(6px); }
+
+    .prog-lbl { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-bottom: clamp(20px, 2.5vw, 32px); }
+    .prog-row { border-top: 1px solid var(--hairline); display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 72px); align-items: flex-start; padding: clamp(48px, 6vw, 88px) 0; }
+    .prog-num { flex: 1 1 200px; max-width: 300px; font-family: var(--sans); font-size: clamp(46px, 5vw, 72px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.9; color: var(--accent); }
+    .prog-body { flex: 3 1 480px; }
+    .prog-h { font-size: clamp(30px, 3.4vw, 46px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.04; margin: 0 0 20px; }
+    .prog-p { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.6; color: var(--body); margin: 0 0 30px; max-width: 640px; }
+  </style>
 </head>
 <body data-page="source">
 
@@ -15,56 +43,78 @@
 
   <!-- HERO -->
   <section class="page-hero">
-    <div class="hero-ghost" style="right: -40px;">source</div>
-    <div class="eyebrow" style="margin-bottom: 28px;">Education Center</div>
-    <h1 class="hero-h1">Sibility Source</h1>
-    <p class="hero-intro">Classes on nonviolence — for those who come as a parent or a neighbour, and for those who come as a professional.</p>
-    <div class="hero-actions">
-      <a href="#classes" class="btn btn--fill btn--lg">Classes &amp; enrollment</a>
+    <div class="page-hero-mark src">
+      <svg viewBox="562 328 776 716" fill="url(#gradSrc)"><defs><linearGradient id="gradSrc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d9bd"></stop><stop offset="1" stop-color="#DB8236"></stop></linearGradient></defs><path d="M569.92,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path><path d="M796.64,1040.6h79.9v-441.47c0-45.94,8.32-83.24,24.97-111.86,16.64-28.64,39.11-49.61,67.42-62.93,28.29-13.32,60.43-19.98,96.38-19.98s66.92,6.65,94.89,19.98c27.96,13.31,50.27,34.29,66.92,62.93,16.64,28.62,24.97,65.92,24.97,111.86v441.47h79.9v-440.47c0-45.95-7.16-85.57-21.48-118.86-14.32-33.3-34.13-60.77-59.43-82.4-25.32-21.64-53.93-37.8-85.9-48.44-31.96-10.64-65.59-15.98-100.88-15.98-47.94,0-92.23,9.49-132.84,28.47-40.62,18.98-73.26,48.1-97.89,87.39-24.64,39.28-36.95,89.22-36.95,149.82v440.47Z"></path></svg>
+    </div>
+    <div class="page-hero-inner">
+      <div class="section-eyebrow">Sibility Source</div>
+      <h1>Weird courses</h1>
+      <p class="lead" style="max-width: 560px;">Classes on nonviolence — for those who come as a parent or a neighbour, and for those who come as a professional. Some are short and practical, others go deep; all are taught by people who do this work every day, and start from real situations rather than theory.</p>
+      <a href="#programme" class="arrow-link" style="margin-top: 40px;">Learn more <span class="arw">&rarr;</span></a>
     </div>
   </section>
 
-  <!-- TWO TRACKS -->
-  <section class="detail-section">
-    <div class="frame">
-      <div class="frame-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px;"></div>
-        <h2>As a person</h2>
-        <p>For parents, partners, neighbours — anyone who wants to live and resolve conflict without violence, at home and around it.</p>
+  <!-- TEXT + VERTICAL IMAGE -->
+  <section style="padding: 0 var(--gutter) clamp(56px, 7vw, 96px);">
+    <div class="fund-grid">
+      <div class="fund-img">
+        <img src="assets/hero-molecule.avif" alt="" />
+        <div class="tint"></div>
       </div>
-      <div class="frame-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px; transform: rotate(45deg);"></div>
-        <h2>As a professional</h2>
-        <p>For teachers, doctors, social workers and others whose work touches violence — practical instruments for the professional field.</p>
+      <div class="fund-body">
+        <div class="eyebrow" style="margin-bottom: 22px;">What we teach</div>
+        <p>Nonviolence is a capacity — something you can learn, practise and get better at. Our courses run from short introductions to in-depth programmes, taught by practitioners and researchers who work in the field every day.</p>
+        <p>Some are strange on purpose: they start from real situations rather than theory, and ask you to try things, not just take notes. You leave with something you can actually use the same week — at home, in your team, or in the community.</p>
+        <p>Courses come in two tracks — one built for organisations working in the field, and one for anyone who simply wants to handle conflict better in their own life. A number of places are covered by Sibility Flow tuition grants.</p>
       </div>
     </div>
   </section>
 
-  <!-- CLASSES & ENROLLMENT -->
-  <section id="classes" class="detail-section">
-    <div class="eyebrow" style="margin-bottom: 16px;">Classes &amp; enrollment</div>
-    <h2 class="split-h2" style="margin-bottom: 40px;">The first classes are being prepared.</h2>
-    <div class="cards-3" style="margin-bottom: 40px;">
-      <div class="case-ph" style="min-height: 220px;"><span>class — coming soon</span></div>
-      <div class="case-ph" style="min-height: 220px;"><span>class — coming soon</span></div>
-      <div class="case-ph" style="min-height: 220px;"><span>class — coming soon</span></div>
-    </div>
-    <p style="font-size: 15px; line-height: 1.6; color: var(--muted); margin: 0; max-width: 620px;">Can't afford tuition? <a href="flow.html" style="color: var(--ink); text-decoration: underline; text-underline-offset: 4px;">Sibility Flow</a> gives tuition grants for studying at Source.</p>
-  </section>
-
-  <!-- ENROLL BAND -->
-  <section class="detail-section">
-    <div class="band">
-      <h2>Be first to know when enrollment opens.</h2>
-      <div>
-        <p>Leave your contact and we will write when the first classes are announced.</p>
-        <a href="#classes" class="btn btn--reverse btn--lg">Get notified</a>
+  <!-- BANNER -->
+  <section style="padding: 0 var(--gutter) clamp(56px, 7vw, 100px);">
+    <div class="src-banner">
+      <img src="assets/hero-swirl.avif" alt="" />
+      <div class="grad"></div>
+      <div class="src-banner-copy">
+        <h2 class="src-banner-h">Small non-violence NGO? You probably deserve a grant.</h2>
+        <a href="flow.html" class="src-banner-btn">Learn more <span class="arw">&rarr;</span></a>
       </div>
     </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="programme" style="padding: 0 var(--gutter) clamp(40px, 5vw, 64px);">
+    <div class="prog-lbl">The programme</div>
+    <div class="prog-row">
+      <div class="prog-num">01</div>
+      <div class="prog-body">
+        <div class="section-eyebrow" style="font-size: 12px;">For NGOs &amp; teams</div>
+        <h3 class="prog-h">Nonviolence for organisations</h3>
+        <p class="prog-p">A practical track for teams working in the field: de-escalation, safeguarding, and how to run programmes that reduce harm without burning people out. Cohort-based, with supervision between sessions and tools you keep. Enrolment and payment on the course page.</p>
+        <a href="#" class="arrow-link">Learn more <span class="arw">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="prog-row">
+      <div class="prog-num">02</div>
+      <div class="prog-body">
+        <div class="section-eyebrow" style="font-size: 12px;">For individuals</div>
+        <h3 class="prog-h">Nonviolence for everyday life</h3>
+        <p class="prog-p">For parents, partners, neighbours — anyone who wants to notice conflict earlier and meet it better. Recognising the small stuff, holding a boundary without escalation, repairing afterwards. Enrolment and payment on the course page.</p>
+        <a href="#" class="arrow-link">Learn more <span class="arw">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED TAIL -->
+  <section style="padding: 0 var(--gutter);">
+    <div id="donate-block"></div>
+    <div id="newsletter-block"></div>
   </section>
 
   <footer id="site-footer"></footer>
 
   <script src="js/chrome.js"></script>
+  <script src="js/donate.js"></script>
+  <script src="js/newsletter.js"></script>
 </body>
 </html>

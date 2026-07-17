@@ -1,150 +1,171 @@
 /* ============================================================
-   Sibility — shared chrome (header + footer + BG switcher)
-   COLOUR edition. Injects the editorial colour header/footer so
-   every page shares the landing's chrome, and runs the landing
-   behaviours (glass shrink-on-scroll header, full-screen mobile
-   menu, warm/blue background switcher persisted in localStorage).
-
-   A page opts in with:
-     <header id="site-header"></header> ... <footer id="site-footer"></footer>
-   and sets the active nav item via <body data-page="flow">.
-   Nav order is intentionally Flow · Delta · Source · Current.
+   Sibility — shared chrome (header + footer + AIGuide FAB)
+   Injected at runtime so nav/footer live in one place. A page
+   opts in with <header id="site-header"></header>,
+   <footer id="site-footer"></footer> and sets the current route
+   via <body data-page="flow">. Active nav state is matched on
+   the page's own href. Handles the More dropdown, the mobile
+   full-screen panel, and the shrink-on-scroll header.
    ============================================================ */
 (function () {
-  // `short` shows in the desktop bar, `label` (full) in the mobile menu.
+  var SMILEY =
+    '<svg viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="32" class="hd-smiley">' +
+    '<circle cx="256" cy="256" r="222"></circle>' +
+    '<circle cx="190" cy="208" r="19" fill="currentColor" stroke="none"></circle>' +
+    '<circle cx="322" cy="208" r="19" fill="currentColor" stroke="none"></circle>' +
+    '<path d="M150 298 Q256 384 362 298" stroke-linecap="round"></path></svg>';
+
+  // main nav (Flow · Source · Delta · Current) + More group
   var NAV = [
-    { id: 'team',            label: 'About us',         short: 'About',            href: 'team.html' },
-    { id: 'flow',            label: 'Grants for NGOs!',  short: 'Grants',           href: 'flow.html' },
-    { id: 'source',          label: 'Weird courses :)',  short: 'Courses',          href: 'source.html' },
-    { id: 'delta',           label: 'Research grants',   short: 'Research',         href: 'delta.html' },
-    { id: 'current',         label: 'I Want to Act!',    short: 'Act',              href: 'current.html' },
-    { id: 'thiswasviolence', label: '#ThisWasViolence',  short: '#ThisWasViolence', href: 'thiswasviolence.html' },
-    { id: 'contact',         label: 'Contact us',        short: 'Contact',          href: 'contact.html' }
+    { id: 'flow',    href: 'flow.html',    label: 'Grants for NGOs!' },
+    { id: 'source',  href: 'source.html',  label: 'Weird courses ' + SMILEY },
+    { id: 'delta',   href: 'delta.html',   label: 'Research grants' },
+    { id: 'current', href: 'current.html', label: 'I Want to Act!' }
+  ];
+  var MORE = [
+    { id: 'thiswasviolence', href: 'thiswasviolence.html', label: '#ThisWasViolence' },
+    { id: 'team',            href: 'team.html',            label: 'About us' },
+    { id: 'contact',         href: 'contact.html',         label: 'Contact us' }
   ];
 
-  var page = document.body.getAttribute('data-page') || '';
-  // On the Support page itself, the "Support us" CTA is omitted.
-  var onSupport = page === 'support';
+  var page = (document.body.getAttribute('data-page') || '').toLowerCase();
 
-  function navLinksHTML(cls, useShort) {
-    var base = cls || '';
-    return NAV.map(function (n) {
-      var active = n.id === page ? ' is-active' : '';
-      var klass = (base + active).trim();
-      var attr = klass ? ' class="' + klass + '"' : '';
-      var text = useShort ? (n.short || n.label) : n.label;
-      return '<a' + attr + ' href="' + n.href + '">' + text + '</a>';
-    }).join('');
-  }
+  function active(id) { return id === page ? ' hd-active' : ''; }
 
   function headerHTML() {
-    var supportBtn = onSupport ? '' : '<a class="nav-support nav-desktop" href="support.html">Support us</a>';
-    var mobileSupport = onSupport ? '' : '<a class="mobile-support" href="support.html">Support us</a>';
+    var links = NAV.map(function (n) {
+      return '<a href="' + n.href + '" class="hd-link' + active(n.id) + '">' + n.label + '</a>';
+    }).join('');
+    var moreLinks = MORE.map(function (n) {
+      return '<a href="' + n.href + '" class="hd-link' + active(n.id) + '" data-drop="1">' + n.label + '</a>';
+    }).join('');
+
+    var panelLinks = NAV.map(function (n) {
+      return '<a href="' + n.href + '" class="hd-link">' + n.label + '</a>';
+    }).join('');
+    var panelMore = MORE.map(function (n) {
+      return '<a href="' + n.href + '" class="hd-link hd-panel-sub">' + n.label + '</a>';
+    }).join('');
+
     return '' +
-      '<a class="logo" href="index.html"><img src="assets/logo-full-black.svg" alt="Sibility" /><span class="reg">&reg;</span></a>' +
-      '<nav class="nav-links nav-desktop">' + navLinksHTML('nav-link', true) + '</nav>' +
-      supportBtn +
-      '<div class="burger nav-mobile" aria-label="Menu" role="button" tabindex="0">&#9776;</div>' +
-      '<div class="mobile-panel">' +
-        navLinksHTML('', false) +
-        mobileSupport +
+      '<a class="hd-brand" href="index.html">' +
+        '<img class="hd-logo" src="assets/logo-full-black.svg" alt="Sibility" />' +
+        '<span class="hd-reg">&reg;</span>' +
+      '</a>' +
+      '<nav class="hd-nav">' +
+        links +
+        '<div class="hd-more">' +
+          '<div class="hd-more-btn" role="button" tabindex="0">More<span class="hd-more-arrow">&#9662;</span></div>' +
+          '<div class="hd-more-menu">' + moreLinks + '</div>' +
+        '</div>' +
+      '</nav>' +
+      '<button class="hd-burger" aria-label="Menu" aria-expanded="false">&#9776;</button>' +
+      '<div class="hd-panel">' +
+        panelLinks +
+        '<div class="hd-panel-rule"></div>' +
+        panelMore +
       '</div>';
   }
 
   function footerHTML() {
     return '' +
-      '<div class="footer-top">' +
-        '<div class="footer-brief">' +
-          '<div class="eyebrow">In brief</div>' +
-          '<p>Sibility is an independent initiative that strengthens the human capacity for nonviolence — through grants, involvement, research and education.</p>' +
+      '<div class="container">' +
+        '<div class="ft-top">' +
+          '<div style="max-width:460px;">' +
+            '<a href="index.html" style="display:inline-block;"><img class="ft-logo" src="assets/logo-full-cream.svg" alt="Sibility" /></a>' +
+            '<div class="ft-tagline">Nonviolence is a capacity.<br><span>Let&rsquo;s build it together.</span></div>' +
+          '</div>' +
+          '<div class="ft-cols">' +
+            '<div>' +
+              '<div class="ft-lbl">Reach us</div>' +
+              '<div class="ft-links">' +
+                '<a href="mailto:hello@sibility.org" class="ftl">hello@sibility.org</a>' +
+                '<a href="#" class="ftl">Instagram</a>' +
+                '<a href="#" class="ftl">Telegram</a>' +
+                '<a href="#" class="ftl">YouTube</a>' +
+              '</div>' +
+            '</div>' +
+            '<div>' +
+              '<div class="ft-lbl">Legal</div>' +
+              '<div class="ft-links">' +
+                '<a href="#" class="ftl">Privacy Policy</a>' +
+                '<a href="#" class="ftl">Terms of Use</a>' +
+                '<a href="#" class="ftl">Annual report</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
-        '<div class="footer-social">' +
-          '<a class="is-static">Instagram</a>' +
-          '<a class="is-static">Telegram</a>' +
-          '<a class="is-static">YouTube</a>' +
+        '<div class="ft-bottom">' +
+          '<p class="ft-legal">Sibility Initiative, Inc. is a 501(c)(3) nonprofit registered in Delaware, USA &nbsp;&middot;&nbsp; EIN 92&#8209;3847156 &nbsp;&middot;&nbsp; 2093 Philadelphia Pike #4821, Claymont, DE 19703. Contributions are tax&#8209;deductible where permitted by law.</p>' +
+          '<div class="ft-copy">&copy; 2026 Sibility Initiative</div>' +
         '</div>' +
-      '</div>' +
-      '<div class="footer-bottom">' +
-        '<a class="logo" href="index.html"><img src="assets/logo-full-black.svg" alt="Sibility" /></a>' +
-        '<div class="footer-copy">© 2026 Sibility Initiative</div>' +
       '</div>';
   }
 
-  function bgSwitchHTML() {
-    return '' +
-      '<span class="lbl">BG</span>' +
-      '<div class="bg-swatch" data-field="#efece8" title="Warm white" style="background:#efece8;"></div>' +
-      '<div class="bg-swatch" data-field="#e0e4ea" title="Grey-blue" style="background:#e0e4ea;"></div>';
-  }
-
-  /* ---------- inject header ---------- */
+  /* ---------- mount header ---------- */
   var header = document.getElementById('site-header');
   if (header) {
     header.className = 'site-header';
     header.innerHTML = headerHTML();
+
+    // shrink-on-scroll
+    var onScroll = function () {
+      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      header.classList.toggle('scrolled', y > 12);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // More dropdown (hover on desktop, click/keyboard everywhere)
+    var more = header.querySelector('.hd-more');
+    if (more) {
+      var moreBtn = more.querySelector('.hd-more-btn');
+      more.addEventListener('mouseenter', function () { more.classList.add('open'); });
+      more.addEventListener('mouseleave', function () { more.classList.remove('open'); });
+      moreBtn.addEventListener('click', function (e) { e.stopPropagation(); more.classList.toggle('open'); });
+      moreBtn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); more.classList.toggle('open'); }
+      });
+      document.addEventListener('click', function (e) { if (!more.contains(e.target)) more.classList.remove('open'); });
+    }
+
+    // mobile panel
+    var burger = header.querySelector('.hd-burger');
+    function setNav(open) {
+      header.classList.toggle('nav-open', open);
+      document.body.classList.toggle('nav-lock', open);
+      if (burger) {
+        burger.innerHTML = open ? '&#10005;' : '&#9776;';
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    if (burger) {
+      burger.addEventListener('click', function () { setNav(!header.classList.contains('nav-open')); });
+    }
+    header.querySelectorAll('.hd-panel a').forEach(function (a) {
+      a.addEventListener('click', function () { setNav(false); });
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 900 && header.classList.contains('nav-open')) setNav(false);
+    });
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.classList.contains('nav-open')) setNav(false);
+    });
   }
 
-  /* ---------- inject footer ---------- */
+  /* ---------- mount footer ---------- */
   var footer = document.getElementById('site-footer');
   if (footer) {
     footer.className = 'site-footer';
     footer.innerHTML = footerHTML();
   }
 
-  /* ---------- inject BG switcher ---------- */
-  var bg = document.createElement('div');
-  bg.className = 'bg-switch';
-  bg.innerHTML = bgSwitchHTML();
-  document.body.appendChild(bg);
-
-  /* ---------- BG switcher behaviour (persisted) ---------- */
-  var WARM = '#efece8';
-  var BLUE = '#e0e4ea';
-  var RGB = { '#efece8': '239, 236, 232', '#e0e4ea': '224, 228, 234' };
-  var root = document.documentElement;
-
-  function applyField(color) {
-    if (color !== WARM && color !== BLUE) color = WARM;
-    root.style.setProperty('--field', color);
-    root.style.setProperty('--field-rgb', RGB[color]);
-    document.querySelectorAll('.bg-swatch').forEach(function (s) {
-      s.classList.toggle('is-active', s.getAttribute('data-field') === color);
-    });
-    try { localStorage.setItem('sibility-field', color); } catch (e) {}
-  }
-  var saved = null;
-  try { saved = localStorage.getItem('sibility-field'); } catch (e) {}
-  applyField(saved || WARM);
-  document.querySelectorAll('.bg-swatch').forEach(function (s) {
-    s.addEventListener('click', function () { applyField(s.getAttribute('data-field')); });
-  });
-
-  /* ---------- header shrink-on-scroll ---------- */
-  function onScroll() {
-    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    if (header) header.classList.toggle('scrolled', y > 12);
-  }
-  window.addEventListener('scroll', onScroll, true);
-  onScroll();
-
-  /* ---------- full-screen mobile menu ---------- */
-  if (header) {
-    var burger = header.querySelector('.burger');
-    function setOpen(open) {
-      header.classList.toggle('nav-open', open);
-      if (burger) burger.textContent = open ? '✕' : '☰';
-    }
-    if (burger) {
-      burger.addEventListener('click', function () { setOpen(!header.classList.contains('nav-open')); });
-      burger.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!header.classList.contains('nav-open')); }
-      });
-    }
-    header.querySelectorAll('.mobile-panel a').forEach(function (a) {
-      a.addEventListener('click', function () { setOpen(false); });
-    });
-    window.addEventListener('resize', function () {
-      if (window.innerWidth >= 820 && header.classList.contains('nav-open')) setOpen(false);
-    });
+  /* ---------- AIGuide floating chat widget (site-wide) ---------- */
+  if (!window.__sibilityAI && !document.querySelector('script[data-aig]')) {
+    var s = document.createElement('script');
+    s.src = 'js/aiguide.js';
+    s.setAttribute('data-aig', '1');
+    document.body.appendChild(s);
   }
 })();

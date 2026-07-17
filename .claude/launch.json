@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "sibility-colour", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8802"], "port": 8802 }
+  ]
+}

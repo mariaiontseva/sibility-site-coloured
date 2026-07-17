@@ -1,129 +1,128 @@
 /* ============================================================
    Sibility Current — instrument library
-   Multi-axis chip filter (AND across axes, OR within an axis)
-   + expandable rows. Data recreated from the handoff.
+   Unified search + multi-axis chip filter (AND across axes,
+   OR within an axis) + free-text search over a catalog of
+   "act" projects. The search arrow / Enter hands the query to
+   the AIGuide (aiguide.html). Renders into #cur-panel (search
+   + filters) and #cur-catalog (count + cards).
    ============================================================ */
 (function () {
+  var panelEl = document.getElementById('cur-panel');
+  var catalogEl = document.getElementById('cur-catalog');
+  if (!panelEl || !catalogEl) return;
+
+  var ITEMS = [
+    { title: "A children's book about non-violence", desc: "A toy-book you can download, print, and put together with your child — and the conversation just happens while you play.", tags: ['one-time', '2–4 hours', 'free', 'family', 'remote'] },
+    { title: 'Volunteer at a non-violence lecture series', desc: '“A Farewell to Arms” lecture hall needs a hand: greeting guests, running social media, filming events, helping with sound.', tags: ['weekly', '2–4 hours', 'free', 'in a team', 'in person'] },
+    { title: 'Write to a detained activist', desc: 'A short letter tells someone in prison they are not forgotten. We give you the address, the guidelines, and a first line to borrow.', tags: ['one-time', 'a few minutes', 'free', 'remote'] },
+    { title: 'Translate a nonviolence handbook', desc: 'Help bring a field guide for peaceful protest into another language. Work at your own pace, one chapter at a time.', tags: ['one-time', '2–4 hours', 'free', 'remote'] },
+    { title: 'Host a neighbourhood dialogue circle', desc: 'Gather a few neighbours for a guided conversation about conflict on your street. We send the questions and the ground rules.', tags: ['weekly', '2–4 hours', 'free', 'in person', 'in a team'] },
+    { title: 'Fundraise for a de-escalation hotline', desc: 'Run a small online drive for a hotline that talks people down from violence. A page, a goal, and a weekend is enough to start.', tags: ['one-time', '2–4 hours', 'free', 'remote', 'family'] }
+  ];
+  var PLACEHOLDERS = 2;
   var AXES = [
-    { key: 'situation', label: 'Situation',    tags: ['experiencing violence', 'someone close to me', 'witnessing', 'I might be harming', 'prevention'] },
-    { key: 'role',      label: 'Who you are',  tags: ['parent', 'partner', 'teacher', 'doctor', 'neighbour', 'colleague', 'friend'] },
-    { key: 'action',    label: 'Type of action', tags: ['safety', 'conversation', 'legal', 'psychological', 'educational', 'organizational'] }
+    { key: 'commitment', label: 'Commitment', tags: ['one-time', 'weekly'] },
+    { key: 'time', label: 'Time', tags: ['a few minutes', '2–4 hours'] },
+    { key: 'cost', label: 'Cost', tags: ['free'] },
+    { key: 'format', label: 'Format', tags: ['remote', 'in person', 'in a team', 'family'] }
   ];
 
-  var DATA = [
-    { id: 1, title: 'Personal safety plan', detail: 'A step-by-step plan for the moment things become dangerous: where to go, what to take, who to call. Prepared in advance, when you can still think calmly.', situation: ['experiencing violence'], role: ['partner', 'parent', 'friend'], action: ['safety'] },
-    { id: 2, title: 'Emergency contacts card', detail: 'A small card, or a note in your phone, with hotline numbers, one trusted contact and the nearest shelter — reachable in under a minute.', situation: ['experiencing violence', 'someone close to me'], role: ['partner', 'parent', 'friend'], action: ['safety'] },
-    { id: 3, title: 'Code word agreement', detail: 'Agree a harmless word with people you trust that means "call for help now" — usable in a call or text that an abuser may see.', situation: ['experiencing violence'], role: ['friend', 'neighbour', 'partner'], action: ['safety', 'conversation'] },
-    { id: 4, title: 'Incident documentation', detail: 'A dated record of what happened: notes, photos, screenshots, medical visits. It is what makes legal steps possible later.', situation: ['experiencing violence'], role: ['partner', 'parent'], action: ['legal'] },
-    { id: 5, title: 'Protective orders, explained', detail: 'What a protective order can and cannot do, what evidence helps, and where the process starts.', situation: ['experiencing violence', 'someone close to me'], role: ['partner', 'parent'], action: ['legal'] },
-    { id: 6, title: 'Medical documentation of injuries', detail: 'What to ask a doctor to record after an injury — wording, dates, follow-ups — so the document holds up later.', situation: ['experiencing violence'], role: ['doctor', 'partner'], action: ['legal'] },
-    { id: 7, title: 'Digital safety check', detail: 'Going through your phone, accounts and location sharing to make sure an abuser cannot track or read them.', situation: ['experiencing violence'], role: ['partner', 'friend'], action: ['safety'] },
-    { id: 8, title: 'Responding to disclosure', detail: 'What to say — and not say — when someone tells you about violence. Believing, not interrogating, not taking over their decisions.', situation: ['someone close to me', 'witnessing'], role: ['friend', 'teacher', 'doctor', 'parent'], action: ['conversation'] },
-    { id: 9, title: 'Bystander intervention', detail: 'Safe ways to interrupt violence you witness — from distraction to calling in others — without escalating it.', situation: ['witnessing'], role: ['neighbour', 'colleague', 'friend'], action: ['safety', 'conversation'] },
-    { id: 10, title: 'De-escalation in the moment', detail: 'Lowering the temperature of a conflict that is heating up: voice, distance, timing, exits.', situation: ['witnessing', 'I might be harming'], role: ['partner', 'parent', 'teacher'], action: ['conversation'] },
-    { id: 11, title: 'Nonviolent communication basics', detail: 'A practical framework for saying hard things without attack: observations, feelings, needs, requests.', situation: ['prevention', 'I might be harming'], role: ['parent', 'partner', 'teacher'], action: ['conversation', 'educational'] },
-    { id: 12, title: 'Talking to children about boundaries', detail: 'Age-appropriate ways to talk about body, consent and secrets — so children can recognize harm and tell about it.', situation: ['prevention'], role: ['parent', 'teacher'], action: ['educational', 'conversation'] },
-    { id: 13, title: 'Recognizing signs in children', detail: 'Behavioral and physical markers that a child may be experiencing violence — and what to do next.', situation: ['someone close to me', 'witnessing'], role: ['parent', 'teacher', 'doctor'], action: ['educational'] },
-    { id: 14, title: 'Self-check: am I harming?', detail: 'An honest questionnaire about your own behavior at home — and the first steps if the answers worry you.', situation: ['I might be harming'], role: ['partner', 'parent'], action: ['psychological'] },
-    { id: 15, title: 'Anger pause protocol', detail: 'A pre-agreed time-out: how to leave the room before you harm, where to go, and how to come back.', situation: ['I might be harming'], role: ['partner', 'parent'], action: ['psychological'] },
-    { id: 16, title: 'Finding the right therapist', detail: 'How to look for violence-informed psychological help: what to ask in the first session, and the red flags.', situation: ['experiencing violence', 'I might be harming', 'someone close to me'], role: ['partner', 'parent', 'friend'], action: ['psychological'] },
-    { id: 17, title: 'Support circle mapping', detail: 'Mapping who around you can help with what — housing, money, listening — and how to ask each of them concretely.', situation: ['experiencing violence', 'someone close to me'], role: ['friend', 'parent', 'partner'], action: ['psychological', 'organizational'] },
-    { id: 18, title: 'Workplace response route', detail: 'What a colleague or a manager can do when someone at work is experiencing violence at home.', situation: ['witnessing', 'someone close to me'], role: ['colleague'], action: ['organizational'] },
-    { id: 19, title: 'School disclosure protocol', detail: 'A step-by-step for teachers when a student discloses violence: obligations, wording, escalation.', situation: ['witnessing', 'someone close to me'], role: ['teacher'], action: ['organizational'] },
-    { id: 20, title: 'Neighbourhood agreement', detail: 'Neighbours agree in advance how to react to sounds of violence: who knocks, who calls, what to say.', situation: ['witnessing', 'prevention'], role: ['neighbour'], action: ['organizational'] }
-  ];
+  var state = { query: '', selected: {} };
 
-  var selected = {};       // key 'axis:tag' -> true
-  var expandedId = null;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  var filtersEl = document.getElementById('lib-filters');
-  var countEl = document.getElementById('lib-count');
-  var listEl = document.getElementById('lib-list');
-  if (!filtersEl || !countEl || !listEl) return;
+  function askGuide() {
+    var q = (state.query || '').trim() || 'I want to talk to my kids about violence and non-violence';
+    if (window.__sibilityAI && window.__sibilityAI.ask) { window.__sibilityAI.ask(q); return; }
+    window.location.href = 'aiguide.html?q=' + encodeURIComponent(q);
+  }
 
-  function passes(item) {
+  /* ---------- build search + filter panel once (input persists) ---------- */
+  var groupsHTML = AXES.map(function (a) {
+    var chips = a.tags.map(function (t) {
+      return '<div class="cur-chip" data-tag="' + esc(t) + '">' + esc(t) + '</div>';
+    }).join('');
+    return '<div class="cur-group"><div class="cur-group-lbl">' + esc(a.label) + '</div><div class="cur-chips">' + chips + '</div></div>';
+  }).join('');
+
+  panelEl.innerHTML =
+    '<div class="cur-panel">' +
+      '<div class="cur-srch">' +
+        '<span class="cur-srch-lbl">Search</span>' +
+        '<input type="text" id="cur-q" placeholder="I want to talk to my kids about non-violence…" />' +
+        '<div class="cur-go" id="cur-go" title="Ask the Sibility guide">&rarr;</div>' +
+      '</div>' +
+      '<div class="cur-srch-rule"></div>' +
+      '<div class="cur-groups">' + groupsHTML + '</div>' +
+    '</div>';
+
+  var input = document.getElementById('cur-q');
+  input.addEventListener('input', function () { state.query = input.value; renderCatalog(); });
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); askGuide(); } });
+  document.getElementById('cur-go').addEventListener('click', askGuide);
+
+  panelEl.querySelectorAll('.cur-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var t = chip.getAttribute('data-tag');
+      state.selected[t] = !state.selected[t];
+      chip.classList.toggle('on', !!state.selected[t]);
+      renderCatalog();
+    });
+  });
+
+  /* ---------- catalog ---------- */
+  function passesChips(it) {
     return AXES.every(function (a) {
-      var active = a.tags.filter(function (t) { return selected[a.key + ':' + t]; });
+      var active = a.tags.filter(function (t) { return state.selected[t]; });
       if (!active.length) return true;
-      return active.some(function (t) { return item[a.key].indexOf(t) !== -1; });
+      return active.some(function (t) { return it.tags.indexOf(t) !== -1; });
     });
   }
-
-  function el(tag, cls, text) {
-    var e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text != null) e.textContent = text;
-    return e;
+  function passesText(it) {
+    var q = (state.query || '').trim().toLowerCase();
+    if (!q) return true;
+    return (it.title + ' ' + it.desc + ' ' + it.tags.join(' ')).toLowerCase().indexOf(q) !== -1;
   }
 
-  function renderFilters() {
-    filtersEl.innerHTML = '';
-    AXES.forEach(function (a) {
-      var group = el('div', 'filter-group');
-      group.appendChild(el('div', 'filter-label', a.label));
-      var chips = el('div', 'chips');
-      a.tags.forEach(function (t) {
-        var on = !!selected[a.key + ':' + t];
-        var chip = el('div', 'chip' + (on ? ' on' : ''), t);
-        chip.addEventListener('click', function () {
-          selected[a.key + ':' + t] = !selected[a.key + ':' + t];
-          render();
-        });
-        chips.appendChild(chip);
-      });
-      group.appendChild(chips);
-      filtersEl.appendChild(group);
-    });
+  function cardHTML(it) {
+    var tags = it.tags.map(function (t) { return '<span class="cur-tag">' + esc(t) + '</span>'; }).join('');
+    return '<div class="cur-card"><h3>' + esc(it.title) + '</h3><p>' + esc(it.desc) + '</p><div class="cur-card-tags">' + tags + '</div></div>';
+  }
+  function placeholderHTML() {
+    return '<div class="cur-card ph"><div class="cur-soon">Coming soon</div><h3>A new way to act</h3>' +
+      '<p>We’re preparing another project for this library — check back soon.</p>' +
+      '<div class="cur-card-tags"><span class="cur-tag">In the works</span></div></div>';
   }
 
-  function renderCount(shown) {
-    countEl.innerHTML = '';
-    countEl.appendChild(el('div', 'count', shown + ' of ' + DATA.length + ' instruments — the library is growing toward 40+'));
-    if (Object.keys(selected).some(function (k) { return selected[k]; })) {
-      var clear = el('div', 'clear', 'clear filters');
-      clear.addEventListener('click', function () { selected = {}; render(); });
-      countEl.appendChild(clear);
+  function renderCatalog() {
+    var q = (state.query || '').trim();
+    var anyActive = q.length > 0 || Object.keys(state.selected).some(function (k) { return state.selected[k]; });
+    var matched = ITEMS.filter(function (it) { return passesChips(it) && passesText(it); });
+
+    var countRow = '<div class="cur-count-row"><div class="cur-count-lbl">The catalog</div>' +
+      (anyActive ? '<div class="cur-count-n">' + matched.length + ' of ' + ITEMS.length + ' projects</div>' +
+        '<div class="cur-clear" id="cur-clear">clear filters</div>' : '') + '</div>';
+
+    var body;
+    if (anyActive && matched.length === 0) {
+      body = '<div class="cur-empty"><p>Nothing matches this combination yet.</p>' +
+        '<div class="cur-empty-btn" id="cur-ask">Ask the Sibility guide</div></div>';
+    } else {
+      var cards = matched.map(cardHTML);
+      if (!anyActive) { for (var i = 0; i < PLACEHOLDERS; i++) cards.push(placeholderHTML()); }
+      body = '<div class="cur-grid">' + cards.join('') + '</div>';
     }
-  }
+    catalogEl.innerHTML = countRow + body;
 
-  function renderList(items) {
-    listEl.innerHTML = '';
-    if (!items.length) {
-      var empty = el('div', 'empty');
-      empty.appendChild(el('p', null, 'nothing matches this combination — remove a filter'));
-      listEl.appendChild(empty);
-      return;
-    }
-    items.forEach(function (it) {
-      var expanded = expandedId === it.id;
-      var row = el('div', 'inst');
-
-      var head = el('div', 'inst-head');
-      head.appendChild(el('h3', 'inst-title', it.title));
-      head.appendChild(el('div', 'inst-glyph', expanded ? '−' : '+'));
-      head.addEventListener('click', function () {
-        expandedId = expanded ? null : it.id;
-        render();
-      });
-      row.appendChild(head);
-
-      if (expanded) {
-        var body = el('div', 'inst-body');
-        body.appendChild(el('p', 'inst-detail', it.detail));
-        var tags = it.situation.concat(it.role, it.action).join(' · ');
-        body.appendChild(el('div', 'inst-tags', tags));
-        row.appendChild(body);
-      }
-      listEl.appendChild(row);
+    var clear = document.getElementById('cur-clear');
+    if (clear) clear.addEventListener('click', function () {
+      state.selected = {}; state.query = ''; input.value = '';
+      panelEl.querySelectorAll('.cur-chip').forEach(function (c) { c.classList.remove('on'); });
+      renderCatalog();
     });
+    var ask = document.getElementById('cur-ask');
+    if (ask) ask.addEventListener('click', askGuide);
   }
 
-  function render() {
-    var shown = DATA.filter(passes);
-    renderFilters();
-    renderCount(shown.length);
-    renderList(shown);
-  }
-
-  render();
+  renderCatalog();
 })();

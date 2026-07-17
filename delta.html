@@ -3,11 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sibility Delta — Research Center</title>
+  <title>Sibility Delta — Research grants</title>
+  <meta name="description" content="Funding for rigorous research into how violence is prevented — and what makes nonviolence work in the real world." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/color.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <style>
+    .fund-grid { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 72px); align-items: stretch; }
+    .fund-img { flex: 1 1 300px; max-width: 440px; position: relative; overflow: hidden; background: var(--ink); min-height: clamp(360px, 44vw, 640px); }
+    .fund-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(0.85) brightness(1.02); }
+    .fund-img .tint { position: absolute; inset: 0; background: var(--field); mix-blend-mode: color; opacity: 0.22; pointer-events: none; }
+    .fund-body { flex: 2 1 480px; }
+    .fund-body p { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.6; color: var(--body); margin: 0 0 22px; max-width: 680px; }
+    .fund-body p:last-child { margin-bottom: 0; }
+  </style>
 </head>
 <body data-page="delta">
 
@@ -15,61 +25,82 @@
 
   <!-- HERO -->
   <section class="page-hero">
-    <div class="hero-ghost" style="right: -35px;">delta</div>
-    <div class="eyebrow" style="margin-bottom: 28px;">Research Center</div>
-    <h1 class="hero-h1">Sibility Delta</h1>
-    <p class="hero-intro">Research in nonviolence: what shapes it, which factors sustain it — guided by a scientific council.</p>
-    <div class="hero-actions">
-      <a href="apply-delta.html" class="btn btn--fill btn--lg">Apply with a proposal</a>
-      <a href="#cases" class="btn btn--outline btn--lg">Cases</a>
+    <div class="page-hero-mark">
+      <svg viewBox="548 432 824 566" fill="none" stroke="url(#gradDelta)" stroke-width="60" stroke-linejoin="round"><defs><linearGradient id="gradDelta" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d9bd"></stop><stop offset="1" stop-color="#DB8236"></stop></linearGradient></defs><path d="M960,486 L1306,930 L614,930 Z"></path></svg>
     </div>
-  </section>
-
-  <!-- DESCRIPTION -->
-  <section class="detail-section">
-    <div class="frame frame-3">
-      <div class="frame-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px;"></div>
-        <h2 style="font-size: 22px;">Research in nonviolence</h2>
-        <p>What nonviolence is, how it works, and how it can be measured.</p>
-      </div>
-      <div class="frame-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px; transform: rotate(22deg);"></div>
-        <h2 style="font-size: 22px;">Factors &amp; influences</h2>
-        <p>Which conditions strengthen the capacity for nonviolence — and which erode it.</p>
-      </div>
-      <div class="frame-cell">
-        <div class="ink-square" style="margin: 2px 0 26px 2px; transform: rotate(45deg);"></div>
-        <h2 style="font-size: 22px;">Scientific council</h2>
-        <p>An independent council reviews methods and results, and sets the research agenda.</p>
+    <div class="page-hero-inner">
+      <div class="section-eyebrow">Sibility Delta</div>
+      <h1>Research grants</h1>
+      <p class="lead">Funding for rigorous research into how violence is prevented — and what actually makes nonviolence work in the real world.</p>
+      <div style="margin-top: 36px;">
+        <button type="button" class="btn-solid" data-apply-open>Apply <span class="arw">&rarr;</span></button>
       </div>
     </div>
   </section>
 
-  <!-- CASES -->
-  <section id="cases" class="detail-section">
-    <div class="eyebrow" style="margin-bottom: 16px;">Cases</div>
-    <h2 class="split-h2" style="margin-bottom: 40px;">Studies we run and fund.</h2>
-    <div class="cards-3">
-      <div class="case-ph"><span>study — coming soon</span></div>
-      <div class="case-ph"><span>study — coming soon</span></div>
-      <div class="case-ph"><span>study — coming soon</span></div>
+  <!-- TEXT + VERTICAL IMAGE -->
+  <section style="padding: 0 var(--gutter) clamp(56px, 7vw, 96px);">
+    <div class="fund-grid">
+      <div class="fund-img">
+        <img src="assets/hero-molecule.avif" alt="" />
+        <div class="tint"></div>
+      </div>
+      <div class="fund-body">
+        <div class="eyebrow" style="margin-bottom: 22px;">What we fund</div>
+        <p>We fund research that helps the field understand violence and how to reduce it — from field studies and evaluations to theory, measurement and method. We commit for the long term rather than a single cycle, so researchers can follow the question wherever it leads, and grantees keep their freedom, including the freedom to publish openly.</p>
+        <p>Funding can go to the research itself — salaries, fieldwork, data collection, analysis and the time it takes to think — or to collaborations that connect scholars with the practitioners doing the work. We try to fund what actually advances understanding, not what happens to fit a rigid template.</p>
+        <p>We know important questions are often carried by early-career and independent researchers with the least support. There is no minimum track record and no requirement to sit inside a large institution — what matters is that the question genuinely advances nonviolence, and that you can describe how your work answers it.</p>
+        <p>Applications are open on a rolling basis. Clear conditions, a clear process, and decisions explained — every answer, yes or no, comes with reasons. Professionals talking with professionals.</p>
+      </div>
     </div>
   </section>
 
-  <!-- INVITATION TO APPLY -->
-  <section id="apply" class="detail-section">
-    <div class="band">
-      <h2>Researching nonviolence? Bring us your proposal.</h2>
-      <div>
-        <p>We fund research that helps understand and strengthen the capacity for nonviolence. The scientific council reviews every proposal.</p>
-        <a href="apply-delta.html" class="btn btn--reverse btn--lg">Apply with a proposal</a>
-      </div>
-    </div>
+  <!-- SHARED TAIL -->
+  <section style="padding: 0 var(--gutter);">
+    <div id="donate-block"></div>
+    <div id="newsletter-block"></div>
   </section>
 
   <footer id="site-footer"></footer>
 
+  <!-- APPLICATION MODAL -->
+  <div class="apply-overlay" role="dialog" aria-modal="true" aria-label="Apply for a research grant">
+    <div class="apply-card">
+      <div class="apply-head">
+        <div>
+          <div class="eyebrow" style="margin-bottom: 10px;">Apply for a research grant</div>
+          <h2 class="apply-title">Tell us about your research.</h2>
+        </div>
+        <button type="button" class="apply-x" aria-label="Close" data-apply-close>&#10005;</button>
+      </div>
+
+      <form class="apply-form" novalidate>
+        <div class="apply-row">
+          <div class="apply-col"><label class="fld-label">Your name</label><input type="text" class="fld" data-required placeholder="First and last name" /></div>
+          <div class="apply-col"><label class="fld-label">Email</label><input type="email" class="fld" data-required placeholder="you@email.org" /></div>
+        </div>
+        <div><label class="fld-label">Affiliation (or independent)</label><input type="text" class="fld" placeholder="University, lab, or independent" /></div>
+        <div><label class="fld-label">Research topic</label><input type="text" class="fld" placeholder="The question you want to study" /></div>
+        <div><label class="fld-label">Link to CV or proposal (optional)</label><input type="text" class="fld" placeholder="https://" /></div>
+        <div class="apply-actions">
+          <span class="apply-err" style="display:none;"></span>
+          <span class="apply-hint">We reply within two weeks.</span>
+          <button type="submit" class="apply-submit">Submit application <span class="arw">&rarr;</span></button>
+        </div>
+      </form>
+
+      <div class="apply-done" style="display:none;">
+        <svg viewBox="0 0 512 512" fill="none" stroke="#DB8236" stroke-width="30" style="height: 56px; width: auto; margin-bottom: 22px;"><circle cx="256" cy="256" r="222"></circle><circle cx="190" cy="208" r="19" fill="#DB8236" stroke="none"></circle><circle cx="322" cy="208" r="19" fill="#DB8236" stroke="none"></circle><path d="M150 298 Q256 384 362 298" stroke-linecap="round"></path></svg>
+        <h3>Thank you — we&rsquo;ll be in touch.</h3>
+        <p>We read every application and reply within two weeks, with reasons either way.</p>
+        <button type="button" class="btn-solid" data-apply-close>Close</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/chrome.js"></script>
+  <script src="js/donate.js"></script>
+  <script src="js/newsletter.js"></script>
+  <script src="js/apply.js"></script>
 </body>
 </html>

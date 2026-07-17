@@ -4,63 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shelters — Sibility</title>
+  <meta name="description" content="Safe places to stay. Addresses are never published — call the shelter or a hotline, and they will guide you in." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/color.css" />
+  <link rel="stylesheet" href="css/site.css" />
 </head>
-<body data-page="">
+<body data-page="shelters">
 
   <header id="site-header"></header>
 
   <!-- HERO -->
-  <section class="page-hero" style="padding-bottom: clamp(28px, 5vw, 48px);">
-    <div class="hero-ghost" style="right: -40px; bottom: -60px; font-size: clamp(100px, 22vw, 200px);">shelters</div>
-    <div class="eyebrow" style="margin-bottom: 28px;">Get help now</div>
-    <h1 class="h1" style="margin: 0 0 24px;">Shelters</h1>
-    <p class="lead" style="max-width: 620px; margin: 0;">Safe places to stay. Addresses are never published — call the shelter or a hotline, and they will guide you in.</p>
+  <section class="dir-hero">
+    <div class="dir-ghost">shelters</div>
+    <div class="dir-hero-inner">
+      <div class="eyebrow" style="margin-bottom: 28px;">Get help now</div>
+      <h1>Shelters</h1>
+      <p>Safe places to stay. Addresses are never published — call the shelter or a hotline, and they will guide you in.</p>
+    </div>
   </section>
 
   <!-- EMERGENCY STRIP -->
-  <section class="detail-section" style="padding-bottom: 32px;">
-    <div class="emergency-strip">
-      <span class="lead-strong">In immediate danger?</span>
-      <span class="lead-sub">Call your local emergency number first — 112 across Europe. Or start with a <a href="hotlines.html">hotline</a>.</span>
+  <section class="dir-emergency-wrap">
+    <div class="dir-emergency">
+      <span class="lead">In immediate danger?</span>
+      <span class="rest">Call your local emergency number first — 112 across Europe. Or start with a <a href="hotlines.html">hotline</a>.</span>
     </div>
   </section>
 
   <!-- DIRECTORY -->
-  <section class="detail-section">
-    <div class="dir-wrap">
-      <div class="filters" id="dir-filters"></div>
-      <div class="count-row" id="dir-count"></div>
-      <div class="inst-list" id="dir-list"></div>
-      <p class="dir-note">sample directory — numbers are placeholders until the verified list is published</p>
-    </div>
+  <section class="dir-wrap">
+    <div id="directory"></div>
+  </section>
+
+  <!-- SHARED TAIL -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter);">
+    <div id="donate-block"></div>
+    <div id="newsletter-block"></div>
   </section>
 
   <footer id="site-footer"></footer>
 
-  <script>
-    window.SIB_DIRECTORY = {
-      noun: 'shelters',
-      metaKeys: ['country', 'city', 'note'],
-      data: [
-        { country: 'Germany', city: 'Berlin', name: 'Women’s shelter — Berlin', desc: 'For women, with or without children. Admission around the clock via the city crisis service.', phone: '+49 30 000 0001', note: 'admission 24/7 · via referral or direct call' },
-        { country: 'Germany', city: 'Berlin', name: 'Family crisis apartment — Berlin', desc: 'Short-term safe housing for parents with children while a longer solution is found.', phone: '+49 30 000 0002', note: 'admission by phone · stays up to 4 weeks' },
-        { country: 'Germany', city: 'Munich', name: 'Women’s shelter — Munich', desc: 'Safe accommodation and counselling; place for pets can be arranged.', phone: '+49 89 000 0001', note: 'admission 24/7 · direct call' },
-        { country: 'France', city: 'Paris', name: 'Emergency shelter — Paris', desc: 'For anyone fleeing domestic violence; interpreters available.', phone: '+33 1 00 00 00 01', note: 'admission via national line · 24/7' },
-        { country: 'France', city: 'Lyon', name: 'Women’s refuge — Lyon', desc: 'Accommodation for women and children, with legal support on site.', phone: '+33 4 00 00 00 01', note: 'admission Mon–Sun 8:00–22:00' },
-        { country: 'United Kingdom', city: 'London', name: 'Refuge — Greater London', desc: 'Network of safe houses across the city; placement by referral line.', phone: '+44 20 0000 0001', note: 'admission 24/7 · via referral line' },
-        { country: 'United Kingdom', city: 'Manchester', name: 'Safe house — Manchester', desc: 'For women and children; men are referred to partner accommodation.', phone: '+44 161 000 0001', note: 'admission 24/7' },
-        { country: 'Poland', city: 'Warsaw', name: 'Crisis intervention centre — Warsaw', desc: 'Shelter, psychological and legal help under one roof.', phone: '+48 22 000 00 01', note: 'admission 24/7 · direct call' },
-        { country: 'Poland', city: 'Kraków', name: 'Mother and child shelter — Kraków', desc: 'For mothers with children; long-term stays possible.', phone: '+48 12 000 00 01', note: 'admission by phone 8:00–20:00' },
-        { country: 'Georgia', city: 'Tbilisi', name: 'State shelter — Tbilisi', desc: 'For women and children affected by violence; admission via the support hotline.', phone: '+995 32 000 001', note: 'admission via hotline' },
-        { country: 'Armenia', city: 'Yerevan', name: 'Women’s support centre shelter — Yerevan', desc: 'Safe housing with counselling and reintegration support.', phone: '+374 10 000 001', note: 'admission via crisis line' }
-      ]
-    };
-  </script>
   <script src="js/chrome.js"></script>
   <script src="js/directory.js"></script>
+  <script src="js/donate.js"></script>
+  <script src="js/newsletter.js"></script>
 </body>
 </html>
