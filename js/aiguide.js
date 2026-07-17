@@ -142,14 +142,6 @@
   if (qp) { window.__sibilityAI.ask(qp); return; }
 
   render();
-
-  /* auto-open once per session */
-  var seen = false;
-  try { seen = sessionStorage.getItem('sib_ai_opened') === '1'; } catch (e) {}
-  if (!seen) {
-    setTimeout(function () {
-      try { sessionStorage.setItem('sib_ai_opened', '1'); } catch (e) {}
-      if (!state.open && !state.dismissed) open();
-    }, 1400);
-  }
+  /* auto-open disabled for now — the guide only opens when the visitor
+     taps the launcher or a page hands it a query. */
 })();

@@ -32,10 +32,7 @@
       document.getElementById('aig-launch-page').addEventListener('click', function () {
         if (!openGuide()) { var t = setInterval(function () { if (openGuide()) clearInterval(t); }, 120); }
       });
-      // auto-open on arrival unless a ?q deep-link already drives it
-      if (!/[?&]q=/.test(window.location.search)) {
-        var tries = 0, t = setInterval(function () { if (openGuide() || ++tries > 40) clearInterval(t); }, 150);
-      }
+      // no auto-open — the guide opens only on tap (or a ?q deep-link)
     })();
   </script>
 </body>

@@ -25,8 +25,10 @@
   --serif: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  --gutter: clamp(20px, 5vw, 56px);
-  --maxw: 1240px;
+  --maxw: 1024px;
+  /* horizontal gutter that also centres content within a --maxw column
+     on wide screens (so nothing renders wider than 1024px) */
+  --gutter: max(clamp(20px, 5vw, 56px), calc((100% - var(--maxw)) / 2));
   --nav-bp: 900px;
 }
 
@@ -48,8 +50,9 @@ a:hover { color: var(--accent); }
 h1, h2, h3, h4 { font-family: var(--sans); margin: 0; }
 p { margin: 0; }
 
-/* centred content column used by wide sections & footer */
-.container { max-width: var(--maxw); margin: 0 auto; }
+/* centred content column — the --gutter now handles the 1024 cap,
+   so .container just needs to not fight it */
+.container { width: 100%; margin: 0 auto; }
 
 /* ---------- shared text primitives ---------- */
 .eyebrow {
@@ -159,6 +162,7 @@ p { margin: 0; }
   background: var(--ink); transform: scaleX(0); transform-origin: left center;
   transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
 }
+.hd-link:hover { color: var(--accent); }
 .hd-link:not([data-drop]):hover::after,
 .hd-link.hd-active:not([data-drop])::after { transform: scaleX(1); }
 .hd-smiley { height: 1.25em; width: auto; vertical-align: -0.28em; display: inline-block; }
@@ -460,18 +464,18 @@ textarea.fld { resize: vertical; min-height: 96px; line-height: 1.5; }
 /* ============================================================
    DIRECTORY (Hotlines / Shelters)
    ============================================================ */
-.dir-hero { position: relative; overflow: hidden; max-width: var(--maxw); margin: 0 auto; padding: clamp(40px, 7vw, 72px) var(--gutter) clamp(28px, 5vw, 48px); }
+.dir-hero { position: relative; overflow: hidden; padding: clamp(40px, 7vw, 72px) var(--gutter) clamp(28px, 5vw, 48px); }
 .dir-ghost { position: absolute; right: -0.1em; bottom: -0.28em; font-family: var(--sans); font-size: clamp(100px, 22vw, 200px); font-weight: 800; letter-spacing: -0.05em; color: rgba(24,9,8,0.05); line-height: 1; pointer-events: none; user-select: none; }
 .dir-hero-inner { position: relative; }
 .dir-hero h1 { font-size: clamp(40px, 5.5vw, 64px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.0; margin: 0 0 24px; }
 .dir-hero p { font-size: 17px; line-height: 1.6; color: var(--body); max-width: 620px; margin: 0; }
-.dir-emergency-wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 32px; }
+.dir-emergency-wrap { padding: 0 var(--gutter) 32px; }
 .dir-emergency { max-width: 860px; background: var(--ink); color: var(--on-ink); padding: 18px 24px; display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
 .dir-emergency .lead { font-size: 15px; font-weight: 700; }
 .dir-emergency .rest { font-size: 15px; color: #d6d6d2; }
 .dir-emergency a { color: var(--on-ink); text-decoration: underline; text-underline-offset: 4px; }
 .dir-emergency a:hover { color: var(--accent); }
-.dir-wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) clamp(56px, 9vw, 96px); }
+.dir-wrap { padding: 0 var(--gutter) clamp(56px, 9vw, 96px); }
 .dir-inner { max-width: 860px; }
 .dir-filters { display: flex; flex-wrap: wrap; gap: 24px 48px; margin-bottom: 28px; }
 .dir-axis { display: flex; flex-direction: column; gap: 10px; }
