@@ -11,24 +11,29 @@
    Nav order is intentionally Flow · Delta · Source · Current.
    ============================================================ */
 (function () {
+  // `short` shows in the desktop bar, `label` (full) in the mobile menu.
   var NAV = [
-    { id: 'flow',    label: 'Flow',    href: 'flow.html' },
-    { id: 'delta',   label: 'Delta',   href: 'delta.html' },
-    { id: 'source',  label: 'Source',  href: 'source.html' },
-    { id: 'current', label: 'Current', href: 'current.html' }
+    { id: 'team',            label: 'About us',         short: 'About',            href: 'team.html' },
+    { id: 'flow',            label: 'Grants for NGOs!',  short: 'Grants',           href: 'flow.html' },
+    { id: 'source',          label: 'Weird courses :)',  short: 'Courses',          href: 'source.html' },
+    { id: 'delta',           label: 'Research grants',   short: 'Research',         href: 'delta.html' },
+    { id: 'current',         label: 'I Want to Act!',    short: 'Act',              href: 'current.html' },
+    { id: 'thiswasviolence', label: '#ThisWasViolence',  short: '#ThisWasViolence', href: 'thiswasviolence.html' },
+    { id: 'contact',         label: 'Contact us',        short: 'Contact',          href: 'contact.html' }
   ];
 
   var page = document.body.getAttribute('data-page') || '';
   // On the Support page itself, the "Support us" CTA is omitted.
   var onSupport = page === 'support';
 
-  function navLinksHTML(cls) {
+  function navLinksHTML(cls, useShort) {
     var base = cls || '';
     return NAV.map(function (n) {
       var active = n.id === page ? ' is-active' : '';
       var klass = (base + active).trim();
       var attr = klass ? ' class="' + klass + '"' : '';
-      return '<a' + attr + ' href="' + n.href + '">' + n.label + '</a>';
+      var text = useShort ? (n.short || n.label) : n.label;
+      return '<a' + attr + ' href="' + n.href + '">' + text + '</a>';
     }).join('');
   }
 
@@ -37,11 +42,11 @@
     var mobileSupport = onSupport ? '' : '<a class="mobile-support" href="support.html">Support us</a>';
     return '' +
       '<a class="logo" href="index.html"><img src="assets/logo-full-black.svg" alt="Sibility" /><span class="reg">&reg;</span></a>' +
-      '<nav class="nav-links nav-desktop">' + navLinksHTML('nav-link') + '</nav>' +
+      '<nav class="nav-links nav-desktop">' + navLinksHTML('nav-link', true) + '</nav>' +
       supportBtn +
       '<div class="burger nav-mobile" aria-label="Menu" role="button" tabindex="0">&#9776;</div>' +
       '<div class="mobile-panel">' +
-        navLinksHTML('') +
+        navLinksHTML('', false) +
         mobileSupport +
       '</div>';
   }
