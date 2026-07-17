@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
   <style>
-    /* home-only accents */
-    .home-hero { padding: clamp(60px, 9vw, 150px) var(--gutter) clamp(56px, 7vw, 100px); }
+    /* home-only accents — vertical rhythm tuned to the 1024 column */
+    .home-hero { padding: clamp(36px, 5vw, 72px) var(--gutter) clamp(40px, 5vw, 72px); }
     .home-hero-grid { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: stretch; }
     .hero-tagline { flex: 3 1 480px; }
     .hero-h1 { font-size: clamp(40px, 5.6vw, 78px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.02; margin: 0; }
@@ -25,7 +25,7 @@
 
     .flow-banner {
       position: relative; overflow: hidden; background: var(--ink); color: var(--on-ink);
-      padding: clamp(30px, 3.4vw, 40px) clamp(28px, 3.5vw, 48px); margin-bottom: clamp(56px, 7vw, 96px);
+      padding: clamp(30px, 3.4vw, 40px) clamp(28px, 3.5vw, 48px); margin-bottom: clamp(40px, 5vw, 72px);
       display: flex; flex-wrap: wrap; gap: clamp(20px, 2.6vw, 36px); align-items: center; justify-content: space-between;
     }
     .flow-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.5; mix-blend-mode: screen; pointer-events: none; }
@@ -42,7 +42,7 @@
     .flow-banner-cta .arw { display: inline-block; transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); }
     .flow-banner-cta:hover .arw { transform: translateX(7px); }
 
-    .center-row { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(72px, 9.75vw, 135px) 0; }
+    .center-row { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(48px, 6.5vw, 96px) 0; }
     .center-row.bordered { border-top: 1px solid var(--hairline); }
     .center-row:first-of-type { padding-top: 0; }
     .center-icon { flex: 1 1 240px; max-width: 340px; }
@@ -79,7 +79,7 @@
   </section>
 
   <!-- ============ CENTERS ============ -->
-  <section id="centers" style="padding: clamp(24px, 3vw, 40px) var(--gutter) clamp(20px, 3vw, 40px);">
+  <section id="centers" style="padding: clamp(16px, 2vw, 28px) var(--gutter) clamp(16px, 2vw, 28px);">
 
     <!-- Flow banner -->
     <div class="flow-banner">
