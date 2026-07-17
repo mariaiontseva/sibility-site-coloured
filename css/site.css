@@ -162,7 +162,7 @@ p { margin: 0; }
   background: var(--ink); transform: scaleX(0); transform-origin: left center;
   transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
 }
-.hd-link:hover { color: var(--accent); }
+.hd-link:hover, .hd-link.hd-active { color: var(--accent); }
 .hd-link:not([data-drop]):hover::after,
 .hd-link.hd-active:not([data-drop])::after { transform: scaleX(1); }
 .hd-smiley { height: 1.25em; width: auto; vertical-align: -0.28em; display: inline-block; }
@@ -390,14 +390,16 @@ body.nav-lock #aig-root { display: none; }
   display: flex; flex-wrap: wrap; gap: clamp(28px, 4vw, 56px);
   align-items: center; justify-content: space-between;
 }
-.nl-copy { flex: 1 1 auto; min-width: 0; max-width: 520px; }
+.nl-copy { flex: 1 1 360px; min-width: 0; max-width: 520px; }
 .nl-h { font-size: clamp(23px, 2.3vw, 29px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.14; margin: 0; }
-.nl-formwrap { flex: 1 1 440px; min-width: min(340px, 100%); max-width: 520px; }
+.nl-formwrap { flex: 1 1 300px; min-width: 0; max-width: 480px; }
+/* stay two-column down to 720px, then stack full-width */
+@media (max-width: 719.98px) { .nl-copy, .nl-formwrap { flex-basis: 100%; max-width: 100%; } }
 .nl-form { display: flex; align-items: center; gap: 14px; border-bottom: 1.5px solid var(--ink); padding-bottom: 10px; transition: border-color 0.25s ease; }
 .nl-form.nl-err { border-color: var(--accent); }
 .nl-input { flex: 1; min-width: 0; font-family: var(--serif); font-size: 17px; color: var(--ink); background: transparent; border: none; padding: 4px 0; outline: none; }
-.nl-sub { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: none; border: none; cursor: pointer; white-space: nowrap; transition: color 0.2s ease; }
-.nl-sub:hover { color: var(--ink); }
+.nl-sub { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: none; border: none; cursor: pointer; white-space: nowrap; }
+/* stays orange on hover — only the arrow moves */
 .nl-arrow { display: inline-block; transition: transform 0.26s cubic-bezier(0.4,0,0.2,1); }
 .nl-sub:hover .nl-arrow { transform: translateX(6px); }
 .nl-toast { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 2000; display: flex; align-items: center; gap: 14px; background: var(--ink); color: var(--on-ink); padding: 16px 20px; max-width: 380px; box-shadow: 0 16px 44px rgba(24,9,8,0.28); cursor: pointer; font-family: var(--serif); animation: nl-toast-in 0.42s cubic-bezier(0.34,1.2,0.64,1); }

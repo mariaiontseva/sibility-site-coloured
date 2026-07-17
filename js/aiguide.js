@@ -49,7 +49,7 @@
       root.innerHTML =
         '<div class="aig-launch" id="aig-open">' +
           '<span class="aig-orb"><span class="aig-core"></span><span class="aig-ring"></span></span>' +
-          '<span class="aig-launch-lbl">Sibility guide</span>' +
+          '<span class="aig-launch-lbl">Ask Sibility</span>' +
         '</div>';
       root.querySelector('#aig-open').addEventListener('click', open);
       return;
@@ -64,9 +64,9 @@
       : '';
 
     root.innerHTML =
-      '<div class="aig-panel" role="dialog" aria-label="Sibility guide">' +
+      '<div class="aig-panel" role="dialog" aria-label="Ask Sibility">' +
         '<div class="aig-head">' +
-          '<div><div class="aig-head-title"><span class="aig-head-dot"></span>Sibility guide</div>' +
+          '<div><div class="aig-head-title"><span class="aig-head-dot"></span>Ask Sibility</div>' +
           '<div class="aig-head-sub">A couple of questions — then a place to start.</div></div>' +
           '<button class="aig-x" id="aig-close" aria-label="Close">&times;</button>' +
         '</div>' +

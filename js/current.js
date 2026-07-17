@@ -50,7 +50,7 @@
       '<div class="cur-srch">' +
         '<span class="cur-srch-lbl">Search</span>' +
         '<input type="text" id="cur-q" placeholder="I want to talk to my kids about non-violence…" />' +
-        '<div class="cur-go" id="cur-go" title="Ask the Sibility guide">&rarr;</div>' +
+        '<div class="cur-go" id="cur-go" title="Ask Sibility">&rarr;</div>' +
       '</div>' +
       '<div class="cur-srch-rule"></div>' +
       '<div class="cur-groups">' + groupsHTML + '</div>' +
@@ -106,7 +106,7 @@
     var body;
     if (anyActive && matched.length === 0) {
       body = '<div class="cur-empty"><p>Nothing matches this combination yet.</p>' +
-        '<div class="cur-empty-btn" id="cur-ask">Ask the Sibility guide</div></div>';
+        '<div class="cur-empty-btn" id="cur-ask">Ask Sibility</div></div>';
     } else {
       var cards = matched.map(cardHTML);
       if (!anyActive) { for (var i = 0; i < PLACEHOLDERS; i++) cards.push(placeholderHTML()); }
