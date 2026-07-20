@@ -17,8 +17,8 @@
 
   // main nav (Flow · Source · Delta · Current) + More group
   var NAV = [
-    { id: 'flow',    href: 'flow.html',    label: 'Grants for NGOs!' },
-    { id: 'source',  href: 'source.html',  label: 'Weird courses ' + SMILEY },
+    { id: 'flow',    href: 'flow.html',    label: 'Grants for NGOs' },
+    { id: 'source',  href: 'source.html',  label: 'Knowledge ' + SMILEY },
     { id: 'delta',   href: 'delta.html',   label: 'Research grants' },
     { id: 'current', href: 'current.html', label: 'I Want to Act!' }
   ];
