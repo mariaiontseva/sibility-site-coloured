@@ -164,6 +164,8 @@ p { margin: 0; }
 }
 /* nav text stays ink in every state — only the underline sweeps.
    (explicit ink:hover overrides the global a:hover accent rule) */
+/* keep mixed case for names like #ThisWasViolence (no all-caps) */
+.hd-link--cased { text-transform: none; letter-spacing: 0.01em; }
 .hd-link:hover { color: var(--ink); }
 .hd-link:not([data-drop]):hover::after,
 .hd-link.hd-active:not([data-drop])::after { transform: scaleX(1); }

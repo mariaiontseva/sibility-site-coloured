@@ -49,7 +49,7 @@
       root.innerHTML =
         '<div class="aig-launch" id="aig-open">' +
           '<span class="aig-orb"><span class="aig-core"></span><span class="aig-ring"></span></span>' +
-          '<span class="aig-launch-lbl">Ask Sibility</span>' +
+          '<span class="aig-launch-lbl">Ask Anything</span>' +
         '</div>';
       root.querySelector('#aig-open').addEventListener('click', open);
       return;

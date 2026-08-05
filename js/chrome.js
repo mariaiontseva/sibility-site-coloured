@@ -23,7 +23,7 @@
     { id: 'current', href: 'current.html', label: 'Act!' }
   ];
   var MORE = [
-    { id: 'thiswasviolence', href: 'thiswasviolence.html', label: '#ThisWasViolence' },
+    { id: 'thiswasviolence', href: 'thiswasviolence.html', label: '#ThisWasViolence', cased: true },
     { id: 'team',            href: 'team.html',            label: 'About us' },
     { id: 'contact',         href: 'contact.html',         label: 'Contacts' }
   ];
@@ -37,14 +37,14 @@
       return '<a href="' + n.href + '" class="hd-link' + active(n.id) + '">' + n.label + '</a>';
     }).join('');
     var moreLinks = MORE.map(function (n) {
-      return '<a href="' + n.href + '" class="hd-link' + active(n.id) + '" data-drop="1">' + n.label + '</a>';
+      return '<a href="' + n.href + '" class="hd-link' + active(n.id) + (n.cased ? ' hd-link--cased' : '') + '" data-drop="1">' + n.label + '</a>';
     }).join('');
 
     var panelLinks = NAV.map(function (n) {
       return '<a href="' + n.href + '" class="hd-link">' + n.label + '</a>';
     }).join('');
     var panelMore = MORE.map(function (n) {
-      return '<a href="' + n.href + '" class="hd-link hd-panel-sub">' + n.label + '</a>';
+      return '<a href="' + n.href + '" class="hd-link hd-panel-sub' + (n.cased ? ' hd-link--cased' : '') + '">' + n.label + '</a>';
     }).join('');
 
     return '' +
