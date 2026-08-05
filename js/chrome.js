@@ -17,15 +17,15 @@
 
   // main nav (Flow · Source · Delta · Current) + More group
   var NAV = [
-    { id: 'flow',    href: 'flow.html',    label: 'Grants for NGOs' },
-    { id: 'source',  href: 'source.html',  label: 'Knowledge ' + SMILEY },
-    { id: 'delta',   href: 'delta.html',   label: 'Research grants' },
-    { id: 'current', href: 'current.html', label: 'I Want to Act!' }
+    { id: 'flow',    href: 'flow.html',    label: 'Grants' },
+    { id: 'source',  href: 'source.html',  label: 'School' },
+    { id: 'delta',   href: 'delta.html',   label: 'Research' },
+    { id: 'current', href: 'current.html', label: 'Act!' }
   ];
   var MORE = [
     { id: 'thiswasviolence', href: 'thiswasviolence.html', label: '#ThisWasViolence' },
     { id: 'team',            href: 'team.html',            label: 'About us' },
-    { id: 'contact',         href: 'contact.html',         label: 'Contact us' }
+    { id: 'contact',         href: 'contact.html',         label: 'Contacts' }
   ];
 
   var page = (document.body.getAttribute('data-page') || '').toLowerCase();
@@ -73,7 +73,7 @@
         '<div class="ft-top">' +
           '<div style="max-width:460px;">' +
             '<a href="index.html" style="display:inline-block;"><img class="ft-logo" src="assets/logo-full-cream.svg" alt="Sibility" /></a>' +
-            '<div class="ft-tagline">Nonviolence is a capacity.<br><span>Let&rsquo;s build it together.</span></div>' +
+            '<div class="ft-tagline">Sibility =<br><span>Proactive Non-Violence.</span></div>' +
           '</div>' +
           '<div class="ft-cols">' +
             '<div>' +
@@ -81,7 +81,11 @@
               '<div class="ft-links">' +
                 '<a href="mailto:hello@sibility.org" class="ftl">hello@sibility.org</a>' +
                 '<a href="#" class="ftl">Instagram</a>' +
-                '<a href="#" class="ftl">Telegram</a>' +
+                '<a href="#" class="ftl">Threads</a>' +
+                '<a href="#" class="ftl">X</a>' +
+                '<a href="#" class="ftl">Facebook</a>' +
+                '<a href="#" class="ftl">Reddit</a>' +
+                '<a href="#" class="ftl">TikTok</a>' +
                 '<a href="#" class="ftl">YouTube</a>' +
               '</div>' +
             '</div>' +
