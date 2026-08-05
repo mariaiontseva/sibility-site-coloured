@@ -64,9 +64,9 @@
       : '';
 
     root.innerHTML =
-      '<div class="aig-panel" role="dialog" aria-label="Ask Sibility">' +
+      '<div class="aig-panel" role="dialog" aria-label="Ask Anything">' +
         '<div class="aig-head">' +
-          '<div><div class="aig-head-title"><span class="aig-head-dot"></span>Ask Sibility</div>' +
+          '<div><div class="aig-head-title"><span class="aig-head-dot"></span>Ask Anything</div>' +
           '<div class="aig-head-sub">A couple of questions — then a place to start.</div></div>' +
           '<button class="aig-x" id="aig-close" aria-label="Close">&times;</button>' +
         '</div>' +
