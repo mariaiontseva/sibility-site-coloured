@@ -73,10 +73,13 @@
     var note = state.freq === 'monthly'
       ? 'Your monthly donation of $' + amt + ' is set up. You can change or cancel your subscription anytime.'
       : 'Your one-time donation of $' + amt + ' has been received. A receipt is on its way to your inbox.';
+    var extra = 'That’s it — you’re part of the sibil effort now! Our small team, which is doing its best to reduce violence in the world, just got a little more room to act - thanks to you. We deeply appreciate your donation.';
     return '<div class="dn-stage-done">' +
       '<svg viewBox="0 0 512 512" fill="none" stroke="#DB8236" stroke-width="32" style="height:52px;width:auto;"><circle cx="256" cy="256" r="222"></circle><circle cx="190" cy="208" r="19" fill="#DB8236" stroke="none"></circle><circle cx="322" cy="208" r="19" fill="#DB8236" stroke="none"></circle><path d="M150 298 Q256 384 362 298" stroke-linecap="round"></path></svg>' +
       '<h3 class="dn-title" style="margin:0;">Thank you for supporting our effort!</h3>' +
       '<p class="dn-done-note">' + note + '</p>' +
+      '<div class="dn-done-rule"></div>' +
+      '<p class="dn-done-extra">' + extra + '</p>' +
       '<button type="button" class="dn-submit dn-done-btn" data-dn-close>Done</button>' +
     '</div>';
   }
