@@ -23,7 +23,7 @@
   mount.innerHTML =
     '<div class="dn-band">' +
       '<div class="dn-band-copy">' +
-        '<div class="eyebrow" style="margin-bottom:14px;">Support us</div>' +
+        '<div class="eyebrow" style="margin-bottom:14px;">Support Us</div>' +
         '<h2 class="dn-band-h">Fund nonviolence, directly.</h2>' +
         '<p class="dn-band-p">Everything we do runs on private donations. There is no governmental support and no big corp behind us. Your donation turns into grants, courses, and research (and team salaries, which allow us to do our very, very best). Donate monthly — and help us make our effort sustainable!</p>' +
       '</div>' +
