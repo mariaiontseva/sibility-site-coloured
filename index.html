@@ -14,8 +14,18 @@
     .home-hero { padding: clamp(36px, 5vw, 72px) var(--gutter) clamp(40px, 5vw, 72px); }
     .home-hero-grid { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: stretch; }
     .hero-tagline { flex: 3 1 480px; }
-    .hero-h1 { font-size: clamp(38px, 5vw, 66px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.04; margin: 0; }
-    .hero-lead { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: var(--body); margin: 38px 0 0; max-width: 640px; }
+    .hero-h1 { font-size: clamp(28px, 3vw, 40px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; margin: 0; }
+    .hero-lead { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.6; color: var(--body); margin: 34px 0 0; max-width: 640px; }
+    .hero-lead.follow { margin-top: 16px; }
+    .word-examples { border-left: 2px solid var(--accent); padding-left: 14px; margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .word-examples p { font-size: 14px; line-height: 1.5; color: #6b5f5b; margin: 0; }
+    .centers-intro { font-family: var(--sans); font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 clamp(36px, 4.5vw, 56px); }
+    .home-block { border-top: 1px solid var(--hairline); display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 72px); align-items: flex-start; padding: clamp(44px, 5.5vw, 72px) 0; }
+    .home-block-h { flex: 1 1 240px; max-width: 340px; font-size: clamp(24px, 2.6vw, 34px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; margin: 0; }
+    .home-block-body { flex: 3 1 480px; }
+    .home-block-body p { font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: var(--body); margin: 0 0 18px; max-width: 680px; }
+    .home-block-body p:last-child { margin-bottom: 0; }
+    .home-block-body p strong { font-weight: 600; color: var(--ink); }
     .word-card-wrap { flex: 1 1 240px; max-width: 340px; display: flex; align-items: center; }
     .word-card { border: 1px solid var(--ink); padding: 30px 28px 32px; width: 100%; }
     .word-word { font-family: var(--sans); font-size: clamp(34px, 3.6vw, 52px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; }
@@ -62,8 +72,10 @@
     <div class="home-hero-grid">
       <div class="hero-tagline">
         <div style="font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 18px;">(An independent initiative)</div>
-        <h1 class="hero-h1">Nonviolence is a capacity. We fund it, teach it, and study it.</h1>
-        <p class="hero-lead">Sibility supports independent initiatives, runs classes and conducts research — through four centers dedicated to support, involvement, research and education. We work for the long term: steady, flexible, professional.</p>
+        <h1 class="hero-h1">Sibility Initiative is a team of experts working to bring less violence and more sibility into the world.</h1>
+        <p class="hero-lead">The initiative was founded by Anatoly Kay – a mathematician, financier, and computer scientist. In 2025, after 20 years in fintech, Anatoly decided that, in a world full of violence, he didn't want to stand by and that it was important to expand his impact work.</p>
+        <p class="hero-lead follow">Our team includes anthropologists, sociologists, philosophers, and educators, as well as experts in communications, finance, impact development, and more.</p>
+        <p class="hero-lead follow">We're always glad to welcome new partners. What matters to us isn't only the practical side of the work, but also a sense of solidarity – knowing that there is a circle of like-minded people around us.</p>
         <a href="#centers" class="arrow-link" style="margin-top: 30px;">Learn more <span class="arw">&rarr;</span></a>
       </div>
       <div class="word-card-wrap">
@@ -72,7 +84,15 @@
           <div class="word-word">sibility</div>
           <div class="word-ipa">/sɪˈbɪl.ɪ.ti/ · noun</div>
           <div class="word-rule"></div>
-          <p class="word-def">The capacity of a person — or a community — to live, act and resolve conflict without violence.</p>
+          <p class="word-def" style="font-weight: 600; color: var(--ink);">Sibility is proactive non-violence.</p>
+          <p class="word-def" style="margin-top: 12px;">The word comes from [sib] = a blood bond, belonging to one kin (like 'sibling').</p>
+          <p class="word-def" style="margin-top: 12px;">Here are some examples from other languages: сибильність / Sibilität / sibilité / sibilidad.</p>
+          <div class="word-examples">
+            <p><em>She was a kind, sibil person.</em></p>
+            <p><em>A world without sibility is a world without hope.</em></p>
+            <p><em>As a sibilist, I have to say that&hellip;</em></p>
+          </div>
+          <p class="word-def" style="margin-top: 12px;">We need more sibility in the world. Let's join our efforts on a quest for it.</p>
         </div>
       </div>
     </div>
@@ -92,6 +112,8 @@
       <a href="flow.html" class="flow-banner-cta">Learn more <span class="arw">&rarr;</span></a>
     </div>
 
+    <p class="centers-intro">Our efforts go in four directions:</p>
+
     <!-- FLOW -->
     <div class="center-row">
       <div class="center-icon">
@@ -99,8 +121,8 @@
       </div>
       <div class="center-body">
         <div class="section-eyebrow">Sibility Flow</div>
-        <h3 class="center-h">Grants for NGOs</h3>
-        <p class="center-p">Grants for independent nonviolence initiatives — funding for the work itself, or a tuition grant to study at Sibility Source. We back projects that reduce violence in families, schools and communities, and we commit for the long term rather than a single cycle, so teams can plan real work. Applications are open on a rolling basis.</p>
+        <h3 class="center-h">Grants</h3>
+        <p class="center-p">Sibility Flow provides support to independent initiatives that bring sibility into the world (especially to the small-scale, grassroots ones). We provide not only funding but also educational opportunities to the teams that become our grantees, so they can grow stronger.</p>
         <a href="flow.html" class="arrow-link">Learn more <span class="arw">&rarr;</span></a>
       </div>
     </div>
@@ -112,8 +134,8 @@
       </div>
       <div class="center-body">
         <div class="section-eyebrow">Sibility Source</div>
-        <h3 class="center-h">Knowledge <svg viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="32" class="hd-smiley"><circle cx="256" cy="256" r="222"></circle><circle cx="190" cy="208" r="19" fill="currentColor" stroke="none"></circle><circle cx="322" cy="208" r="19" fill="currentColor" stroke="none"></circle><path d="M150 298 Q256 384 362 298" stroke-linecap="round"></path></svg></h3>
-        <p class="center-p">Classes on nonviolence — for those who come as a parent or a neighbour, and for those who come as a professional. Courses run from short introductions to in-depth programmes, taught by practitioners and researchers who work in the field every day. A number of places are covered by Sibility Flow tuition grants.</p>
+        <h3 class="center-h">School</h3>
+        <p class="center-p">Sibility Source is basically a school. Guest experts, as well as members of our team, run online courses, lectures, and seminars that help people discover the key idea of sibility and find ways to put their energy to use in the field.</p>
         <a href="source.html" class="arrow-link">Learn more <span class="arw">&rarr;</span></a>
       </div>
     </div>
@@ -125,8 +147,8 @@
       </div>
       <div class="center-body">
         <div class="section-eyebrow">Sibility Delta</div>
-        <h3 class="center-h">Research grants</h3>
-        <p class="center-p">Research in nonviolence: what shapes it, and which factors help it hold. Guided by a scientific council, we fund studies, publish findings openly, and turn evidence into tools that practitioners can actually use. Proposals from independent researchers are welcome.</p>
+        <h3 class="center-h">Research</h3>
+        <p class="center-p">Sibility Delta is our research arm, where we seek to answer questions about the pragmatic sides of sibility. Scholars who work with those questions can turn to us for resources.</p>
         <a href="delta.html" class="arrow-link">Learn more <span class="arw">&rarr;</span></a>
       </div>
     </div>
@@ -138,8 +160,8 @@
       </div>
       <div class="center-body">
         <div class="section-eyebrow">Sibility Current</div>
-        <h3 class="center-h">I Want to Act!</h3>
-        <p class="center-p">Ways to take part. A map of the actors who can enter the field — and an instrument library of the concrete actions available to each of them. Whether you arrive as an individual, an organisation or an institution, there is a first step you can take today. Explore the library to find yours.</p>
+        <h3 class="center-h">Act!</h3>
+        <p class="center-p">Sibility Current is a platform that helps people to make one step after another towards sibility: from one-off volunteering to founding a sibility initiative of their own.</p>
         <a href="current.html" class="arrow-link">Learn more <span class="arw">&rarr;</span></a>
       </div>
     </div>
@@ -154,6 +176,26 @@
         <h3 class="center-h">#ThisWasViolence</h3>
         <p class="center-p">A public campaign for naming what usually goes unnamed. So much harm is dismissed as normal — a raised hand, a controlling word, a line quietly crossed. Sharing these moments makes the ordinary visible, and shows anyone living through it that they are not alone, and not imagining it.</p>
         <a href="thiswasviolence.html" class="arrow-link">Learn more <span class="arw">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHO / HOW ============ -->
+  <section style="padding: 0 var(--gutter) clamp(24px, 3vw, 40px);">
+    <div class="home-block">
+      <h2 class="home-block-h">Who do we do it for</h2>
+      <div class="home-block-body">
+        <p><strong>For non-violence NGOs</strong> (we have invented the word 'novingos', - useful, isn't it?), - or, in general, for the initiatives that reduce violence in the world, and for the people who work for them.</p>
+        <p><strong>For scholars.</strong> Researchers and research groups whose interests lie in the field of sibility and violence/non-violence.</p>
+        <p><strong>For individuals.</strong> Say, for the students of Sibility Source, as well as for anyone who gets involved with the initiatives of Sibility Current.</p>
+        <p><strong>For everyone.</strong> We know this sounds grand, even presumptuous – but that's simply the nature of the work we've taken on.</p>
+      </div>
+    </div>
+    <div class="home-block">
+      <h2 class="home-block-h">How do we do it</h2>
+      <div class="home-block-body">
+        <p>Everything we do runs on private donations. Behind Sibility Initiative stand ordinary people – not a government, not corporations, not big foundations. That's why anyone can join in and help sibility grow.</p>
+        <p>If we can make even one life less violent, it was all worth it.</p>
       </div>
     </div>
   </section>
