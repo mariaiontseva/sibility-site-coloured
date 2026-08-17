@@ -50,7 +50,6 @@
     return '' +
       '<a class="hd-brand" href="index.html">' +
         '<img class="hd-logo" src="assets/logo-full-black.svg" alt="Sibility" />' +
-        '<span class="hd-reg">&reg;</span>' +
       '</a>' +
       '<nav class="hd-nav">' +
         links +
