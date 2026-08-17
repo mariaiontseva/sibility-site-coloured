@@ -25,12 +25,16 @@
        because % inside the row would resolve against the row, not the
        viewport. */
     .home-hero { overflow-x: clip; }
-    .word-col { flex: 1 1 300px; max-width: 360px; display: flex; align-items: center; margin-right: calc(-1 * max(clamp(20px, 5vw, 56px), (100vw - 1024px) / 2)); }
+    .word-col { flex: 1 1 300px; max-width: 340px; display: flex; align-items: center; margin-right: calc(-1 * max(clamp(20px, 5vw, 56px), (100vw - 1024px) / 2)); }
     /* flush to the edge → no visible right border */
     .word-col > div { border-right: none !important; }
+    /* keep the card square-ish rather than a landscape rectangle;
+       FULL ENTRY stays pinned to the bottom edge */
+    .word-col > div { min-height: 306px; }
+    .word-col .entry { margin-top: auto; }
     @media (max-width: 759.98px) {
       .word-col { width: 100%; max-width: 100%; margin-right: 0; }
-      .word-col > div { border-right: 1px solid #180908 !important; }
+      .word-col > div { border-right: 1px solid #180908 !important; min-height: 0; }
     }
 
     /* FULL ENTRY row + close button hovers */
@@ -110,15 +114,15 @@
       <!-- WORD -->
       <div class="word-col">
         <div style="background: transparent; border: 1px solid #180908; width: 100%; box-sizing: border-box; display: flex; flex-direction: column;">
-          <div style="padding: clamp(26px, 2.6vw, 34px) clamp(24px, 2.4vw, 32px) clamp(24px, 2.4vw, 30px);">
-            <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #b0a49d; margin-bottom: 20px;">The word</div>
+          <div style="padding: clamp(22px, 2.2vw, 26px) clamp(24px, 2.4vw, 32px) clamp(18px, 2vw, 22px);">
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #b0a49d; margin-bottom: 14px;">The word</div>
             <div style="font-family: 'Albert Sans', sans-serif; font-size: clamp(40px, 4.2vw, 60px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.9; margin: 0;">sibility</div>
-            <div style="display: flex; align-items: baseline; gap: 10px; margin: 14px 0 24px;">
+            <div style="display: flex; align-items: baseline; gap: 10px; margin: 10px 0 16px;">
               <span style="font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 500; color: #8a807c;">/sɪˈbɪl.ɪ.ti/</span>
               <span style="font-family: 'Barlow', sans-serif; font-size: 13px; font-style: italic; color: #a3968f;">noun</span>
             </div>
-            <div style="height: 1px; background: rgba(24,9,8,0.13); margin-bottom: 22px;"></div>
-            <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.7vw, 23px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.28; color: #180908; margin: 0;">Sibility is proactive non-violence.</p>
+            <div style="height: 1px; background: rgba(24,9,8,0.13); margin-bottom: 16px;"></div>
+            <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.7vw, 23px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.28; color: #180908; margin: 0;">Sibility is proactive<br>non-violence.</p>
           </div>
           <div class="entry" id="word-open" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open the full dictionary entry for sibility" style="border-top: 1px solid rgba(24,9,8,0.13); padding: 17px clamp(24px, 2.4vw, 32px); display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #180908;">Full entry <span class="ea" style="display: inline-block; font-size: 15px;">&rarr;</span></div>
         </div>
