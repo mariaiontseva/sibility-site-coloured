@@ -29,8 +29,11 @@
     /* flush to the edge → no visible right border */
     .word-col > div { border-right: none !important; }
     /* keep the card square-ish rather than a landscape rectangle;
-       FULL ENTRY stays pinned to the bottom edge */
+       FULL ENTRY stays pinned to the bottom edge and the definition
+       centres vertically in the space left under the hairline */
     .word-col > div { min-height: 323px; }
+    .word-col > div > div:first-child { display: flex; flex-direction: column; flex: 1 1 auto; }
+    .word-col > div > div:first-child > p { margin-top: auto !important; margin-bottom: auto !important; }
     .word-col .entry { margin-top: auto; }
     @media (max-width: 759.98px) {
       .word-col { width: 100%; max-width: 100%; margin-right: 0; }
