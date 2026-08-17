@@ -7,21 +7,59 @@
   <meta name="description" content="Sibility strengthens the human capacity for nonviolence — through grants, courses, research and involvement." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&family=Manrope:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
   <style>
-    /* home-only accents — vertical rhythm tuned to the 1024 column */
-    .home-hero { padding: clamp(36px, 5vw, 72px) var(--gutter) clamp(40px, 5vw, 72px); }
+    /* ===== hero + word card + word drawer — per "Handoff Hero - Word" ===== */
+    .home-hero { padding: clamp(36px, 4.5vw, 68px) var(--gutter) clamp(56px, 7vw, 100px); }
     .home-hero-grid { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: stretch; }
-    .hero-tagline { flex: 3 1 480px; }
-    .hero-h1 { font-size: clamp(28px, 3vw, 40px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; margin: 0; }
-    .hero-lead { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: var(--body); margin: 38px 0 0; max-width: 640px; }
-    .word-card-wrap { flex: 1 1 240px; max-width: 340px; display: flex; align-items: center; }
-    .word-card { border: 1px solid var(--ink); padding: 30px 28px 32px; width: 100%; }
-    .word-word { font-family: var(--sans); font-size: clamp(34px, 3.6vw, 52px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.95; }
-    .word-ipa { font-size: 14px; font-weight: 500; color: var(--muted); margin: 10px 0 18px; }
-    .word-rule { height: 1px; background: var(--hairline); margin-bottom: 18px; }
-    .word-def { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.55; color: var(--body); margin: 0; }
+    .hero-tagline { flex: 3 1 480px; order: 0; display: flex; flex-direction: column; justify-content: center; }
+
+    /* underline link that retracts on hover */
+    .lnk { background-image: linear-gradient(#180908,#180908); background-size: 100% 1.5px; background-repeat: no-repeat; background-position: 0 100%; padding-bottom: 3px; transition: background-size 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .lnk:hover { background-size: 0% 1.5px; }
+
+    /* word column — bleeds flush to the right viewport edge at every
+       width ≥760 so the headline keeps its room (≤4 lines). The margin
+       mirrors the section gutter computed from the viewport (100vw),
+       because % inside the row would resolve against the row, not the
+       viewport. */
+    .home-hero { overflow-x: clip; }
+    .word-col { flex: 1 1 300px; max-width: 360px; display: flex; align-items: center; margin-right: calc(-1 * max(clamp(20px, 5vw, 56px), (100vw - 1024px) / 2)); }
+    /* flush to the edge → no visible right border */
+    .word-col > div { border-right: none !important; }
+    @media (max-width: 759.98px) {
+      .word-col { width: 100%; max-width: 100%; margin-right: 0; }
+      .word-col > div { border-right: 1px solid #180908 !important; }
+    }
+
+    /* FULL ENTRY row + close button hovers */
+    .entry { cursor: pointer; transition: color 0.22s ease; }
+    .entry:hover { color: #DB8236; }
+    .entry .ea { transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); }
+    .entry:hover .ea { transform: translateX(6px); }
+    .drwx { transition: border-color 0.2s ease, color 0.2s ease, transform 0.28s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+    .drwx:hover { border-color: #180908; color: #DB8236; transform: rotate(90deg); }
+
+    /* scrim + drawer */
+    .word-scrim {
+      position: fixed; inset: 0; background: rgba(24,9,8,0.42);
+      -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+      z-index: 10000; opacity: 0; transition: opacity 0.36s ease; pointer-events: none;
+    }
+    .word-scrim.open { opacity: 1; pointer-events: auto; }
+    .word-drawer {
+      position: fixed; top: 0; right: 0; height: 100dvh; max-height: 100vh;
+      width: min(420px, 92vw); background: #efece8;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      z-index: 10010; box-shadow: -24px 0 60px rgba(24,9,8,0.18);
+      transform: translateX(100%); transition: transform 0.46s cubic-bezier(0.22,0.61,0.36,1);
+      pointer-events: none;
+    }
+    .word-drawer.open { transform: translateX(0); pointer-events: auto; }
+    @media (max-width: 899.98px) {
+      .word-drawer { width: 100vw; }
+    }
 
     .flow-banner {
       position: relative; overflow: hidden; background: var(--ink); color: var(--on-ink);
@@ -60,19 +98,29 @@
   <!-- ============ HERO ============ -->
   <section class="home-hero">
     <div class="home-hero-grid">
+
+      <!-- TAGLINE -->
       <div class="hero-tagline">
-        <div style="font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 18px;">(An independent initiative)</div>
-        <h1 class="hero-h1">Sibility Initiative is a team of experts working to bring less violence and more sibility into the world.</h1>
-        <p class="hero-lead">The initiative was founded by Anatoly Kay – a mathematician, financier, and computer scientist. In 2025, after 20 years in fintech, Anatoly decided that, in a world full of violence, he didn't want to stand by and that it was important to expand his impact work.</p>
-        <a href="#centers" class="arrow-link" style="margin-top: 30px;">Learn more <span class="arw">&rarr;</span></a>
+        <div style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: #DB8236; margin-bottom: 20px;">Sibility Initiative</div>
+        <h1 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(38px, 4.9vw, 60px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.04; margin: 0; max-width: 920px; text-wrap: pretty;">A team of experts working to bring less violence and <span style="color: #DB8236;">more sibility</span> into the world.</h1>
+        <p style="font-size: clamp(17px, 1.5vw, 20px); line-height: 1.62; color: #6b5f5b; margin: 34px 0 0; max-width: 620px; text-wrap: pretty;">The initiative was founded by Anatoly Kay – a mathematician, financier, and computer scientist. In 2025, after 20 years in fintech, Anatoly decided that, in a world full of violence, he didn't want to stand by and that it was important to expand his impact work.</p>
+        <div><a href="team.html" class="lnk" style="display: inline-block; margin-top: 32px; font-family: 'Albert Sans', sans-serif; font-size: 15px; font-weight: 600; color: #180908; text-decoration: none;">Learn more &rarr;</a></div>
       </div>
-      <div class="word-card-wrap">
-        <div class="word-card">
-          <div class="eyebrow" style="margin-bottom: 14px;">The word</div>
-          <div class="word-word">sibility</div>
-          <div class="word-ipa">/sɪˈbɪl.ɪ.ti/ · noun</div>
-          <div class="word-rule"></div>
-          <p class="word-def">The capacity of a person — or a community — to live, act and resolve conflict without violence.</p>
+
+      <!-- WORD -->
+      <div class="word-col">
+        <div style="background: transparent; border: 1px solid #180908; width: 100%; box-sizing: border-box; display: flex; flex-direction: column;">
+          <div style="padding: clamp(26px, 2.6vw, 34px) clamp(24px, 2.4vw, 32px) clamp(24px, 2.4vw, 30px);">
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #b0a49d; margin-bottom: 20px;">The word</div>
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: clamp(40px, 4.2vw, 60px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.9; margin: 0;">sibility</div>
+            <div style="display: flex; align-items: baseline; gap: 10px; margin: 14px 0 24px;">
+              <span style="font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 500; color: #8a807c;">/sɪˈbɪl.ɪ.ti/</span>
+              <span style="font-family: 'Barlow', sans-serif; font-size: 13px; font-style: italic; color: #a3968f;">noun</span>
+            </div>
+            <div style="height: 1px; background: rgba(24,9,8,0.13); margin-bottom: 22px;"></div>
+            <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.7vw, 23px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.28; color: #180908; margin: 0;">Sibility is proactive non-violence.</p>
+          </div>
+          <div class="entry" id="word-open" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open the full dictionary entry for sibility" style="border-top: 1px solid rgba(24,9,8,0.13); padding: 17px clamp(24px, 2.4vw, 32px); display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: 'Albert Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #180908;">Full entry <span class="ea" style="display: inline-block; font-size: 15px;">&rarr;</span></div>
         </div>
       </div>
     </div>
@@ -178,11 +226,87 @@
     <div id="newsletter-block"></div>
   </section>
 
+  <!-- ============ WORD DRAWER ============ -->
+  <div class="word-scrim" id="word-scrim"></div>
+  <aside class="word-drawer" id="word-drawer" role="dialog" aria-modal="true" aria-label="sibility — dictionary entry">
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: clamp(34px, 4vw, 52px) clamp(28px, 3.4vw, 56px) 0;">
+      <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #b0a49d; padding-top: 10px;">The word</div>
+      <div class="drwx" id="word-close" role="button" tabindex="0" aria-label="Close" style="flex: 0 0 auto; width: 42px; height: 42px; border: 1px solid rgba(24,9,8,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 1; color: #180908;">&#10005;</div>
+    </div>
+
+    <div style="padding: clamp(18px, 2vw, 26px) clamp(28px, 3.4vw, 56px) clamp(44px, 5vw, 72px);">
+      <div style="font-family: 'Albert Sans', sans-serif; font-size: clamp(52px, 6vw, 84px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.86;">sibility</div>
+      <div style="display: flex; align-items: baseline; gap: 10px; margin: 18px 0 0;">
+        <span style="font-family: 'Barlow', sans-serif; font-size: 16px; font-weight: 500; color: #6b5f5b;">/sɪˈbɪl.ɪ.ti/</span>
+        <span style="font-family: 'Barlow', sans-serif; font-size: 14px; font-style: italic; color: #a3968f;">noun</span>
+      </div>
+
+      <div style="width: 56px; height: 3px; background: #DB8236; margin: clamp(26px, 3vw, 38px) 0 clamp(22px, 2.4vw, 30px);"></div>
+
+      <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.1vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.22; color: #180908; margin: 0 0 clamp(26px, 3vw, 36px);">Sibility is proactive non-violence.</p>
+
+      <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.62; color: #4a3f3d; margin: 0 0 22px;">The word comes from <span style="font-family: 'Albert Sans', sans-serif; font-weight: 700;">[sib]</span> = a blood bond, belonging to one kin (like &lsquo;sibling&rsquo;).</p>
+
+      <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #b0a49d; margin: 0 0 14px;">In other languages</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(30px, 3.4vw, 42px);">
+        <span style="font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: #180908; border: 1px solid rgba(24,9,8,0.18); padding: 7px 14px;">сибильність</span>
+        <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 600; color: #180908; border: 1px solid rgba(24,9,8,0.18); padding: 7px 14px;">Sibilität</span>
+        <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 600; color: #180908; border: 1px solid rgba(24,9,8,0.18); padding: 7px 14px;">sibilité</span>
+        <span style="font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 600; color: #180908; border: 1px solid rgba(24,9,8,0.18); padding: 7px 14px;">sibilidad</span>
+      </div>
+
+      <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #b0a49d; margin: 0 0 16px;">In use</div>
+      <div style="display: flex; flex-direction: column; margin-bottom: clamp(34px, 4vw, 48px);">
+        <div style="display: flex; gap: 14px; align-items: baseline; border-top: 1px solid rgba(24,9,8,0.13); padding: 14px 0;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; color: #DB8236; flex: 0 0 auto;">01</span>
+          <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.5; color: #4a3f3d; margin: 0;">She was a kind, <span style="font-weight: 600; color: #180908;">sibil</span> person.</p>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: baseline; border-top: 1px solid rgba(24,9,8,0.13); padding: 14px 0;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; color: #DB8236; flex: 0 0 auto;">02</span>
+          <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.5; color: #4a3f3d; margin: 0;">A world without <span style="font-weight: 600; color: #180908;">sibility</span> is a world without hope.</p>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: baseline; border-top: 1px solid rgba(24,9,8,0.13); border-bottom: 1px solid rgba(24,9,8,0.13); padding: 14px 0;">
+          <span style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; color: #DB8236; flex: 0 0 auto;">03</span>
+          <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.5; color: #4a3f3d; margin: 0;">As a <span style="font-weight: 600; color: #180908;">sibilist</span>, I have to say that&hellip;</p>
+        </div>
+      </div>
+
+      <div style="background: #180908; color: #efece8; padding: clamp(26px, 3vw, 36px) clamp(24px, 2.6vw, 34px);">
+        <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(18px, 1.7vw, 22px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.35; margin: 0;">We need more sibility in the world. Let's join our efforts on a quest for it.</p>
+      </div>
+    </div>
+  </aside>
+
   <!-- ============ FOOTER ============ -->
   <footer id="site-footer"></footer>
 
   <script src="js/chrome.js"></script>
   <script src="js/donate.js"></script>
   <script src="js/newsletter.js"></script>
+  <script>
+    (function () {
+      var trigger = document.getElementById('word-open');
+      var scrim = document.getElementById('word-scrim');
+      var drawer = document.getElementById('word-drawer');
+      var close = document.getElementById('word-close');
+      function setOpen(open) {
+        scrim.classList.toggle('open', open);
+        drawer.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      trigger.addEventListener('click', function () { setOpen(true); });
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(true); }
+      });
+      scrim.addEventListener('click', function () { setOpen(false); });
+      close.addEventListener('click', function () { setOpen(false); });
+      close.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(false); }
+      });
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) setOpen(false);
+      });
+    })();
+  </script>
 </body>
 </html>
