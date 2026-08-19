@@ -4,53 +4,197 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sibility Flow — Grants for NGOs</title>
-  <meta name="description" content="Grants for independent nonviolence initiatives — for the work itself, or a tuition grant to study at Sibility Source." />
+  <meta name="description" content="Grants for Novingos: funding and knowledge for small, independent non-violence initiatives — in 2026–2027 we give $500,000." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
   <style>
-    .fund-grid { display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 72px); align-items: stretch; }
-    .fund-img { flex: 1 1 300px; max-width: 440px; position: relative; overflow: hidden; background: var(--ink); min-height: clamp(360px, 44vw, 640px); }
-    .fund-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(0.85) brightness(1.02); }
-    .fund-img .tint { position: absolute; inset: 0; background: var(--field); mix-blend-mode: color; opacity: 0.22; pointer-events: none; }
-    .fund-body { flex: 2 1 480px; }
-    .fund-body p { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.6; color: var(--body); margin: 0 0 22px; max-width: 680px; }
-    .fund-body p:last-child { margin-bottom: 0; }
+    /* ===== per "Handoff Flow" ===== */
+    .apply-btn { transition: background 0.22s ease, color 0.22s ease; }
+    .apply-btn:hover { background: #2c1a13 !important; }
+    .apply-btn.orange { background: #DB8236 !important; color: #180908 !important; }
+    .apply-btn.orange:hover { background: #cb7629 !important; }
+    .apply-btn .arw { transition: transform 0.26s cubic-bezier(0.4,0,0.2,1); }
+    .apply-btn:hover .arw { transform: translateX(6px); }
+    .fld:focus { border-bottom-color: #180908 !important; }
+    .critcheck { stroke-dasharray: 26; stroke-dashoffset: 26; transition: stroke-dashoffset 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .critwrap.on .critcheck { stroke-dashoffset: 0; }
+    @media (max-width: 700px) {
+      .brdesk { display: none; }
+      .steps .step { min-height: 0 !important; padding-bottom: 26px !important; }
+      .steps .step:last-child { padding-bottom: 0 !important; }
+    }
+    .steps .step { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.22,0.61,0.36,1); }
+    .steps.on .step { opacity: 1; transform: none; }
+    .steps.on .step:nth-child(1) { transition-delay: 0.05s; }
+    .steps.on .step:nth-child(2) { transition-delay: 0.26s; }
+    .steps.on .step:nth-child(3) { transition-delay: 0.40s; }
+    .steps.on .step:nth-child(4) { transition-delay: 0.68s; }
+    .steps.on .step:nth-child(5) { transition-delay: 0.82s; }
+    a { }
   </style>
 </head>
 <body data-page="flow">
 
   <header id="site-header"></header>
 
-  <!-- HERO -->
-  <section class="page-hero">
-    <div class="page-hero-mark">
-      <svg viewBox="687 430 577 447" fill="url(#gradFlow)"><defs><linearGradient id="gradFlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d9bd"></stop><stop offset="1" stop-color="#DB8236"></stop></linearGradient></defs><path d="M1236.99,578.31c-10.98-25.88-27.58-49.96-49.82-72.19-22.23-22.23-46.3-38.83-72.19-49.82-25.89-10.97-52.14-16.53-78.74-16.68-20.74-.1-41.04,3.05-60.93,9.44-19.88-6.39-40.19-9.54-60.93-9.44-26.6.15-52.85,5.71-78.74,16.68-25.89,10.98-49.96,27.59-72.19,49.82-22.24,22.24-38.84,46.31-49.82,72.19-10.98,25.9-16.54,52.15-16.68,78.74-.14,26.6,5.07,52.49,15.62,77.68,10.55,25.2,26.11,48.06,46.65,68.6s43.84,36.53,69.03,47.07c25.19,10.56,51.16,15.84,77.89,15.83,23.37,0,46.43-4.19,69.16-12.58,22.73,8.39,45.78,12.59,69.16,12.58,26.74,0,52.7-5.27,77.89-15.83,25.19-10.55,48.19-26.24,69.03-47.07,20.54-20.54,36.1-43.4,46.65-68.6,10.55-25.19,15.76-51.08,15.62-77.68-.14-26.59-5.7-52.84-16.68-78.74ZM975.31,801.59c-16.39-8.99-32.18-21.07-47.36-36.25-25.05-25.05-41.73-51.57-50.03-79.58-8.3-28-8.8-55.37-1.48-82.11,7.32-26.74,21.67-50.8,43.06-72.19,16.85-16.85,35.46-29.25,55.81-37.22,20.35,7.97,38.95,20.37,55.81,37.22,21.39,21.39,35.75,45.46,43.06,72.19,7.32,26.74,6.83,54.11-1.48,82.11-8.3,28.01-24.98,54.53-50.03,79.58-15.18,15.18-30.97,27.25-47.36,36.25ZM861.19,816.64c-26.88-7.17-51.01-21.46-72.41-42.85s-35.19-45.03-42.22-71.77c-7.04-26.74-6.4-54.1,1.9-82.11,8.31-28,24.84-54.39,49.61-79.16s51.58-41.72,79.58-50.03c10.64-3.15,21.18-5.18,31.62-6.1-6.65,5.31-13.09,11.07-19.32,17.29-20.83,20.83-36.52,43.84-47.07,69.03-10.55,25.2-15.83,51.16-15.83,77.89,0,26.74,5.49,53.06,16.47,78.95,10.98,25.9,27.59,49.96,49.82,72.19,7.52,7.52,15.25,14.37,23.18,20.6-18.7,2.23-37.14.93-55.32-3.93ZM1204.06,702.01c-7.03,26.74-21.11,50.66-42.22,71.77-21.39,21.39-45.52,35.68-72.41,42.85-18.18,4.86-36.62,6.16-55.32,3.93,7.93-6.23,15.66-13.09,23.18-20.6,22.23-22.23,38.84-46.29,49.82-72.19,10.98-25.89,16.47-52.2,16.47-78.95,0-26.73-5.28-52.69-15.83-77.89-10.55-25.18-26.24-48.19-47.07-69.03-6.22-6.22-12.67-11.98-19.32-17.29,10.44.92,20.97,2.95,31.62,6.1,28,8.31,54.81,25.26,79.58,50.03s41.3,51.16,49.61,79.16c8.3,28.01,8.94,55.37,1.9,82.11Z"></path></svg>
+  <!-- HERO (variant C, watermark gradient icon) -->
+  <section style="position: relative; overflow: hidden; padding: clamp(64px, 9vw, 150px) var(--gutter) clamp(112px, 14vw, 208px); box-sizing: border-box;">
+    <div style="position: absolute; top: 50%; right: -5%; transform: translateY(-50%); width: min(46%, 480px); pointer-events: none;"><svg viewBox="687 430 577 447" fill="url(#gradFlow)" style="width:100%; height:auto; display:block; opacity:0.15;"><defs><linearGradient id="gradFlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d9bd"></stop><stop offset="1" stop-color="#DB8236"></stop></linearGradient></defs><path d="M1236.99,578.31c-10.98-25.88-27.58-49.96-49.82-72.19-22.23-22.23-46.3-38.83-72.19-49.82-25.89-10.97-52.14-16.53-78.74-16.68-20.74-.1-41.04,3.05-60.93,9.44-19.88-6.39-40.19-9.54-60.93-9.44-26.6.15-52.85,5.71-78.74,16.68-25.89,10.98-49.96,27.59-72.19,49.82-22.24,22.24-38.84,46.31-49.82,72.19-10.98,25.9-16.54,52.15-16.68,78.74-.14,26.6,5.07,52.49,15.62,77.68,10.55,25.2,26.11,48.06,46.65,68.6s43.84,36.53,69.03,47.07c25.19,10.56,51.16,15.84,77.89,15.83,23.37,0,46.43-4.19,69.16-12.58,22.73,8.39,45.78,12.59,69.16,12.58,26.74,0,52.7-5.27,77.89-15.83,25.19-10.55,48.19-26.24,69.03-47.07,20.54-20.54,36.1-43.4,46.65-68.6,10.55-25.19,15.76-51.08,15.62-77.68-.14-26.59-5.7-52.84-16.68-78.74ZM975.31,801.59c-16.39-8.99-32.18-21.07-47.36-36.25-25.05-25.05-41.73-51.57-50.03-79.58-8.3-28-8.8-55.37-1.48-82.11,7.32-26.74,21.67-50.8,43.06-72.19,16.85-16.85,35.46-29.25,55.81-37.22,20.35,7.97,38.95,20.37,55.81,37.22,21.39,21.39,35.75,45.46,43.06,72.19,7.32,26.74,6.83,54.11-1.48,82.11-8.3,28.01-24.98,54.53-50.03,79.58-15.18,15.18-30.97,27.25-47.36,36.25ZM861.19,816.64c-26.88-7.17-51.01-21.46-72.41-42.85s-35.19-45.03-42.22-71.77c-7.04-26.74-6.4-54.1,1.9-82.11,8.31-28,24.84-54.39,49.61-79.16s51.58-41.72,79.58-50.03c10.64-3.15,21.18-5.18,31.62-6.1-6.65,5.31-13.09,11.07-19.32,17.29-20.83,20.83-36.52,43.84-47.07,69.03-10.55,25.2-15.83,51.16-15.83,77.89,0,26.74,5.49,53.06,16.47,78.95,10.98,25.9,27.59,49.96,49.82,72.19,7.52,7.52,15.25,14.37,23.18,20.6-18.7,2.23-37.14.93-55.32-3.93ZM1204.06,702.01c-7.03,26.74-21.11,50.66-42.22,71.77-21.39,21.39-45.52,35.68-72.41,42.85-18.18,4.86-36.62,6.16-55.32,3.93,7.93-6.23,15.66-13.09,23.18-20.6,22.23-22.23,38.84-46.29,49.82-72.19,10.98-25.89,16.47-52.2,16.47-78.95,0-26.73-5.28-52.69-15.83-77.89-10.55-25.18-26.24-48.19-47.07-69.03-6.22-6.22-12.67-11.98-19.32-17.29,10.44.92,20.97,2.95,31.62,6.1,28,8.31,54.81,25.26,79.58,50.03s41.3,51.16,49.61,79.16c8.3,28.01,8.94,55.37,1.9,82.11Z"></path></svg></div>
+    <div style="position: relative; max-width: 760px;">
+      <div style="font-family: 'Albert Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #DB8236; margin-bottom: 16px;">Sibility Flow</div>
+      <h1 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(46px, 6.6vw, 96px); font-weight: 700; letter-spacing: -0.03em; line-height: 0.97; margin: 0;">Grants for Novingos</h1>
+      <p style="font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: #4a3f3d; margin: 30px 0 0; max-width: 540px;">Funding and knowledge for small, independent non-violence initiatives</p>
+      <div style="margin-top: 36px;"><button type="button" data-apply-open class="apply-btn" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #efece8; background: #180908; border: none; cursor: pointer; padding: 17px 26px;">Apply <span class="arw" style="display:inline-block;">&rarr;</span></button></div>
     </div>
-    <div class="page-hero-inner">
-      <div class="section-eyebrow">Sibility Flow</div>
-      <h1>Grants for NGOs</h1>
-      <p class="lead">Funding for independent nonviolence initiatives — for the work itself, or a tuition grant to study at Sibility Source.</p>
-      <div style="margin-top: 36px;">
-        <button type="button" class="btn-solid" data-apply-open>Apply <span class="arw">&rarr;</span></button>
+  </section>
+
+  <!-- FULL-BLEED IMAGE -->
+  <div style="position: relative; overflow: hidden; background: #180908; height: clamp(220px, 26vw, 400px);">
+    <img src="assets/hero-molecule.avif" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: saturate(0.85) brightness(1.02);">
+    <div style="position: absolute; inset: 0; background: #efece8; mix-blend-mode: color; opacity: 0.22; pointer-events: none;"></div>
+  </div>
+
+  <!-- WHAT IT'S ABOUT -->
+  <section style="padding: 0 var(--gutter); box-sizing: border-box;">
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(80px, 10vw, 150px) 0 0;">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 44px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.02; margin: 0;">What it&rsquo;s about</h2>
+      </div>
+      <div style="flex: 3 1 480px; display: flex; flex-direction: column; gap: clamp(22px, 2.4vw, 30px);">
+        <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 660px; text-wrap: pretty;">Independent non-violence NGOs (or novingo) often do the hardest, least visible work. Most don&rsquo;t have a fundraising team, a grant writer on staff, or spare months to fill out applications. Usually it's just a few people doing something that matters where they live.</p>
+        <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 660px; text-wrap: pretty;">That's why we decided that in 2026-2027 we give $500,000. Every person on <a href="team.html" style="text-decoration: underline; text-underline-offset: 3px;">our team</a> either worked at a novingo or alongside one. So, we know for certain that independent teams working on non-violence lack support. Right now we're in a position to change that. It&rsquo;s just part of a big, long effort to reduce violence in the world.</p>
       </div>
     </div>
   </section>
 
-  <!-- TEXT + VERTICAL IMAGE -->
-  <section style="padding: 0 var(--gutter) clamp(56px, 7vw, 96px);">
-    <div class="fund-grid">
-      <div class="fund-img">
-        <img src="assets/hero-molecule.avif" alt="" />
-        <div class="tint"></div>
+  <!-- WHAT / WHO / HOW -->
+  <section style="padding: 0 var(--gutter); box-sizing: border-box;">
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(80px, 10vw, 150px) 0 0;">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 44px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.02; margin: 0;">What&rsquo;s included</h2>
       </div>
-      <div class="fund-body">
-        <div class="eyebrow" style="margin-bottom: 22px;">What we fund</div>
-        <p>We back projects that reduce violence in families, schools and communities. We commit for the long term rather than a single cycle, so teams can plan real work — and grantees keep their freedom, including the freedom to choose other grantors.</p>
-        <p>Funding can go to the work itself — programmes, salaries, core running costs — or to a tuition grant, so someone on your team can study at Sibility Source and bring the practice back home. We try to fund what actually moves your mission forward, not what happens to fit a rigid template.</p>
-        <p>We know the smallest organisations often carry the most weight with the least support. There is no minimum track record and no requirement to be a registered charity — what matters is that your work genuinely reduces violence, and that you can describe how it does.</p>
-        <p>Applications are open on a rolling basis. Clear conditions, a clear process, and decisions explained — every answer, yes or no, comes with reasons. Professionals talking with professionals.</p>
+      <div style="flex: 3 1 480px; display: flex; flex-direction: column; gap: clamp(22px, 2.4vw, 30px);">
+        <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(23px, 2.4vw, 32px); font-weight: 700; letter-spacing: -0.024em; line-height: 1.3; color: #180908; margin: 0; max-width: 660px; text-wrap: pretty;">The grant consists of two parts: money and learning programs.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: clamp(18px, 3vw, 44px); align-items: baseline;">
+          <div style="flex: 1 1 180px; max-width: 230px;">
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #b0a49d; margin-bottom: 10px;">Part one</div>
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: clamp(23px, 2.4vw, 32px); font-weight: 700; letter-spacing: -0.024em; line-height: 1.04; color: #180908;">Money</div>
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: clamp(23px, 2.4vw, 32px); font-weight: 800; letter-spacing: -0.028em; line-height: 1.04; color: #DB8236; margin-top: 6px;">$500,000</div>
+          </div>
+          <p style="flex: 2 1 300px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #5c534f; margin: 0; max-width: 54ch; text-wrap: pretty;">Sibility Initiative distributes $500,000 among the winners of the grant. The money is meant to cover whatever your team actually needs, whether that's day-to-day costs, a specific project, or something else entirely.</p>
+        </div>
+        <div style="border-top: 1px solid rgba(24,9,8,0.16); padding-top: clamp(22px, 2.4vw, 30px); display: flex; flex-wrap: wrap; gap: clamp(18px, 3vw, 44px); align-items: baseline;">
+          <div style="flex: 1 1 180px; max-width: 230px;">
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #b0a49d; margin-bottom: 10px;">Part two</div>
+            <div style="font-family: 'Albert Sans', sans-serif; font-size: clamp(23px, 2.4vw, 32px); font-weight: 700; letter-spacing: -0.024em; line-height: 1.04; color: #180908;">Learning</div>
+          </div>
+          <p style="flex: 2 1 300px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #5c534f; margin: 0; max-width: 54ch; text-wrap: pretty;">Sibility Initiative provides your organisation with a set of educational tools and practical courses. For instance, workshops on community management, low-budget marketing, basic accounting for NGOs, and more.</p>
+        </div>
+        <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #6b5f5b; margin: 0; max-width: 660px; text-wrap: pretty;">You can request money only, education only, or both. The amount of support may differ. We don't promise everyone the same sum. Depending on the applications and tasks, someone gets more, someone less. No reporting is needed. We assume you know better than we do what it should be spent on.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(80px, 10vw, 150px) 0 0;">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 44px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.02; margin: 0;">Who it&rsquo;s for</h2>
+      </div>
+      <div class="critwrap" data-crits style="flex: 3 1 480px; display: flex; flex-direction: column; gap: clamp(22px, 2.4vw, 30px);">
+        <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(23px, 2.4vw, 32px); font-weight: 700; letter-spacing: -0.024em; line-height: 1.3; color: #180908; margin: 0; max-width: 660px; text-wrap: pretty;">This grant supports non-violence NGOs (novingo). To apply, your organisation has to:</p>
+        <div style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: flex-start;">
+          <div class="critbox" style="width: 30px; height: 30px; background: linear-gradient(135deg, rgba(242,217,189,0.35), rgba(219,130,54,0.18)); border: 1.5px solid rgba(219,130,54,0.45); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 5px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#DB8236" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width: 17px; height: 17px; display: block;"><path class="critcheck" d="M4.5 13 L9.5 17.8 L19.5 6" style="transition-delay: 0.12s;"></path></svg>
+          </div>
+          <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 58ch; text-wrap: pretty;">Work on non-violence and be independent. Competitors cannot be a part of the government or a large structure that is able to fund you without us.</p>
+        </div>
+        <div style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: flex-start;">
+          <div class="critbox" style="width: 30px; height: 30px; background: linear-gradient(135deg, rgba(242,217,189,0.35), rgba(219,130,54,0.18)); border: 1.5px solid rgba(219,130,54,0.45); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 5px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#DB8236" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width: 17px; height: 17px; display: block;"><path class="critcheck" d="M4.5 13 L9.5 17.8 L19.5 6" style="transition-delay: 0.3s;"></path></svg>
+          </div>
+          <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 58ch; text-wrap: pretty;">Operate at a small, local, grassroots level, rather than as a big international network with large budgets.</p>
+        </div>
+        <div style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: center;">
+          <div class="critbox" style="width: 30px; height: 30px; background: linear-gradient(135deg, rgba(242,217,189,0.35), rgba(219,130,54,0.18)); border: 1.5px solid rgba(219,130,54,0.45); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#DB8236" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width: 17px; height: 17px; display: block;"><path class="critcheck" d="M4.5 13 L9.5 17.8 L19.5 6" style="transition-delay: 0.48s;"></path></svg>
+          </div>
+          <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 58ch; text-wrap: pretty;">Be based in the US, the UK, or any EU country.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start; padding: clamp(80px, 10vw, 150px) 0 0;">
+      <div style="flex: 1 1 240px; max-width: 340px;">
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 44px); font-weight: 700; letter-spacing: -0.028em; line-height: 1.02; margin: 0;">How it works</h2>
+      </div>
+      <div style="flex: 3 1 480px; display: flex; flex-direction: column; gap: clamp(26px, 3vw, 38px);">
+        <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(23px, 2.4vw, 32px); font-weight: 700; letter-spacing: -0.024em; line-height: 1.3; color: #180908; margin: 0; max-width: 660px; text-wrap: pretty;">The contest runs from [date] to [date].</p>
+        <div class="steps" data-steps style="position: relative;">
+          <div class="step" style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: flex-start; position: relative; min-height: 76px; padding-bottom: 0;">
+            <div style="position: absolute; left: 14.25px; top: 30px; bottom: 0; width: 1.5px; background: rgba(219,130,54,0.6);"></div>
+            <div style="width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #f6ede2, #efece8); border: 1.5px solid rgba(219,130,54,0.6); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; position: relative; z-index: 1;">
+              <span style="font-family: 'Albert Sans', sans-serif; font-size: 13px; font-weight: 700; line-height: 1; color: #DB8236; position: relative; top: -0.5px;">1</span>
+            </div>
+            <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 46ch; text-wrap: pretty;">By [date], you fill out the application<br class="brdesk">using the link below.</p>
+          </div>
+          <div class="step" style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: flex-start; position: relative; min-height: 76px; padding-bottom: 0;">
+            <div style="position: absolute; left: 14.25px; top: 30px; bottom: 0; width: 1.5px; background: rgba(219,130,54,0.6);"></div>
+            <div style="width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #f6ede2, #efece8); border: 1.5px solid rgba(219,130,54,0.6); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; position: relative; z-index: 1;">
+              <span style="font-family: 'Albert Sans', sans-serif; font-size: 13px; font-weight: 700; line-height: 1; color: #DB8236; position: relative; top: -0.5px;">2</span>
+            </div>
+            <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 46ch; text-wrap: pretty;">Within N days, we will send you an email confirming we&rsquo;ve got the application.</p>
+          </div>
+          <div class="step" style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: flex-start; position: relative; min-height: 76px; padding-bottom: 0;">
+            <div style="position: absolute; left: 14.25px; top: 30px; bottom: 0; width: 1.5px; background: rgba(219,130,54,0.6);"></div>
+            <div style="width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #f6ede2, #efece8); border: 1.5px solid rgba(219,130,54,0.6); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; position: relative; z-index: 1;">
+              <span style="font-family: 'Albert Sans', sans-serif; font-size: 13px; font-weight: 700; line-height: 1; color: #DB8236; position: relative; top: -0.5px;">3</span>
+            </div>
+            <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 46ch; text-wrap: pretty;">By [date], our experts read the applications and choose the winners.</p>
+          </div>
+          <div class="step" style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: flex-start; position: relative; min-height: 76px; padding-bottom: 0;">
+            <div style="position: absolute; left: 14.25px; top: 30px; bottom: 0; width: 1.5px; background: rgba(219,130,54,0.6);"></div>
+            <div style="width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #f6ede2, #efece8); border: 1.5px solid rgba(219,130,54,0.6); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; position: relative; z-index: 1;">
+              <span style="font-family: 'Albert Sans', sans-serif; font-size: 13px; font-weight: 700; line-height: 1; color: #DB8236; position: relative; top: -0.5px;">4</span>
+            </div>
+            <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 46ch; text-wrap: pretty;">We let everyone know the results &mdash; whether you got a grant or not this time.</p>
+          </div>
+          <div class="step" style="display: flex; gap: clamp(16px, 2vw, 24px); align-items: flex-start; position: relative;">
+            <div style="width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #f6ede2, #efece8); border: 1.5px solid rgba(219,130,54,0.6); box-sizing: border-box; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; position: relative; z-index: 1;">
+              <span style="font-family: 'Albert Sans', sans-serif; font-size: 13px; font-weight: 700; line-height: 1; color: #DB8236; position: relative; top: -0.5px;">5</span>
+            </div>
+            <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.62; color: #4a3f3d; margin: 0; max-width: 46ch; text-wrap: pretty;">With the winners, we agree on the details: amount, format, whether the learning part is needed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPLY BAND -->
+    <div id="apply" style="position: relative; overflow: hidden; background: #180908; color: #efece8; padding: clamp(36px, 4.5vw, 60px) clamp(28px, 4vw, 56px); margin-top: clamp(56px, 7vw, 100px);">
+      <img src="assets/hero-swirl.avif" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.5; mix-blend-mode: screen; pointer-events: none;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, #180908 0%, rgba(24,9,8,0.9) 55%, rgba(24,9,8,0.35) 100%); pointer-events: none;"></div>
+      <div style="position: relative; max-width: 760px;">
+        <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; margin: 0 0 14px;">Apply for a grant</h2>
+        <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #c9beb8; margin: 0 0 clamp(24px, 2.6vw, 32px); max-width: 640px; text-wrap: pretty;">We want to know who you are, what you do, where you work, how much money you need, and whether you want the educational part too. If you've applied for grants before, you'll easily fill this form out with no trouble. If you haven't, don't worry &mdash; we made the form simple and straightforward on purpose.</p>
+        <button type="button" data-apply-open class="apply-btn orange" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Albert Sans', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #180908; background: #DB8236; border: none; cursor: pointer; padding: 16px 32px;">Apply <span class="arw" style="display:inline-block;">&rarr;</span></button>
+      </div>
+    </div>
+
+    <!-- CLOSING BLOCK -->
+    <div style="padding: clamp(64px, 8vw, 110px) 0 clamp(44px, 5.5vw, 72px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1px; background: rgba(24,9,8,0.14);">
+        <div style="background: #efece8; padding: clamp(28px, 3.2vw, 42px) clamp(24px, 2.8vw, 38px);">
+          <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #DB8236; margin-bottom: clamp(16px, 1.8vw, 22px);">Documents</div>
+          <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #4a3f3d; margin: 0; text-wrap: pretty;">You can find the full contest rules here: <a href="#" style="text-decoration: underline; text-underline-offset: 3px;">[link]</a>.</p>
+        </div>
+        <div style="background: #efece8; padding: clamp(28px, 3.2vw, 42px) clamp(24px, 2.8vw, 38px);">
+          <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #DB8236; margin-bottom: clamp(16px, 1.8vw, 22px);">Questions and feedback</div>
+          <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #4a3f3d; margin: 0 0 14px; text-wrap: pretty;">We know that submitting an application may be a hassle (and a little nerve-racking). But we have tried to make the process as intuitive as possible. Sorry if it is not perfect; we'll get better next time! And if we can help in any way at all, please write to us at <a href="mailto:hello@sibility.org" style="text-decoration: underline; text-underline-offset: 3px;">hello@sibility.org</a>.</p>
+          <p style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #4a3f3d; margin: 0; text-wrap: pretty;">We'll get back to you within a few days &mdash; in writing first, and then, if you wish, we can set up a call.</p>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(24,9,8,0.14); padding-top: clamp(34px, 4vw, 54px); margin-top: clamp(34px, 4vw, 54px); display: flex; flex-wrap: wrap; gap: clamp(16px, 3vw, 40px); align-items: baseline;">
+        <div style="font-family: 'Albert Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #b0a49d; flex: 0 0 auto;">And finally</div>
+        <p style="font-family: 'Albert Sans', sans-serif; font-size: clamp(30px, 3.6vw, 50px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: #180908; margin: 0;">Thank you.</p>
       </div>
     </div>
   </section>
@@ -105,5 +249,42 @@
   <script src="js/donate.js"></script>
   <script src="js/newsletter.js"></script>
   <script src="js/apply.js"></script>
+  <script>
+    // scroll reveals: checkboxes + timeline (per handoff).
+    // IntersectionObserver + a rect-based fallback so the reveal always fires.
+    (function () {
+      function watch(sel, threshold) {
+        var el = document.querySelector(sel);
+        if (!el) return;
+        var done = false;
+        function fire() {
+          if (done) return; done = true;
+          el.classList.add('on');
+          window.removeEventListener('scroll', check);
+          window.removeEventListener('resize', check);
+        }
+        function check() {
+          if (done) return;
+          var r = el.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+          var ratio = r.height ? visible / Math.min(r.height, vh) : 0;
+          if (ratio >= threshold) fire();
+        }
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (es) {
+            if (es.some(function (e) { return e.isIntersecting; })) { fire(); io.disconnect(); }
+          }, { threshold: threshold });
+          io.observe(el);
+        }
+        window.addEventListener('scroll', check, { passive: true });
+        window.addEventListener('resize', check);
+        setTimeout(check, 150);
+        setTimeout(check, 700);
+      }
+      watch('[data-crits]', 0.35);
+      watch('[data-steps]', 0.2);
+    })();
+  </script>
 </body>
 </html>
